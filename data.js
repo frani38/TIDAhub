@@ -2451,6 +2451,17 @@ window.MYWEB_DATA = {
   // poster: ruta local recomendada (por ejemplo: "./media/<id>.jpg")
   media: [
     {
+      id: "la_habitacion_de_fermat",
+      addedAt: "2026-11-08",
+      themes: ["Películas"],
+      poster: "./media/0006.jpg",
+      title: "La habitación de Fermat",
+      year: 2007,
+      age: "+12",
+      description:
+        "Sigue a cuatro matemáticos de distintas disciplinas —un joven investigador prometedor, su antigua mentor, un viejo inventor consagrado y una especialista en teoría de números— que acuden a una convocatoria enigmática: la promesa de resolver un gran enigma científico en una reunión aislada en una mansión en mitad de la nada. Lo que empieza como un encuentro académico entre mentes brillantes degenera pronto en una pesadilla cuando, tras cenar, descubren que la habitación donde se hallan ha sido convertida en una trampa mortal y mecanizada que se contrae lentamente sobre ellos, obligándolos a poner en común su talento para resolver acertijos y demostraciones contra reloj si quieren salir con vida. Sin nadie más alrededor y con el móvil operativo apenas minutos, el juego se convierte en una carrera contrarreloj en la que cada puzle resuelto revela también que nada de lo ocurrido es casual, y que alguien muy cercano a ellos conoce sus secretos y errores del pasado mejor de lo que nadie debería conocerlos."
+    },
+    {
       id: "v_de_vendetta",
       addedAt: "2026-11-08",
       themes: ["Películas"],
