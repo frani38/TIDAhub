@@ -31,7 +31,10 @@
   /* Lectura / UI de secciones: Oxanium (mejor legibilidad que Orbitron). */
   --tech-font: "Oxanium", "Segoe UI", system-ui, -apple-system, sans-serif;
   --meta-font: "Oxanium", "Segoe UI", system-ui, -apple-system, sans-serif;
-  /* Marca / display: Orbitron solo en identidad de cabecera y logotipo tipográfico. */
+  /*
+    Orbitron (display): marca, botones de cabecera, título de sección,
+    búsqueda rápida, título NOTICIAS y rótulos de secciones CÓDEX.
+  */
   --display-font: "Orbitron", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
@@ -457,7 +460,7 @@ body.theme-light header .brand-logo img {
   background: rgba(7, 12, 28, 0.28);
   color: #ffffff;
   padding: 0.42rem 0.6rem;
-  font-family: var(--tech-font);
+  font-family: var(--display-font);
   font-size: 0.88rem;
   appearance: none;
 }
@@ -590,7 +593,7 @@ body:has(.codex-grid):not(:has(.codex-detail)) .app {
   color: #e8f0ff;
   border-radius: 10px;
   padding: 0.45rem 0.7rem;
-  font-family: var(--tech-font);
+  font-family: var(--display-font);
   font-size: 0.82rem;
   cursor: pointer;
 }
@@ -734,7 +737,7 @@ main {
 .content-card h2 {
   margin: 0.1rem 0 0.45rem;
   color: #eef3ff;
-  font-family: var(--tech-font);
+  font-family: var(--display-font);
   letter-spacing: 0.02em;
   font-size: 1.85em;
   font-weight: 700;
@@ -1496,7 +1499,7 @@ body.privacy-page .privacy-card {
   margin: 0 auto 0.1rem;
   max-width: 1800px;
   width: 100%;
-  font-family: var(--tech-font);
+  font-family: var(--display-font);
   font-size: clamp(1.05rem, 3.5vw, 1.48rem);
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -2654,7 +2657,7 @@ a.year-result-title-link:hover {
 
 .home-news__title {
   margin: 0 0 0.75rem;
-  font-family: var(--tech-font);
+  font-family: var(--display-font);
   letter-spacing: 0.08em;
   font-size: 1.28rem;
   color: #ffffff;
@@ -3193,6 +3196,7 @@ body.theme-light .construction-notice strong {
 }
 
 .codex-card__label {
+  font-family: var(--display-font);
   font-size: 1.18rem;
   line-height: 1.15;
   letter-spacing: 0.06em;
@@ -5100,7 +5104,7 @@ body.theme-light .reading-badge {
   padding: 0.34rem 0.72rem;
   font-weight: 650;
   font-size: 0.84rem;
-  font-family: var(--tech-font);
+  font-family: var(--display-font);
   margin-bottom: 0.85rem;
   transition: background 0.12s ease, border-color 0.12s ease, transform 0.02s ease;
 }
