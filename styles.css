@@ -1428,7 +1428,7 @@ body.privacy-page .tab-panel {
 
 /* Página de privacidad (privacidad.html): ocupar el ancho del privacy-stack (1800px) */
 body.privacy-page .help-privacy {
-  font-size: 0.92rem;
+  font-size: 1rem;
   line-height: 1.28;
   width: 100%;
   max-width: none;
@@ -1562,7 +1562,7 @@ body.privacy-page .privacy-legal-lede {
   max-width: none;
   margin-left: auto;
   margin-right: auto;
-  font-size: 0.92rem;
+  font-size: 1rem;
   line-height: 1.22;
   padding: 0.5rem 0.65rem;
 }
