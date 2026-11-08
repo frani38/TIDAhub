@@ -1,6 +1,6 @@
 Historial de versiones — T·I·D·A hub
 
-Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.10.56**).
+Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.0**).
 
 Formato: **MAJOR.MINOR.PATCH** (desde 1.1.0). Fuente de verdad: `data.js`. Documentación alineada en `README.md`, `github_TIDAhub.md`, `content/README.md` e `#_Informe/Informe_MyWeb.tex`.
 
@@ -810,6 +810,10 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 ### Nota (sin bump)
 
 - Mientras se itera Blockchain y Big Data hasta darla por terminada, los retoques de esa sección se publican **sin** subir `siteMeta.version` (un solo bump al cerrar el WIP). Para forzar recarga de CSS/JS se usa `siteMeta.assetBust` (p. ej. `1.9.33-1`) sin cambiar el número del pie.
+
+## 1.11.0
+
+- Tipografía de lectura: **Oxanium** en el texto de todas las secciones (incl. noticias y declaración de Asistencia IA). Orbitron queda solo en la marca de cabecera (`T·I·D·Ahub` / lema) y en la marca tipográfica dentro de textos.
 
 ## 1.10.56
 

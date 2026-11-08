@@ -28,8 +28,11 @@
   --muted: #98a8cc;
   --border: #25345c;
   --radius: 14px;
-  --tech-font: "Orbitron", "Segoe UI", system-ui, -apple-system, sans-serif;
+  /* Lectura / UI de secciones: Oxanium (mejor legibilidad que Orbitron). */
+  --tech-font: "Oxanium", "Segoe UI", system-ui, -apple-system, sans-serif;
   --meta-font: "Oxanium", "Segoe UI", system-ui, -apple-system, sans-serif;
+  /* Marca / display: Orbitron solo en identidad de cabecera y logotipo tipográfico. */
+  --display-font: "Orbitron", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 body.theme-light {
@@ -76,7 +79,7 @@ body.theme-light header .subtle {
 }
 
 body.theme-light header .subtle.subtle-right {
-  font-family: var(--tech-font);
+  font-family: var(--display-font);
 }
 
 body.theme-light header .brand-logo {
@@ -211,7 +214,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--tech-font);
   background: var(--bg);
   color: var(--text);
   line-height: 1.65;
@@ -354,7 +357,7 @@ body.theme-light header .brand-logo img {
   font-weight: 700;
   font-style: normal;
   letter-spacing: 0.08em;
-  font-family: var(--tech-font);
+  font-family: var(--display-font);
   line-height: 1;
   color: #f7fbff;
   text-transform: uppercase;
@@ -385,7 +388,7 @@ body.theme-light header .brand-logo img {
   font-size: 1.55rem;
   font-weight: 700;
   letter-spacing: 0.03em;
-  font-family: var(--tech-font);
+  font-family: var(--display-font);
   color: #dce8ff;
   text-align: right;
   margin-top: 0.1rem;
@@ -2471,7 +2474,7 @@ body.theme-light .home-split.is-archive .year-result-date {
   list-style: none;
   display: grid;
   gap: 0.4rem;
-  /* Tabulación fija: ancho uniforme para alinear titulares; ~12.6rem cubre `YYYY-MM-DD [HH:mm]` en Orbitron 0.86rem */
+  /* Tabulación fija: ancho uniforme para alinear titulares; ~12.6rem cubre `YYYY-MM-DD [HH:mm]` a 0.86rem */
   --year-result-date-col: 12.6rem;
 }
 
@@ -2895,6 +2898,7 @@ a.news-title-link:hover {
 }
 
 .welcome-brand {
+  font-family: var(--display-font);
   font-size: 1.82em;
   color: #2563eb;
   letter-spacing: 0.02em;
@@ -5370,7 +5374,6 @@ body.ai-assist-page .privacy-stack {
   margin: 0;
   padding: 0.15rem 0.35rem 0.55rem;
   box-sizing: border-box;
-  /* Mismo cuerpo tipográfico que .help-privacy (Oxanium), no Orbitron. */
   font-family: var(--meta-font);
   font-size: 1rem;
   line-height: 1.28;
@@ -5386,7 +5389,7 @@ body.ai-assist-page .privacy-stack {
 }
 
 .ai-assist-body .welcome-brand {
-  font-family: var(--tech-font);
+  font-family: var(--display-font);
   font-weight: 700;
   font-size: 1.22em;
 }
