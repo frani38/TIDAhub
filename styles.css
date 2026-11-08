@@ -2838,6 +2838,8 @@ body:has(.home-split.is-archive) .year-result.is-unseen-news {
   font-size: 0.86rem;
   color: #ffffff;
   letter-spacing: 0.02em;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 a.news-title-link {
@@ -2848,6 +2850,8 @@ a.news-title-link {
   letter-spacing: 0.02em;
   text-decoration: none;
   cursor: pointer;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 a.news-title-link:hover {
