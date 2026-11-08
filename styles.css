@@ -5334,7 +5334,8 @@ body.ai-assist-page .privacy-stack {
   padding: 0.15rem 0.35rem 0.55rem;
   box-sizing: border-box;
   font-family: var(--tech-font);
-  font-size: 1.14rem;
+  /* Mismo tamaño de cuerpo que privacidad.html (.help-privacy / .privacy-card). */
+  font-size: 0.92rem;
   line-height: 1.52;
   text-align: justify;
   text-justify: inter-word;
