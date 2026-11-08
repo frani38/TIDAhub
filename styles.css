@@ -5337,7 +5337,7 @@ body.ai-assist-page .ai-assist-shell {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  width: min(80rem, calc(100% - 2.5rem));
+  width: min(74rem, calc(100% - 2.5rem));
   max-width: 100%;
   min-width: 0;
   flex: 1 1 auto;
