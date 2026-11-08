@@ -12,6 +12,8 @@
   font-style: normal;
   font-weight: 200 600;
   font-display: swap;
+  /* Compensa que Oxanium se percibe más pequeña que Orbitron a igual rem. */
+  size-adjust: 107%;
   src: url("./fonts/oxanium-latin-var.woff2") format("woff2");
 }
 
