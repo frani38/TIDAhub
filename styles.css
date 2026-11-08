@@ -2684,7 +2684,7 @@ a.year-result-title-link:hover {
 
 .home-news__subtitle {
   margin: 0 0 0.55rem;
-  font-family: var(--tech-font);
+  font-family: var(--display-font);
   letter-spacing: 0.08em;
   font-size: 1.02rem;
   color: #ffffff;
