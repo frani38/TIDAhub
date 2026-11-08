@@ -5241,9 +5241,19 @@ body.theme-light .theme-switch-btn.active {
   font-weight: 500;
 }
 
+/* Fondo banner-ia (colores originales) en toda el área entre cabecera y pie. */
+body.ai-assist-page .app {
+  background-color: #0a0f1f;
+  background-image: url("./banners/banner-ia.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 /* Misma geometría que Privacidad: título que puede bajar de línea + scroll en .tab-panel. */
 body.ai-assist-page .content-card {
   align-items: stretch;
+  background: transparent;
 }
 
 body.ai-assist-page .ai-assist-shell {
@@ -5274,9 +5284,10 @@ body.ai-assist-page #unit-title.privacy-block-heading {
   text-align: center;
   font-size: clamp(0.92rem, 3.2vw, 1.2rem);
   box-sizing: border-box;
+  color: #ffffff;
 }
 
-/* Cuadro a todo el ancho del shell; scroll vertical como en privacidad.html. */
+/* Scroll vertical como en privacidad.html; sin cuadro de texto. */
 body.ai-assist-page .tab-panel {
   display: block;
   flex: 1 1 auto;
@@ -5288,6 +5299,7 @@ body.ai-assist-page .tab-panel {
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: auto;
+  color: #ffffff;
 }
 
 body.ai-assist-page .privacy-stack {
@@ -5298,42 +5310,23 @@ body.ai-assist-page .privacy-stack {
   min-width: 0;
 }
 
-body.ai-assist-page .help-privacy.ai-assist-card,
-.ai-assist-card {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
+.ai-assist-body {
   width: 100%;
   max-width: none;
   margin: 0;
+  padding: 0.15rem 0.35rem 0.55rem;
   box-sizing: border-box;
-  min-width: 0;
-  padding: 0.5rem 0.72rem;
-  /* Fondo decorativo: banner-ia invertido (oscuro → claro). */
-  background: transparent;
-}
-
-body.ai-assist-page .help-privacy.ai-assist-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image: url("./banners/banner-ia.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: invert(1);
-}
-
-.ai-assist-body {
-  position: relative;
-  z-index: 1;
   font-size: 1.02rem;
   line-height: 1.48;
   text-align: justify;
   text-justify: inter-word;
-  color: #0f172a;
+  color: #ffffff;
+  background: transparent;
+  border: 0;
+}
+
+.ai-assist-body strong {
+  color: #ffffff;
 }
 
 .ai-assist-body .welcome-brand {
@@ -5352,8 +5345,8 @@ body.ai-assist-page .help-privacy.ai-assist-card::before {
 .ai-assist-note {
   margin-top: 0.75rem;
   padding-top: 0.65rem;
-  border-top: 1px solid rgba(15, 23, 42, 0.12);
-  color: #0f172a;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  color: #ffffff;
   font-size: inherit;
 }
 
