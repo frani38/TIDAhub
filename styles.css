@@ -3367,6 +3367,99 @@ body.theme-light .construction-notice strong {
   box-sizing: border-box;
 }
 
+/* Select custom: lista siempre hacia abajo (anclada al botón). */
+.select-down {
+  position: relative;
+  width: 100%;
+}
+
+.select-down__native {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  pointer-events: none !important;
+}
+
+.select-down__btn {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border: 1px solid rgba(122, 162, 255, 0.3);
+  border-radius: 10px;
+  background: rgba(17, 27, 54, 0.95);
+  color: #e9f0ff;
+  padding: 0.52rem 0.62rem;
+  font-family: var(--tech-font);
+  font-size: 0.85rem;
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.select-down__btn::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-15%) rotate(45deg);
+  opacity: 0.85;
+}
+
+.select-down.is-open .select-down__btn::after {
+  transform: translateY(20%) rotate(225deg);
+}
+
+.select-down__btn:focus-visible {
+  outline: 2px solid #9fc0ff;
+  outline-offset: 2px;
+}
+
+.select-down__list {
+  z-index: 80;
+  margin: 0;
+  padding: 0.28rem;
+  list-style: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid rgba(122, 162, 255, 0.35);
+  border-radius: 10px;
+  background: rgba(12, 20, 40, 0.98);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+  box-sizing: border-box;
+}
+
+.select-down__option {
+  padding: 0.42rem 0.55rem;
+  border-radius: 7px;
+  color: #e9f0ff;
+  font-family: var(--tech-font);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.select-down__option.is-active,
+.select-down__option:hover {
+  background: rgba(122, 162, 255, 0.18);
+}
+
+.select-down__option.is-selected {
+  background: rgba(122, 162, 255, 0.28);
+  font-weight: 650;
+}
+
 .readings-grid {
   display: flex;
   flex-direction: column;
@@ -4916,6 +5009,35 @@ body.theme-light .readings-filter input {
   color: #0f172a;
   border-color: rgba(37, 99, 235, 0.28);
   font-family: var(--tech-font);
+}
+
+body.theme-light .select-down__btn {
+  background: #ffffff;
+  color: #0f172a;
+  border-color: rgba(37, 99, 235, 0.28);
+}
+
+body.theme-light .select-down__btn:focus-visible {
+  outline-color: #2563eb;
+}
+
+body.theme-light .select-down__list {
+  background: #ffffff;
+  border-color: rgba(37, 99, 235, 0.28);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14);
+}
+
+body.theme-light .select-down__option {
+  color: #0f172a;
+}
+
+body.theme-light .select-down__option.is-active,
+body.theme-light .select-down__option:hover {
+  background: rgba(37, 99, 235, 0.1);
+}
+
+body.theme-light .select-down__option.is-selected {
+  background: rgba(37, 99, 235, 0.16);
 }
 
 body.theme-light .reading-card {

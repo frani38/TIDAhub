@@ -742,6 +742,209 @@
       .replaceAll("'", "&#039;");
   }
 
+  /**
+   * Sustituye el popup nativo del <select> (dirección decidida por el SO) por un
+   * listbox propio anclado siempre debajo del control.
+   */
+  function enhanceSelectOpenDown(selectEl) {
+    if (!(selectEl instanceof HTMLSelectElement) || selectEl.dataset.openDown === "1") return;
+    if (!selectEl.parentElement) return;
+    selectEl.dataset.openDown = "1";
+
+    const wrap = document.createElement("div");
+    wrap.className = "select-down";
+    selectEl.parentElement.insertBefore(wrap, selectEl);
+    wrap.appendChild(selectEl);
+    selectEl.classList.add("select-down__native");
+    selectEl.tabIndex = -1;
+    selectEl.setAttribute("aria-hidden", "true");
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "select-down__btn";
+    btn.setAttribute("aria-haspopup", "listbox");
+    btn.setAttribute("aria-expanded", "false");
+    if (selectEl.id) btn.id = `${selectEl.id}-trigger`;
+
+    const list = document.createElement("ul");
+    list.className = "select-down__list";
+    list.setAttribute("role", "listbox");
+    list.hidden = true;
+    if (selectEl.id) list.id = `${selectEl.id}-listbox`;
+    btn.setAttribute("aria-controls", list.id || "");
+
+    let activeIdx = -1;
+
+    const optionEls = () => Array.from(list.querySelectorAll('[role="option"]'));
+
+    const syncLabel = () => {
+      const opt = selectEl.selectedOptions[0];
+      btn.textContent = opt ? String(opt.textContent || "").trim() : "";
+    };
+
+    const setActive = (idx) => {
+      const opts = optionEls();
+      if (!opts.length) {
+        activeIdx = -1;
+        return;
+      }
+      activeIdx = Math.max(0, Math.min(idx, opts.length - 1));
+      opts.forEach((el, i) => {
+        const on = i === activeIdx;
+        el.classList.toggle("is-active", on);
+        if (on) {
+          el.setAttribute("aria-selected", el.classList.contains("is-selected") ? "true" : "false");
+          el.scrollIntoView({ block: "nearest" });
+        }
+      });
+    };
+
+    const placeList = () => {
+      const r = btn.getBoundingClientRect();
+      const gap = 4;
+      const maxH = Math.max(120, Math.min(320, window.innerHeight - r.bottom - 12));
+      list.style.position = "fixed";
+      list.style.left = `${Math.max(8, r.left)}px`;
+      list.style.top = `${r.bottom + gap}px`;
+      list.style.width = `${r.width}px`;
+      list.style.maxHeight = `${maxH}px`;
+    };
+
+    const close = () => {
+      if (list.hidden) return;
+      list.hidden = true;
+      wrap.classList.remove("is-open");
+      btn.setAttribute("aria-expanded", "false");
+      window.removeEventListener("resize", placeList);
+      window.removeEventListener("scroll", placeList, true);
+      document.removeEventListener("pointerdown", onDocPointer, true);
+      document.removeEventListener("keydown", onDocKey, true);
+      activeIdx = -1;
+    };
+
+    const pick = (value) => {
+      const next = String(value ?? "");
+      if (selectEl.value !== next) {
+        selectEl.value = next;
+        selectEl.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+      syncLabel();
+      close();
+      btn.focus();
+    };
+
+    const buildOptions = () => {
+      list.innerHTML = "";
+      Array.from(selectEl.options).forEach((opt, i) => {
+        const li = document.createElement("li");
+        li.className = "select-down__option";
+        li.setAttribute("role", "option");
+        li.dataset.value = opt.value;
+        li.textContent = String(opt.textContent || "").trim();
+        const selected = opt.selected || selectEl.value === opt.value;
+        li.classList.toggle("is-selected", selected);
+        li.setAttribute("aria-selected", selected ? "true" : "false");
+        li.addEventListener("click", (event) => {
+          event.preventDefault();
+          pick(opt.value);
+        });
+        li.addEventListener("pointerenter", () => setActive(i));
+        list.appendChild(li);
+        if (selected) activeIdx = i;
+      });
+    };
+
+    function onDocPointer(event) {
+      const t = event.target;
+      if (t instanceof Node && wrap.contains(t)) return;
+      if (t instanceof Node && list.contains(t)) return;
+      close();
+    }
+
+    function onDocKey(event) {
+      if (list.hidden) return;
+      const opts = optionEls();
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        close();
+        btn.focus();
+        return;
+      }
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        setActive(activeIdx < 0 ? 0 : activeIdx + 1);
+        return;
+      }
+      if (event.key === "ArrowUp") {
+        event.preventDefault();
+        setActive(activeIdx < 0 ? opts.length - 1 : activeIdx - 1);
+        return;
+      }
+      if (event.key === "Home") {
+        event.preventDefault();
+        setActive(0);
+        return;
+      }
+      if (event.key === "End") {
+        event.preventDefault();
+        setActive(opts.length - 1);
+        return;
+      }
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        const cur = opts[activeIdx];
+        if (cur) pick(cur.dataset.value);
+      }
+    }
+
+    const open = () => {
+      if (!list.hidden) return;
+      buildOptions();
+      list.hidden = false;
+      wrap.classList.add("is-open");
+      btn.setAttribute("aria-expanded", "true");
+      placeList();
+      const selectedIdx = optionEls().findIndex((el) => el.classList.contains("is-selected"));
+      setActive(selectedIdx >= 0 ? selectedIdx : 0);
+      window.addEventListener("resize", placeList);
+      window.addEventListener("scroll", placeList, true);
+      document.addEventListener("pointerdown", onDocPointer, true);
+      document.addEventListener("keydown", onDocKey, true);
+    };
+
+    btn.addEventListener("click", () => {
+      if (list.hidden) open();
+      else close();
+    });
+    btn.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
+        if (list.hidden) {
+          event.preventDefault();
+          open();
+        }
+      }
+    });
+    // El <label> puede enfocar el select oculto; redirigir al botón visible.
+    selectEl.addEventListener("focus", () => {
+      btn.focus();
+    });
+
+    const dispose = () => {
+      close();
+      list.remove();
+      mo.disconnect();
+    };
+    const mo = new MutationObserver(() => {
+      if (!wrap.isConnected) dispose();
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+
+    syncLabel();
+    wrap.appendChild(btn);
+    document.body.appendChild(list);
+  }
+
   function syncHomeNewsDock() {
     const headerEl = document.querySelector("header");
     if (!headerEl) return;
@@ -3777,6 +3980,7 @@
 
         themeEl.addEventListener("change", render);
         orderEl.addEventListener("change", render);
+        enhanceSelectOpenDown(themeEl);
 
         // Visor de portada (clic/teclado en el botón).
         listEl.addEventListener("click", (event) => {
