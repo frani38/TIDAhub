@@ -2451,6 +2451,17 @@ window.MYWEB_DATA = {
   // poster: ruta local recomendada (por ejemplo: "./media/<id>.jpg")
   media: [
     {
+      id: "v_de_vendetta",
+      addedAt: "2026-11-08",
+      themes: ["Películas"],
+      poster: "./media/0009.jpg",
+      title: "V de Vendetta",
+      year: 2005,
+      age: "+12",
+      description:
+        "En una Gran Bretaña de futuro cercano convertida en un Estado totalitario gobernado por un régimen fascista que controla todos los resortes del poder y de los medios de comunicación, la joven Evey es rescatada una noche por un misterioso enmascarado autodenominado \"V\", quien planea derribar al gobierno mediante una campaña audaz que culminará en una revolución a escala nacional. A medida que Evey se implica en sus planes, descubre que su propia historia está más ligada a la del enmascarado —y al origen del régimen— de lo que podría imaginar, mientras ambos se enfrentan a la pregunta de hasta dónde puede llegar un individuo sacrificado por sus ideales en un país donde la sumisión es ley y la memoria colectiva se reescribe a diario."
+    },
+    {
       id: "silk_road_atrapado_en_la_dark_web",
       addedAt: "2026-11-07",
       themes: ["Películas"],
