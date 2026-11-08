@@ -114,6 +114,31 @@ body.theme-light .menu-field select {
   border-color: rgba(122, 162, 255, 0.3);
 }
 
+body.theme-light .menu-field .select-down__btn {
+  background: linear-gradient(180deg, rgba(34, 53, 98, 0.92), rgba(20, 33, 66, 0.92));
+  color: #ffffff;
+  border-color: rgba(122, 162, 255, 0.3);
+}
+
+body.theme-light .menu-field .select-down__list {
+  background: rgb(20, 33, 66);
+  border-color: rgba(122, 162, 255, 0.35);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+body.theme-light .menu-field .select-down__option {
+  color: #ffffff;
+}
+
+body.theme-light .menu-field .select-down__option.is-active,
+body.theme-light .menu-field .select-down__option:hover {
+  background: rgba(122, 162, 255, 0.22);
+}
+
+body.theme-light .menu-field .select-down__option.is-selected {
+  background: rgba(122, 162, 255, 0.32);
+}
+
 body.theme-light .menu-field select option,
 body.theme-light .menu-field select optgroup {
   background: rgb(20, 33, 66);
@@ -3426,6 +3451,17 @@ body.theme-light .construction-notice strong {
   outline-offset: 2px;
 }
 
+.select-down__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.menu-field .select-down__btn {
+  padding: 0.45rem 0.58rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
 .select-down__list {
   z-index: 80;
   margin: 0;
@@ -3458,6 +3494,11 @@ body.theme-light .construction-notice strong {
 .select-down__option.is-selected {
   background: rgba(122, 162, 255, 0.28);
   font-weight: 650;
+}
+
+.select-down__option.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .readings-grid {
@@ -5356,6 +5397,7 @@ body.theme-light .theme-switch-btn.active {
 
 .home-btn:focus-visible,
 .menu-field select:focus-visible,
+.menu-field .select-down__btn:focus-visible,
 .menu-field input:focus-visible,
 .help-field input:focus-visible,
 .help-field textarea:focus-visible,
@@ -5889,6 +5931,7 @@ body.ai-assist-page .privacy-stack {
   }
 
   .menu-field select,
+  .menu-field .select-down__btn,
   .menu-field input {
     min-height: var(--touch-target-min);
   }

@@ -782,6 +782,18 @@
       btn.textContent = opt ? String(opt.textContent || "").trim() : "";
     };
 
+    const syncDisabled = () => {
+      const off = Boolean(selectEl.disabled);
+      btn.disabled = off;
+      wrap.classList.toggle("is-disabled", off);
+      if (off) close();
+    };
+
+    const syncFromSelect = () => {
+      syncLabel();
+      syncDisabled();
+    };
+
     const setActive = (idx) => {
       const opts = optionEls();
       if (!opts.length) {
@@ -792,10 +804,7 @@
       opts.forEach((el, i) => {
         const on = i === activeIdx;
         el.classList.toggle("is-active", on);
-        if (on) {
-          el.setAttribute("aria-selected", el.classList.contains("is-selected") ? "true" : "false");
-          el.scrollIntoView({ block: "nearest" });
-        }
+        if (on) el.scrollIntoView({ block: "nearest" });
       });
     };
 
@@ -827,30 +836,40 @@
       if (selectEl.value !== next) {
         selectEl.value = next;
         selectEl.dispatchEvent(new Event("change", { bubbles: true }));
+      } else {
+        syncLabel();
       }
-      syncLabel();
       close();
       btn.focus();
     };
 
     const buildOptions = () => {
       list.innerHTML = "";
-      Array.from(selectEl.options).forEach((opt, i) => {
+      let visibleIdx = 0;
+      Array.from(selectEl.options).forEach((opt) => {
         const li = document.createElement("li");
         li.className = "select-down__option";
         li.setAttribute("role", "option");
         li.dataset.value = opt.value;
         li.textContent = String(opt.textContent || "").trim();
         const selected = opt.selected || selectEl.value === opt.value;
+        const disabled = Boolean(opt.disabled);
         li.classList.toggle("is-selected", selected);
+        li.classList.toggle("is-disabled", disabled);
         li.setAttribute("aria-selected", selected ? "true" : "false");
+        if (disabled) li.setAttribute("aria-disabled", "true");
+        const idx = visibleIdx;
         li.addEventListener("click", (event) => {
           event.preventDefault();
+          if (disabled) return;
           pick(opt.value);
         });
-        li.addEventListener("pointerenter", () => setActive(i));
+        li.addEventListener("pointerenter", () => {
+          if (!disabled) setActive(idx);
+        });
         list.appendChild(li);
-        if (selected) activeIdx = i;
+        if (selected) activeIdx = idx;
+        visibleIdx += 1;
       });
     };
 
@@ -863,7 +882,7 @@
 
     function onDocKey(event) {
       if (list.hidden) return;
-      const opts = optionEls();
+      const opts = optionEls().filter((el) => !el.classList.contains("is-disabled"));
       if (event.key === "Escape") {
         event.preventDefault();
         event.stopPropagation();
@@ -888,19 +907,20 @@
       }
       if (event.key === "End") {
         event.preventDefault();
-        setActive(opts.length - 1);
+        setActive(optionEls().length - 1);
         return;
       }
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        const cur = opts[activeIdx];
-        if (cur) pick(cur.dataset.value);
+        const cur = optionEls()[activeIdx];
+        if (cur && !cur.classList.contains("is-disabled")) pick(cur.dataset.value);
       }
     }
 
     const open = () => {
-      if (!list.hidden) return;
+      if (!list.hidden || selectEl.disabled) return;
       buildOptions();
+      if (!optionEls().length) return;
       list.hidden = false;
       wrap.classList.add("is-open");
       btn.setAttribute("aria-expanded", "true");
@@ -914,10 +934,12 @@
     };
 
     btn.addEventListener("click", () => {
+      if (btn.disabled) return;
       if (list.hidden) open();
       else close();
     });
     btn.addEventListener("keydown", (event) => {
+      if (btn.disabled) return;
       if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
         if (list.hidden) {
           event.preventDefault();
@@ -927,22 +949,72 @@
     });
     // El <label> puede enfocar el select oculto; redirigir al botón visible.
     selectEl.addEventListener("focus", () => {
-      btn.focus();
+      if (!btn.disabled) btn.focus();
+    });
+    selectEl.addEventListener("change", syncFromSelect);
+
+    // DOCENCIA y similares cambian options/value por JS sin disparar change.
+    const valueDesc = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, "value");
+    if (valueDesc && valueDesc.get && valueDesc.set) {
+      Object.defineProperty(selectEl, "value", {
+        configurable: true,
+        enumerable: valueDesc.enumerable,
+        get() {
+          return valueDesc.get.call(this);
+        },
+        set(v) {
+          valueDesc.set.call(this, v);
+          syncFromSelect();
+        }
+      });
+    }
+    const optsMo = new MutationObserver(syncFromSelect);
+    optsMo.observe(selectEl, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+      attributes: true,
+      attributeFilter: ["disabled"]
     });
 
     const dispose = () => {
       close();
       list.remove();
-      mo.disconnect();
+      optsMo.disconnect();
+      wrapMo.disconnect();
     };
-    const mo = new MutationObserver(() => {
+    const wrapMo = new MutationObserver(() => {
       if (!wrap.isConnected) dispose();
     });
-    mo.observe(document.body, { childList: true, subtree: true });
+    wrapMo.observe(document.body, { childList: true, subtree: true });
 
-    syncLabel();
+    syncFromSelect();
     wrap.appendChild(btn);
     document.body.appendChild(list);
+  }
+
+  /** Aplica el listbox hacia abajo a todos los <select> actuales y futuros. */
+  function enhanceAllSelectsOpenDown(root = document) {
+    if (root instanceof HTMLSelectElement) {
+      enhanceSelectOpenDown(root);
+      return;
+    }
+    if (!(root instanceof Element) && !(root instanceof Document)) return;
+    root.querySelectorAll("select").forEach((el) => enhanceSelectOpenDown(el));
+  }
+
+  function wireSelectsOpenDown() {
+    enhanceAllSelectsOpenDown(document);
+    const mo = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        for (const node of mutation.addedNodes) {
+          if (!(node instanceof Element)) continue;
+          if (node.matches("select")) enhanceSelectOpenDown(node);
+          else enhanceAllSelectsOpenDown(node);
+        }
+      }
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
   }
 
   function syncHomeNewsDock() {
@@ -3980,7 +4052,6 @@
 
         themeEl.addEventListener("change", render);
         orderEl.addEventListener("change", render);
-        enhanceSelectOpenDown(themeEl);
 
         // Visor de portada (clic/teclado en el botón).
         listEl.addEventListener("click", (event) => {
@@ -5516,6 +5587,7 @@
   levelSelectEl.addEventListener("change", onLevelChanged);
   materialSelectEl.addEventListener("change", onMaterialChanged);
   unitSelectEl.addEventListener("change", onUnitChanged);
+  wireSelectsOpenDown();
 
   if (homeBtnEl) {
     homeBtnEl.addEventListener("click", () => {
