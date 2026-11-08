@@ -893,8 +893,28 @@ body:has(.codex-detail--readings) .app {
   min-height: 0;
 }
 
+/*
+  Privacidad desde AYUDA: como privacidad.html — título + cita fijos;
+  solo hace scroll el texto de la política (.privacy-stack).
+*/
+body:has(.help-privacy-panel) .app {
+  overflow: hidden;
+}
+
+body:has(.help-privacy-panel) .app-layout,
+body:has(.help-privacy-panel) main,
+body:has(.help-privacy-panel) .content-card {
+  min-height: 0;
+  overflow: hidden;
+}
+
 .tab-panel:has(.help-privacy-panel) {
   margin-top: 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* Subir ligeramente el bloque de privacidad dentro de AYUDA */
@@ -1208,6 +1228,10 @@ body.theme-light .unit-material-card__label {
   gap: 0;
   max-width: none;
   width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  padding-bottom: 0;
 }
 
 .help-field {
@@ -1498,6 +1522,19 @@ body.privacy-page .privacy-block-heading {
 .help-privacy-panel {
   max-width: none;
   width: 100%;
+}
+
+.help-privacy-panel > .privacy-block-heading,
+.help-privacy-panel > .privacy-legal-lede {
+  flex: 0 0 auto;
+}
+
+.help-privacy-panel > .privacy-stack {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: auto;
 }
 
 .privacy-stack {
