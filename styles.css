@@ -2701,8 +2701,9 @@ a.year-result-title-link:hover {
 
 .home-news__split {
   display: grid;
-  grid-template-rows: 4fr 1fr;
-  gap: 0.9rem;
+  /* Recientes ocupan el resto; HISTÓRICO solo su alto (más espacio para noticias). */
+  grid-template-rows: 1fr auto;
+  gap: 1.15rem;
   height: calc(100% - 3.1rem);
   min-height: 0;
 }
@@ -2714,7 +2715,8 @@ a.year-result-title-link:hover {
 }
 
 .home-news__history {
-  padding-top: 0.95rem;
+  padding-top: 0.35rem;
+  padding-bottom: 0.15rem;
 }
 
 .home-news__section-title {
