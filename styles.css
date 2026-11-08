@@ -701,7 +701,7 @@ main {
 .content-card.is-home #unit-title {
   padding: 0.12rem 0.25rem;
   pointer-events: none;
-  font-size: 1.85em;
+  font-size: 1.65em;
 }
 
 /* HISTÓRICO: mismo anclaje del panel NOTICIAS (is-home), título usable */
@@ -746,7 +746,7 @@ main {
   color: #eef3ff;
   font-family: var(--display-font);
   letter-spacing: 0.02em;
-  font-size: 1.85em;
+  font-size: 1.65em;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -5913,12 +5913,12 @@ body.ai-assist-page .privacy-stack {
 
   /*
     Títulos de sección (Bienvenido/a, NOVEDADES, PROYECTOS, …): mismo tamaño.
-    DOCENCIA materia/unidad largas: .unit-title--compact (una línea).
+    DOCENCIA materia/unidad largas: .unit-title--compact (una línea) — no tocar.
   */
   .content-card h2#unit-title,
   .content-card #unit-title,
   .content-card.is-home #unit-title {
-    font-size: clamp(1.15rem, 4vw, 1.45rem);
+    font-size: clamp(1.02rem, 3.55vw, 1.28rem);
   }
 
   .content-card.is-home #unit-title {
@@ -6147,7 +6147,7 @@ body.ai-assist-page .privacy-stack {
 
   /*
     AYUDA / privacidad: mismo layout título+VOLVER que CÓDEX,
-    pero sin reducir el tamaño del título de sección.
+    con el tamaño general de título de sección (no el compacto anti-wrap).
   */
   body:has(.help-privacy-panel) .content-card h2#unit-title,
   body:has(.help-privacy-panel) .content-card #unit-title {
@@ -6156,7 +6156,7 @@ body.ai-assist-page .privacy-stack {
     align-items: center;
     justify-content: space-between;
     gap: 0.35rem 0.45rem;
-    font-size: clamp(1.15rem, 4vw, 1.45rem);
+    font-size: clamp(1.02rem, 3.55vw, 1.28rem);
     letter-spacing: 0.02em;
     max-width: 100%;
     box-sizing: border-box;
@@ -6525,7 +6525,7 @@ body.ai-assist-page .privacy-stack {
   .content-card h2#unit-title,
   .content-card #unit-title,
   .content-card.is-home #unit-title {
-    font-size: clamp(1.15rem, 4vw, 1.45rem);
+    font-size: clamp(1.02rem, 3.55vw, 1.28rem);
   }
 
   #unit-title.unit-title--compact {
@@ -6540,10 +6540,10 @@ body.ai-assist-page .privacy-stack {
     gap: 0.3rem;
   }
 
-  /* Privacidad desde AYUDA: título grande intacto también en pantallas muy estrechas */
+  /* Privacidad desde AYUDA: tamaño general de sección (no el compacto anti-wrap) */
   body:has(.help-privacy-panel) .content-card h2#unit-title,
   body:has(.help-privacy-panel) .content-card #unit-title {
-    font-size: clamp(1.15rem, 4vw, 1.45rem);
+    font-size: clamp(1.02rem, 3.55vw, 1.28rem);
     gap: 0.3rem;
   }
 
