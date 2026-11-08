@@ -5241,13 +5241,30 @@ body.theme-light .theme-switch-btn.active {
   font-weight: 500;
 }
 
-/* Fondo banner-ia: cubre todo el hueco entre cabecera y pie en cualquier resolución. */
+/* Fondo banner-ia: cubre el hueco cabecera–pie; atenuado para legibilidad del texto negro. */
 body.ai-assist-page .app {
-  background-color: #e8f0f8;
+  position: relative;
+  isolation: isolate;
+  background-color: #f3f6fb;
+  background-image: none;
+}
+
+body.ai-assist-page .app::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
   background-image: url("./banners/banner-ia.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  opacity: 0.38;
+}
+
+body.ai-assist-page .app > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Misma geometría que Privacidad: título que puede bajar de línea + scroll en .tab-panel. */
