@@ -1682,8 +1682,9 @@ body.privacy-page .privacy-legal-lede {
   color: #eef3ff;
   border-radius: 999px;
   padding: 0.45rem 0.85rem;
-  font-weight: 650;
-  font-family: var(--tech-font);
+  /* Oxanium variable solo llega a 600; 650+ puede no emparejar la cara. */
+  font-weight: 600;
+  font-family: var(--meta-font);
 }
 
 .help-submit:hover {
