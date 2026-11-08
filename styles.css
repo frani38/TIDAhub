@@ -5300,15 +5300,35 @@ body.ai-assist-page .privacy-stack {
 
 body.ai-assist-page .help-privacy.ai-assist-card,
 .ai-assist-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   width: 100%;
   max-width: none;
   margin: 0;
   box-sizing: border-box;
   min-width: 0;
   padding: 0.5rem 0.72rem;
+  /* Fondo decorativo: banner-ia invertido (oscuro → claro). */
+  background: transparent;
+}
+
+body.ai-assist-page .help-privacy.ai-assist-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("./banners/banner-ia.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: invert(1);
 }
 
 .ai-assist-body {
+  position: relative;
+  z-index: 1;
   font-size: 1.02rem;
   line-height: 1.48;
   text-align: justify;
