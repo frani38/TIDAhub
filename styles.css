@@ -5241,11 +5241,11 @@ body.theme-light .theme-switch-btn.active {
   font-weight: 500;
 }
 
-/* Fondo banner-ia en toda el área entre cabecera y pie. */
+/* Fondo banner-ia en toda el área entre cabecera y pie (tamaño nativo, sin estirar). */
 body.ai-assist-page .app {
   background-color: #0a0f1f;
   background-image: url("./banners/banner-ia.png");
-  background-size: cover;
+  background-size: auto;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -5260,7 +5260,7 @@ body.ai-assist-page .ai-assist-shell {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  width: min(70rem, calc(100% - 4rem));
+  width: min(96rem, calc(100% - 2rem));
   max-width: 100%;
   min-width: 0;
   flex: 1 1 auto;
