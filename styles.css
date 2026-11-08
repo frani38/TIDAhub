@@ -5244,7 +5244,7 @@ body.theme-light .theme-switch-btn.active {
 /* Fondo banner-ia: cubre todo el hueco entre cabecera y pie en cualquier resolución. */
 body.ai-assist-page .app {
   background-color: #e8f0f8;
-  background-image: url("./banners/banner-ia.png");
+  background-image: url("./banners/banner-ia.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
