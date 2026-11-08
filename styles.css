@@ -5348,13 +5348,14 @@ body.ai-assist-page #unit-title.privacy-block-heading {
   margin: 0 auto;
   padding: 0 0.35rem;
   flex: 0 0 auto;
-  letter-spacing: 0.035em;
+  /* Mismo tamaño/tracking que privacidad.html (.privacy-block-heading). */
+  letter-spacing: 0.08em;
   line-height: 1.25;
   white-space: normal;
   overflow-wrap: anywhere;
   text-wrap: balance;
   text-align: center;
-  font-size: clamp(0.92rem, 3.2vw, 1.2rem);
+  font-size: clamp(1.05rem, 3.5vw, 1.48rem);
   box-sizing: border-box;
   color: #0f172a;
 }
@@ -5389,8 +5390,11 @@ body.ai-assist-page .privacy-stack {
   padding: 0.15rem 0.35rem 0.55rem;
   box-sizing: border-box;
   font-family: var(--meta-font);
+  /* Mismo tamaño de cuerpo que body.privacy-page .help-privacy. */
   font-size: 1rem;
+  font-weight: 400;
   line-height: 1.45;
+  letter-spacing: normal;
   text-align: justify;
   text-justify: inter-word;
   color: #0f172a;
