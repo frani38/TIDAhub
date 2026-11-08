@@ -11,7 +11,7 @@ window.MYWEB_DATA = {
     El pie muestra "v" + version al cargar.
   */
   siteMeta: {
-    version: "1.11.13",
+    version: "1.11.14",
     updated: "2026-11-08",
     assetBust: "",
     /* Temporal: lazo negro (marca de agua) en INICIO. Pon false para quitarlo. */
@@ -388,7 +388,7 @@ window.MYWEB_DATA = {
     {
       id: "pentesting_con_kali",
       addedAt: "2026-10-27",
-      themes: ["Programación y Robótica"],
+      themes: ["Ciberseguridad"],
       cover: "./books/0103.jpg",
       title: "Pentesting con Kali",
       authors: "Pablo González Pérez, Germán Sánchez Garcés y Jose Miguel Soriano de la Cámara",
@@ -400,7 +400,7 @@ window.MYWEB_DATA = {
     {
       id: "fundamentos_de_linux_para_hackers",
       addedAt: "2026-10-27",
-      themes: ["Programación y Robótica"],
+      themes: ["Ciberseguridad"],
       cover: "./books/0102.jpg",
       title: "Fundamentos de Linux para Hackers",
       authors: "OccupyTheWeb",
