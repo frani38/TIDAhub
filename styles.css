@@ -4445,14 +4445,33 @@ body.theme-light .bc-bd-aside-nav__tree {
   overflow: hidden;
 }
 
-.bc-bd-lede__scheme img {
+.bc-bd-lede__scheme-host {
+  min-height: 12rem;
+  background: linear-gradient(165deg, #f8fafc 0%, #eef2ff 55%, #f5f3ff 100%);
+}
+
+.bc-bd-lede__scheme-svg,
+.bc-bd-lede__scheme svg {
   display: block;
   width: 100%;
   height: auto;
   max-height: none;
-  object-fit: contain;
-  object-position: center top;
-  background: #f8fafc;
+  font-family: var(--tech-font);
+}
+
+.bc-bd-lede__scheme-svg .t,
+.bc-bd-lede__scheme svg .t {
+  font-family: var(--tech-font);
+}
+
+.bc-bd-lede__scheme-fallback {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  color: #334155;
+  font-family: var(--tech-font);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  text-align: center;
 }
 
 .bc-bd-lede__scheme figcaption {

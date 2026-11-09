@@ -1,6 +1,6 @@
 Historial de versiones — T·I·D·A hub
 
-Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.49**).
+Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.50**).
 
 Formato: **MAJOR.MINOR.PATCH** (desde 1.1.0). Fuente de verdad: `data.js`. Documentación alineada en `README.md`, `github_TIDAhub.md`, `content/README.md` e `#_Informe/Informe_MyWeb.tex`.
 
@@ -1237,6 +1237,10 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 ## 1.11.49
 
 - Bust de caché (nuevo número de versión) para clientes que seguían viendo el hub BC/BD anterior.
+
+## 1.11.50
+
+- Hub Blockchain/Big Data: esquema de sinergia redibujado en SVG propio (Oxanium, azules/morados, iconografía y casos de uso), inyectado en línea en lugar de la PNG.
 
 ---
 

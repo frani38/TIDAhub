@@ -5060,9 +5060,10 @@
                 ${hubCaption ? `<figcaption>${escapeHtml(hubCaption)}</figcaption>` : ""}
               </figure>`
             : "";
+          // SVG inline (no <img>): Oxanium y filtros se aplican en el DOM de la página.
           const schemeHtml = schemeSrcFinal
             ? `<figure class="bc-bd-lede__scheme">
-                <img src="${escapeHtml(schemeSrcFinal)}?v=${assetV}" alt="${escapeHtml(schemeAlt)}" loading="lazy" decoding="async" />
+                <div class="bc-bd-lede__scheme-host" data-bc-scheme-host="1" aria-busy="true"></div>
                 ${schemeCaption ? `<figcaption>${escapeHtml(schemeCaption)}</figcaption>` : ""}
               </figure>`
             : "";
@@ -5074,9 +5075,59 @@
           }
           ledeEl.classList.remove("bc-bd-lede--split");
           ledeEl.classList.add("bc-bd-lede--flow");
-          // Imagen inset arriba-derecha dentro del texto; esquema antes del párrafo de cierre.
+          // Imagen inset arriba-derecha dentro del texto; esquema SVG antes del párrafo de cierre.
           ledeEl.innerHTML = `${figHtml}${leadHtml}${schemeHtml}${closingHtml}`;
           ledeEl.hidden = !ledeEl.innerHTML.trim();
+
+          const schemeHost = ledeEl.querySelector("[data-bc-scheme-host]");
+          if (schemeHost instanceof HTMLElement && schemeSrcFinal) {
+            const injectSchemeSvg = (raw) => {
+              const cleaned = String(raw || "")
+                .replace(/^\uFEFF/, "")
+                .replace(/<\?xml[^>]*>/i, "")
+                .trim();
+              if (!cleaned || cleaned.indexOf("<svg") === -1) {
+                schemeHost.innerHTML = `<p class="bc-bd-lede__scheme-fallback">${escapeHtml(schemeAlt)}</p>`;
+                schemeHost.removeAttribute("aria-busy");
+                return;
+              }
+              schemeHost.innerHTML = cleaned;
+              const svgEl = schemeHost.querySelector("svg");
+              if (svgEl) {
+                svgEl.setAttribute("aria-label", schemeAlt);
+                svgEl.classList.add("bc-bd-lede__scheme-svg");
+              }
+              schemeHost.removeAttribute("aria-busy");
+            };
+            const schemeCacheV = String(window.MYWEB_ASSET_V || assetV || "");
+            if (
+              window.__MYWEB_BC_BD_SCHEME_SVG_V__ === schemeCacheV &&
+              typeof window.__MYWEB_BC_BD_SCHEME_SVG__ === "string" &&
+              window.__MYWEB_BC_BD_SCHEME_SVG__
+            ) {
+              injectSchemeSvg(window.__MYWEB_BC_BD_SCHEME_SVG__);
+            } else {
+              fetch(`${schemeSrcFinal}?v=${encodeURIComponent(schemeCacheV)}`, {
+                cache: "no-store",
+                credentials: "same-origin",
+              })
+                .then((r) => {
+                  if (!r.ok) throw new Error("scheme svg " + r.status);
+                  return r.text();
+                })
+                .then((txt) => {
+                  window.__MYWEB_BC_BD_SCHEME_SVG__ = txt;
+                  window.__MYWEB_BC_BD_SCHEME_SVG_V__ = schemeCacheV;
+                  if (ledeEl.contains(schemeHost)) injectSchemeSvg(txt);
+                })
+                .catch(() => {
+                  if (ledeEl.contains(schemeHost)) {
+                    schemeHost.innerHTML = `<p class="bc-bd-lede__scheme-fallback">${escapeHtml(schemeAlt)}</p>`;
+                    schemeHost.removeAttribute("aria-busy");
+                  }
+                });
+            }
+          }
         }
 
         const openBcHub = () => {
