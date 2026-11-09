@@ -2267,7 +2267,7 @@ window.MYWEB_DATA = {
         updatedAt: "2026-11-03",
         image: "./softskills/ss_conflictos.jpg",
         definition:
-          "Abordar desacuerdos centrándose en <strong>hechos observables</strong>, impacto en el objetivo común y <strong>opciones de acción</strong>, no en etiquetas personales. Requiere <strong>empatía</strong> y liderazgo situacional: un conflicto bien gestionado acelera decisiones; uno mal gestionado degrada el clima y congela el avance. Implica escuchar posiciones, buscar intereses compartidos y dejar por escrito el acuerdo. El objetivo no es «ganar» la discusión, sino desbloquear el trabajo con criterios explícitos.",
+          "Abordar desacuerdos centrándose en <strong>hechos observables</strong>, impacto en el objetivo común y <strong>opciones de acción</strong>, no en etiquetas personales. Requiere <strong>empatía</strong> y <strong>liderazgo</strong> situacional: un conflicto bien gestionado acelera decisiones; uno mal gestionado degrada el clima y congela el avance. Implica escuchar posiciones, buscar intereses compartidos y dejar por escrito el acuerdo. El objetivo no es «ganar» la discusión, sino desbloquear el trabajo con criterios explícitos.",
         examplesAcademic: [
           "En un trabajo grupal, pasar de acusaciones personales a hechos y tareas («falta el apartado X para el viernes; unas personas hacen las tablas y otras la conclusión»).",
           "Si hay dos formas de hacer el informe del grupo, decidir con el enunciado y la rúbrica, no por quién habla más alto.",
