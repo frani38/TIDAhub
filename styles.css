@@ -2536,6 +2536,20 @@ body:has(.home-split.is-archive) .year-result,
   position: relative;
   display: block;
   min-width: 0;
+  max-width: 100%;
+}
+
+/* El título deja de ser ítem de grid al ir dentro de .text-tip: hay que
+   volver a forzar bloque + ellipsis o el texto invade el check. */
+.updates-archive .text-tip > .year-result-title,
+.home-split.is-archive .text-tip > .year-result-title,
+.home-split.is-archive .text-tip > a.year-result-title-link {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .text-tip[data-tooltip]:not([data-tooltip=""]):hover::after,
@@ -2547,7 +2561,7 @@ body:has(.home-split.is-archive) .year-result,
   z-index: 95;
   box-sizing: border-box;
   width: max-content;
-  max-width: min(42rem, 72vw);
+  max-width: min(58rem, 92vw);
   padding: 0.48rem 0.65rem;
   border-radius: 8px;
   border: 1px solid rgba(15, 23, 42, 0.2);
@@ -2555,11 +2569,11 @@ body:has(.home-split.is-archive) .year-result,
   color: #0f172a;
   font-family: var(--tech-font);
   font-size: 1.02rem;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.38;
   letter-spacing: 0.01em;
   white-space: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   word-break: normal;
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
   pointer-events: none;
@@ -6517,7 +6531,10 @@ body.ai-assist-page .privacy-stack {
 
   .updates-archive .year-result-title,
   .home-split.is-archive .year-result-title,
-  .home-split.is-archive a.year-result-title-link {
+  .home-split.is-archive a.year-result-title-link,
+  .updates-archive .text-tip > .year-result-title,
+  .home-split.is-archive .text-tip > .year-result-title,
+  .home-split.is-archive .text-tip > a.year-result-title-link {
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
