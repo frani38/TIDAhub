@@ -811,343 +811,344 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 
 - Mientras se itera Blockchain y Big Data hasta darla por terminada, los retoques de esa sección se publican **sin** subir `siteMeta.version` (un solo bump al cerrar el WIP). Para forzar recarga de CSS/JS se usa `siteMeta.assetBust` (p. ej. `1.9.33-1`) sin cambiar el número del pie.
 
-## 1.11.27
-
-- NOVEDADES e HISTÓRICO: al pasar el cursor por textos largos se muestra el título completo (tooltip).
-
-## 1.11.26
-
-- NOVEDADES: botón y checks con el mismo tono dorado que HISTÓRICO; Oxanium unificado en ambos.
-
-## 1.11.25
-
-- NOVEDADES / HISTÓRICO: el check se puede desmarcar para dejar de nuevo la entrada pendiente.
-
-## 1.11.24
-
-- Botón «Marcar todas como vistas»: tipografía Oxanium.
-
-## 1.11.23
-
-- NOVEDADES / HISTÓRICO: botón «Marcar todas» y check siempre visibles; al abrir un ítem el check se marca solo.
-
-## 1.11.22
-
-- HISTÓRICO de noticias: oculta el panel NOTICIAS de la derecha; solo queda el área de listado.
-
-## 1.11.21
-
-- NOVEDADES e HISTÓRICO de noticias: botón «Marcar todas como vistas» y ✓ individual sin entrar en cada ítem.
-
-## 1.11.20
-
-- Declaración de Asistencia IA: texto no seleccionable (mismo criterio que bienvenida y privacidad).
-
-## 1.11.19
-
-- Pie: texto del footprint un poco más pequeño para evitar salto de línea (Orbitron).
-
-## 1.11.18
-
-- Pie: tipografía del texto del footprint en **Orbitron**.
-
-## 1.11.17
-
-- Desplegables: el listbox hacia abajo de lecturas se aplica a **todos** los `<select>` (orden, juegos, media, soft skills, DOCENCIA y futuros).
-
-## 1.11.16
-
-- Títulos principales de sección (`#unit-title`) un poco más pequeños en escritorio y móvil/tablet; sin tocar los ya compactados anti-wrap (DOCENCIA larga, detalle CÓDEX, publicaciones).
-
-## 1.11.15
-
-- Lecturas: el desplegable de temática abre siempre hacia abajo (listbox propio; el `<select>` nativo no permite forzar la dirección).
-
-## 1.11.14
-
-- Lecturas: nueva temática **Ciberseguridad**; *Pentesting con Kali* y *Fundamentos de Linux para Hackers* pasan a esa categoría.
-
-## 1.11.13
-
-- Panel NOTICIAS: título y subtítulo de cada noticia con texto justificado.
-
-## 1.11.12
-
-- Panel NOTICIAS: HISTÓRICO y años bajan (`1fr auto`) para dejar más espacio a las noticias recientes.
-
-## 1.11.11
-
-- Panel NOTICIAS: botones de año (p. ej. 2026) en Orbitron.
-
-## 1.11.10
-
-- Panel NOTICIAS: título HISTÓRICO en Orbitron.
-
-## 1.11.9
-
-- Declaración de Asistencia IA: bloque de texto un poco más estrecho (`80rem` → `74rem`).
-
-## 1.11.8
-
-- Botones ← VOLVER en Orbitron; declaración de Asistencia IA con más interlineado (`1.58`).
-
-## 1.11.7
-
-- Declaración de Asistencia IA: título al mismo tamaño que Privacidad (`clamp(1.05rem, 3.5vw, 1.48rem)`); cuerpo alineado a `1rem` como la política.
-
-## 1.11.6
-
-- Declaración de Asistencia IA: más separación entre líneas (`line-height: 1.45`).
-
-## 1.11.5
-
-- Pie (footprint): recupera el tamaño óptico previo al `size-adjust` de Oxanium.
-
-## 1.11.4
-
-- Oxanium: `size-adjust: 107%` para que el texto de lectura no se vea más pequeño que con Orbitron a igual tamaño CSS.
-
-## 1.11.3
-
-- AYUDA: botón «Enviar mensaje» en Oxanium (peso 600, dentro del rango de la fuente).
-
-## 1.11.2
-
-- Orbitron recuperado en botones de cabecera, título de sección, búsqueda rápida / BUSCAR, título NOTICIAS y rótulos de secciones CÓDEX.
-
-## 1.11.1
-
-- Pie (footprint): tipografía Oxanium explícita en el texto del footer.
-
-## 1.11.0
-
-- Tipografía de lectura: **Oxanium** en el texto de todas las secciones (incl. noticias y declaración de Asistencia IA). Orbitron queda solo en la marca de cabecera (`T·I·D·Ahub` / lema) y en la marca tipográfica dentro de textos.
-
-## 1.10.56
-
-- Declaración de Asistencia IA: bloque un poco más estrecho; cuerpo en Oxanium (como Privacidad); marca T·I·D·Ahub en Orbitron.
-
-## 1.10.55
-
-- Privacidad desde AYUDA: título y cita RGPD fijos; solo hace scroll el texto (como en `privacidad.html`).
-
-## 1.10.54
-
-- Política de privacidad: tamaño de cuerpo a `1rem` (página y vista en AYUDA).
-
-## 1.10.53
-
-- Declaración de Asistencia IA: tamaño de cuerpo a `1rem`.
-
-## 1.10.52
-
-- Declaración de Asistencia IA: mismo tamaño de cuerpo que la política de privacidad (`0.92rem`).
-
-## 1.10.51
-
-- Declaración de Asistencia IA: el cuerpo del texto vuelve a usar Orbitron (antes heredaba Segoe UI del `body`).
-
-## 1.10.50
-
-- Declaración de Asistencia IA: opacidad del banner de fondo a 0.15.
-
-## 1.10.49
-
-- Declaración de Asistencia IA: opacidad del banner de fondo a 0.20.
-
-## 1.10.48
-
-- Declaración de Asistencia IA: un poco más de transparencia en el banner de fondo.
-
-## 1.10.47
-
-- Declaración de Asistencia IA: nuevo `banner-ia.jpg` atenuado (opacidad) para que el texto negro se lea bien.
-
-## 1.10.46
-
-- Declaración de Asistencia IA: el bloque de texto se estrecha un poco.
-
-## 1.10.45
-
-- Declaración de Asistencia IA: fondo con `banner-ia.jpg` (se retira `banner-ia.png`).
-
-## 1.10.44
-
-- Declaración de Asistencia IA: nuevo `banner-ia.png` a pantalla completa entre cabecera y pie con `cover` (adaptable a cualquier resolución).
-
-## 1.10.43
-
-- Declaración de Asistencia IA: bloque de texto más ancho (menos scroll) y `banner-ia.png` a tamaño nativo, sin estirar.
-
-## 1.10.42
-
-- Declaración de Asistencia IA: fondo `banner-ia.png`, texto del cuerpo en negro y un poco más grande (título sin cambio de tamaño).
-
-## 1.10.41
-
-- Declaración de Asistencia IA: `banner-ia` a color original como fondo de toda el área entre cabecera y pie; sin cuadro; texto en blanco.
-
-## 1.10.40
-
-- Declaración de Asistencia IA: fondo con `banners/banner-ia.jpg` invertido (oscuro → claro) detrás del texto.
-
-## 1.10.39
-
-- CÓDEX: el logotipo de sección se centra entre el borde izquierdo de la ventana y el comienzo del texto.
-
-## 1.10.38
-
-- CÓDEX: el logotipo de cada sección queda centrado en el hueco izquierdo y alineado por arriba con el contenido; el menú de debajo sube con él.
-
-## 1.10.37
-
-- CÓDEX: el contenido de cada sección abre a la misma altura a la que queda al hacer scroll, justo bajo el título.
-
-## 1.10.36
-
-- CÓDEX: la sección pasa a llamarse HACKING Y CIBERSEGURIDAD.
-
-## 1.10.35
-
-- CÓDEX: la sección pasa a llamarse HACKING ÉTICO Y CIBERSEGURIDAD.
-
-## 1.10.33
-
-- Mas aire bajo el titulo fijo en CÓDEX; en Blockchain/Big Data el rotulo de columna queda fijo y solo hace scroll el contenido de los subapartados.
-
-## 1.10.32
-
-- Corrige data.js: restaurado el comentario inicial // que se habia perdido (errores de sintaxis en el IDE).
-
-## 1.10.31
-
-- Corrige el doctype HTML corrupto que mostraba texto encima de la cabecera.
-## 1.10.30
-
-- Anclas desde NOVEDADES/búsqueda: la ficha queda bajo el título fijo (MEDIA, lecturas, soft skills, BC) sin tapar el título del elemento.
-
-## 1.10.29
-
-- Título de sección (+ VOLVER) fijo bajo la cabecera en escritorio, en todas las secciones (mismo modelo que el aside de CÓDEX).
-
-## 1.10.28
-
-- CÓDEX: corrige el aside fijo (ya no sigue al título al hacer scroll).
-
-## 1.10.27
-
-- CÓDEX: aside izquierdo realmente fijo (`position: fixed` + realineación al scroll/resize).
-
-## 1.10.26
-
-- CÓDEX: aside izquierdo (logo + filtros/nav) sticky al hacer scroll del contenido.
-
-## 1.10.25
-
-- INICIO: un poco más de aire lateral en el texto de bienvenida.
-
-## 1.10.24
-
-- INICIO: bienvenida a ancho completo de la zona; título BIENVENIDO/A a la izquierda; cierre en una línea.
-
-## 1.10.23
-
-- INICIO: bienvenida centrada en la zona blanca y más estrecha (más wrap vertical).
-
-## 1.10.22
-
-- INICIO: centra el texto de bienvenida (márgenes izq./der. iguales respecto al panel NOTICIAS).
-
-## 1.10.21
-
-- INICIO: panel NOTICIAS a 500px de ancho.
-
-## 1.10.20
-
-- INICIO: aura de noticias no leídas equilibrada en los cuatro lados.
-
-## 1.10.19
-
-- INICIO: panel NOTICIAS un poco más ancho (400px → 460px).
-
-## 1.10.18
-
-- CÓDEX: actualiza el icono de Diseño e Impresión 3D (`icons/3D.png`).
-
-## 1.10.17
-
-- DOCENCIA: quita cabecera «SELECCIONA» y botón de plegado; quedan solo los selectores.
-
-## 1.10.16
-
-- DOCENCIA: título del menú «SELECCIONA:» (sin puntos suspensivos).
-
-## 1.10.15
-
-- LEGISLACIÓN: mazo redibujado (cabeza en carrete, mango afilado, bloque).
-
-## 1.10.14
-
-- LEGISLACIÓN: cabeza del mazo con extremos más anchos que el centro.
-
-## 1.10.13
-
-- LEGISLACIÓN: el mazo vuelve a incluir el bloque de golpe bajo la cabeza.
-
-## 1.10.12
-
-- CÓDEX: libro del menú relleno completo (sin página izquierda vacía).
-
-## 1.10.11
-
-- CÓDEX: icono del menú sustituido por un libro abierto.
-
-## 1.10.10
-
-- LEGISLACIÓN: el icono del mazo queda solo (sin la base).
-
-## 1.10.9
-
-- LEGISLACIÓN: mazo redibujado con silueta más gruesa y un poco más grande para leerse en el menú.
-
-## 1.10.8
-
-- LEGISLACIÓN: icono del menú sustituido por un mazo (mejor lectura a tamaño pequeño).
-
-## 1.10.7
-
-- LEGISLACIÓN: icono del menú sustituido por dos espadas cruzadas (más legible a tamaño pequeño).
-
-## 1.10.6
-
-- LEGISLACIÓN: icono del menú sustituido por una balanza.
-
-## 1.10.5
-
-- Asistencia IA (móvil/tablet): el recuadro usa el mismo ancho que Privacidad.
-
-## 1.10.4
-
-- Asistencia IA (móvil/tablet): el título puede bajar de línea y el recuadro admite scroll vertical, como Privacidad.
-
-## 1.10.3
-
-- PC: se desactiva el encaje/zoom `site-desktop-fit`. Ventana &lt; 1680px mantiene el lienzo original con scroll H+V (sin afectar pantalla completa ni móvil/tablet).
-
-## 1.10.2
-
-- PROYECTOS: icono del menú sustituido por un engranaje.
+## 1.10.0
+
+- La sección **Miscelánea** pasa a llamarse **CÓDEX** (menú, títulos, búsqueda, documentación e informe).
+- Rutas/hashes `#codex/…` (se mantienen compatibles los antiguos `#codex/…`).
+- Hashes `#codex/…` (con compatibilidad temporal de `#miscelanea/…` en 1.10.0).
 
 ## 1.10.1
 
 - Ortografía del menú: **CÓDEX** (con tilde).
 - Limpieza de código: ids `codex_*` / `codexId`, clases `.codex-*`, `navTarget: "codex"`, `contentIndex.codex`; se elimina la compatibilidad `#miscelanea/…`.
 
-## 1.10.0
+## 1.10.2
 
-- La sección **Miscelánea** pasa a llamarse **CÓDEX** (menú, títulos, búsqueda, documentación e informe).
-- Rutas/hashes `#codex/…` (se mantienen compatibles los antiguos `#codex/…`).
-- Hashes `#codex/…` (con compatibilidad temporal de `#miscelanea/…` en 1.10.0).
+- PROYECTOS: icono del menú sustituido por un engranaje.
+
+## 1.10.3
+
+- PC: se desactiva el encaje/zoom `site-desktop-fit`. Ventana &lt; 1680px mantiene el lienzo original con scroll H+V (sin afectar pantalla completa ni móvil/tablet).
+
+## 1.10.4
+
+- Asistencia IA (móvil/tablet): el título puede bajar de línea y el recuadro admite scroll vertical, como Privacidad.
+
+## 1.10.5
+
+- Asistencia IA (móvil/tablet): el recuadro usa el mismo ancho que Privacidad.
+
+## 1.10.6
+
+- LEGISLACIÓN: icono del menú sustituido por una balanza.
+
+## 1.10.7
+
+- LEGISLACIÓN: icono del menú sustituido por dos espadas cruzadas (más legible a tamaño pequeño).
+
+## 1.10.8
+
+- LEGISLACIÓN: icono del menú sustituido por un mazo (mejor lectura a tamaño pequeño).
+
+## 1.10.9
+
+- LEGISLACIÓN: mazo redibujado con silueta más gruesa y un poco más grande para leerse en el menú.
+
+## 1.10.10
+
+- LEGISLACIÓN: el icono del mazo queda solo (sin la base).
+
+## 1.10.11
+
+- CÓDEX: icono del menú sustituido por un libro abierto.
+
+## 1.10.12
+
+- CÓDEX: libro del menú relleno completo (sin página izquierda vacía).
+
+## 1.10.13
+
+- LEGISLACIÓN: el mazo vuelve a incluir el bloque de golpe bajo la cabeza.
+
+## 1.10.14
+
+- LEGISLACIÓN: cabeza del mazo con extremos más anchos que el centro.
+
+## 1.10.15
+
+- LEGISLACIÓN: mazo redibujado (cabeza en carrete, mango afilado, bloque).
+
+## 1.10.16
+
+- DOCENCIA: título del menú «SELECCIONA:» (sin puntos suspensivos).
+
+## 1.10.17
+
+- DOCENCIA: quita cabecera «SELECCIONA» y botón de plegado; quedan solo los selectores.
+
+## 1.10.18
+
+- CÓDEX: actualiza el icono de Diseño e Impresión 3D (`icons/3D.png`).
+
+## 1.10.19
+
+- INICIO: panel NOTICIAS un poco más ancho (400px → 460px).
+
+## 1.10.20
+
+- INICIO: aura de noticias no leídas equilibrada en los cuatro lados.
+
+## 1.10.21
+
+- INICIO: panel NOTICIAS a 500px de ancho.
+
+## 1.10.22
+
+- INICIO: centra el texto de bienvenida (márgenes izq./der. iguales respecto al panel NOTICIAS).
+
+## 1.10.23
+
+- INICIO: bienvenida centrada en la zona blanca y más estrecha (más wrap vertical).
+
+## 1.10.24
+
+- INICIO: bienvenida a ancho completo de la zona; título BIENVENIDO/A a la izquierda; cierre en una línea.
+
+## 1.10.25
+
+- INICIO: un poco más de aire lateral en el texto de bienvenida.
+
+## 1.10.26
+
+- CÓDEX: aside izquierdo (logo + filtros/nav) sticky al hacer scroll del contenido.
+
+## 1.10.27
+
+- CÓDEX: aside izquierdo realmente fijo (`position: fixed` + realineación al scroll/resize).
+
+## 1.10.28
+
+- CÓDEX: corrige el aside fijo (ya no sigue al título al hacer scroll).
+
+## 1.10.29
+
+- Título de sección (+ VOLVER) fijo bajo la cabecera en escritorio, en todas las secciones (mismo modelo que el aside de CÓDEX).
+
+## 1.10.30
+
+- Anclas desde NOVEDADES/búsqueda: la ficha queda bajo el título fijo (MEDIA, lecturas, soft skills, BC) sin tapar el título del elemento.
+
+## 1.10.31
+
+- Corrige el doctype HTML corrupto que mostraba texto encima de la cabecera.
+
+## 1.10.32
+
+- Corrige data.js: restaurado el comentario inicial // que se habia perdido (errores de sintaxis en el IDE).
+
+## 1.10.33
+
+- Mas aire bajo el titulo fijo en CÓDEX; en Blockchain/Big Data el rotulo de columna queda fijo y solo hace scroll el contenido de los subapartados.
+
+## 1.10.35
+
+- CÓDEX: la sección pasa a llamarse HACKING ÉTICO Y CIBERSEGURIDAD.
+
+## 1.10.36
+
+- CÓDEX: la sección pasa a llamarse HACKING Y CIBERSEGURIDAD.
+
+## 1.10.37
+
+- CÓDEX: el contenido de cada sección abre a la misma altura a la que queda al hacer scroll, justo bajo el título.
+
+## 1.10.38
+
+- CÓDEX: el logotipo de cada sección queda centrado en el hueco izquierdo y alineado por arriba con el contenido; el menú de debajo sube con él.
+
+## 1.10.39
+
+- CÓDEX: el logotipo de sección se centra entre el borde izquierdo de la ventana y el comienzo del texto.
+
+## 1.10.40
+
+- Declaración de Asistencia IA: fondo con `banners/banner-ia.jpg` invertido (oscuro → claro) detrás del texto.
+
+## 1.10.41
+
+- Declaración de Asistencia IA: `banner-ia` a color original como fondo de toda el área entre cabecera y pie; sin cuadro; texto en blanco.
+
+## 1.10.42
+
+- Declaración de Asistencia IA: fondo `banner-ia.png`, texto del cuerpo en negro y un poco más grande (título sin cambio de tamaño).
+
+## 1.10.43
+
+- Declaración de Asistencia IA: bloque de texto más ancho (menos scroll) y `banner-ia.png` a tamaño nativo, sin estirar.
+
+## 1.10.44
+
+- Declaración de Asistencia IA: nuevo `banner-ia.png` a pantalla completa entre cabecera y pie con `cover` (adaptable a cualquier resolución).
+
+## 1.10.45
+
+- Declaración de Asistencia IA: fondo con `banner-ia.jpg` (se retira `banner-ia.png`).
+
+## 1.10.46
+
+- Declaración de Asistencia IA: el bloque de texto se estrecha un poco.
+
+## 1.10.47
+
+- Declaración de Asistencia IA: nuevo `banner-ia.jpg` atenuado (opacidad) para que el texto negro se lea bien.
+
+## 1.10.48
+
+- Declaración de Asistencia IA: un poco más de transparencia en el banner de fondo.
+
+## 1.10.49
+
+- Declaración de Asistencia IA: opacidad del banner de fondo a 0.20.
+
+## 1.10.50
+
+- Declaración de Asistencia IA: opacidad del banner de fondo a 0.15.
+
+## 1.10.51
+
+- Declaración de Asistencia IA: el cuerpo del texto vuelve a usar Orbitron (antes heredaba Segoe UI del `body`).
+
+## 1.10.52
+
+- Declaración de Asistencia IA: mismo tamaño de cuerpo que la política de privacidad (`0.92rem`).
+
+## 1.10.53
+
+- Declaración de Asistencia IA: tamaño de cuerpo a `1rem`.
+
+## 1.10.54
+
+- Política de privacidad: tamaño de cuerpo a `1rem` (página y vista en AYUDA).
+
+## 1.10.55
+
+- Privacidad desde AYUDA: título y cita RGPD fijos; solo hace scroll el texto (como en `privacidad.html`).
+
+## 1.10.56
+
+- Declaración de Asistencia IA: bloque un poco más estrecho; cuerpo en Oxanium (como Privacidad); marca T·I·D·Ahub en Orbitron.
+
+## 1.11.0
+
+- Tipografía de lectura: **Oxanium** en el texto de todas las secciones (incl. noticias y declaración de Asistencia IA). Orbitron queda solo en la marca de cabecera (`T·I·D·Ahub` / lema) y en la marca tipográfica dentro de textos.
+
+## 1.11.1
+
+- Pie (footprint): tipografía Oxanium explícita en el texto del footer.
+
+## 1.11.2
+
+- Orbitron recuperado en botones de cabecera, título de sección, búsqueda rápida / BUSCAR, título NOTICIAS y rótulos de secciones CÓDEX.
+
+## 1.11.3
+
+- AYUDA: botón «Enviar mensaje» en Oxanium (peso 600, dentro del rango de la fuente).
+
+## 1.11.4
+
+- Oxanium: `size-adjust: 107%` para que el texto de lectura no se vea más pequeño que con Orbitron a igual tamaño CSS.
+
+## 1.11.5
+
+- Pie (footprint): recupera el tamaño óptico previo al `size-adjust` de Oxanium.
+
+## 1.11.6
+
+- Declaración de Asistencia IA: más separación entre líneas (`line-height: 1.45`).
+
+## 1.11.7
+
+- Declaración de Asistencia IA: título al mismo tamaño que Privacidad (`clamp(1.05rem, 3.5vw, 1.48rem)`); cuerpo alineado a `1rem` como la política.
+
+## 1.11.8
+
+- Botones ← VOLVER en Orbitron; declaración de Asistencia IA con más interlineado (`1.58`).
+
+## 1.11.9
+
+- Declaración de Asistencia IA: bloque de texto un poco más estrecho (`80rem` → `74rem`).
+
+## 1.11.10
+
+- Panel NOTICIAS: título HISTÓRICO en Orbitron.
+
+## 1.11.11
+
+- Panel NOTICIAS: botones de año (p. ej. 2026) en Orbitron.
+
+## 1.11.12
+
+- Panel NOTICIAS: HISTÓRICO y años bajan (`1fr auto`) para dejar más espacio a las noticias recientes.
+
+## 1.11.13
+
+- Panel NOTICIAS: título y subtítulo de cada noticia con texto justificado.
+
+## 1.11.14
+
+- Lecturas: nueva temática **Ciberseguridad**; *Pentesting con Kali* y *Fundamentos de Linux para Hackers* pasan a esa categoría.
+
+## 1.11.15
+
+- Lecturas: el desplegable de temática abre siempre hacia abajo (listbox propio; el `<select>` nativo no permite forzar la dirección).
+
+## 1.11.16
+
+- Títulos principales de sección (`#unit-title`) un poco más pequeños en escritorio y móvil/tablet; sin tocar los ya compactados anti-wrap (DOCENCIA larga, detalle CÓDEX, publicaciones).
+
+## 1.11.17
+
+- Desplegables: el listbox hacia abajo de lecturas se aplica a **todos** los `<select>` (orden, juegos, media, soft skills, DOCENCIA y futuros).
+
+## 1.11.18
+
+- Pie: tipografía del texto del footprint en **Orbitron**.
+
+## 1.11.19
+
+- Pie: texto del footprint un poco más pequeño para evitar salto de línea (Orbitron).
+
+## 1.11.20
+
+- Declaración de Asistencia IA: texto no seleccionable (mismo criterio que bienvenida y privacidad).
+
+## 1.11.21
+
+- NOVEDADES e HISTÓRICO de noticias: botón «Marcar todas como vistas» y ✓ individual sin entrar en cada ítem.
+
+## 1.11.22
+
+- HISTÓRICO de noticias: oculta el panel NOTICIAS de la derecha; solo queda el área de listado.
+
+## 1.11.23
+
+- NOVEDADES / HISTÓRICO: botón «Marcar todas» y check siempre visibles; al abrir un ítem el check se marca solo.
+
+## 1.11.24
+
+- Botón «Marcar todas como vistas»: tipografía Oxanium.
+
+## 1.11.25
+
+- NOVEDADES / HISTÓRICO: el check se puede desmarcar para dejar de nuevo la entrada pendiente.
+
+## 1.11.26
+
+- NOVEDADES: botón y checks con el mismo tono dorado que HISTÓRICO; Oxanium unificado en ambos.
+
+## 1.11.27
+
+- NOVEDADES e HISTÓRICO: al pasar el cursor por textos largos se muestra el título completo (tooltip).
 
 ---
 
