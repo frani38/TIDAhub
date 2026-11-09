@@ -2377,7 +2377,7 @@ window.MYWEB_DATA = {
         updatedAt: "2026-11-03",
         image: "./softskills/ss_adaptabilidad.jpg",
         definition:
-          "Capacidad de reajustar planes, prioridades y enfoque cuando cambian las condiciones, manteniendo el objetivo y el criterio. Integra <strong>resiliencia</strong>, <strong>flexibilidad</strong> y capacidad de respuesta. No es resignación ni improvisación caótica: es detectar el cambio, evaluar el impacto, proponer alternativas y seguir avanzando sin paralizarse ante la incertidumbre. Quien se adapta comunica el nuevo escenario, protege lo esencial y aprende del desvío. La adaptabilidad convierte imprevistos en replanificación útil en lugar de bloqueo o culpa.",
+          "Capacidad de reajustar planes, prioridades y enfoque cuando cambian las condiciones, manteniendo el objetivo y el criterio. Integra <strong>resiliencia</strong>, <strong>flexibilidad</strong> y <strong>capacidad de respuesta</strong>. No es resignación ni improvisación caótica: es detectar el cambio, evaluar el impacto, proponer alternativas y seguir avanzando sin paralizarse ante la incertidumbre. Quien se adapta comunica el nuevo escenario, protege lo esencial y aprende del desvío. La adaptabilidad convierte imprevistos en replanificación útil en lugar de bloqueo o culpa.",
         examplesAcademic: [
           "Si cambia la fecha de un examen, rehacer el propio plan de estudio ese mismo día: qué se mantiene y qué se recorta.",
           "Si un experimento individual falla, anotar la causa probable y diseñar la siguiente prueba; no abandonarlo.",
