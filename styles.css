@@ -1847,22 +1847,17 @@ body.theme-light .help-form-status.is-error {
 }
 
 /*
-  Panel NOTICIAS en HISTÓRICO (escritorio): fixed bajo la cabecera, como “pegado”
-  en INICIO (ahí no hay scroll de página). Así no sube solapando el header al
-  hacer scroll del listado de meses.
+  HISTÓRICO: solo el área de listado (meses/entradas).
+  El panel NOTICIAS de la derecha se oculta para no competir con el histórico.
 */
+.content-card.is-home:has(.home-split.is-archive) {
+  --home-news-w: 0px;
+  padding-right: 0;
+}
+
+.home-split.is-archive .home-news,
 .content-card.is-home:has(.home-split.is-archive) .home-news {
-  position: fixed;
-  top: var(--home-news-top, 0px);
-  right: 1rem;
-  left: auto;
-  bottom: auto;
-  width: var(--home-news-w, 500px);
-  max-width: var(--home-news-w, 500px);
-  height: calc(100vh - var(--home-news-top, 0px) - var(--footer-h));
-  max-height: calc(100vh - var(--home-news-top, 0px) - var(--footer-h));
-  overflow: auto;
-  z-index: 15;
+  display: none !important;
 }
 
 .home-split {
@@ -2054,7 +2049,7 @@ body:has(.home-split.is-archive) {
 .tab-panel:has(.home-split.is-archive) .home-split.is-archive {
   flex: 1 1 auto;
   min-height: 0;
-  --home-news-w: 500px;
+  --home-news-w: 0px;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
