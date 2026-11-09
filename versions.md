@@ -1236,7 +1236,7 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 
 ## 1.11.49
 
-- Bust de caché forzado (`assetBust`) para que el hub BC/BD y el pie recojan el esquema de sinergia en clientes con HTML/JS retenido.
+- Bust de caché (nuevo número de versión) para clientes que seguían viendo el hub BC/BD anterior.
 
 ---
 

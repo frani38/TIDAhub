@@ -13,7 +13,7 @@ window.MYWEB_DATA = {
   siteMeta: {
     version: "1.11.49",
     updated: "2026-11-09",
-    assetBust: "sinergia",
+    assetBust: "",
     /* Temporal: lazo negro (marca de agua) en INICIO. Pon false para quitarlo. */
     mourningRibbon: false,
   },
