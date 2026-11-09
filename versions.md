@@ -1,6 +1,6 @@
 Historial de versiones — T·I·D·A hub
 
-Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.34**).
+Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.35**).
 
 Formato: **MAJOR.MINOR.PATCH** (desde 1.1.0). Fuente de verdad: `data.js`. Documentación alineada en `README.md`, `github_TIDAhub.md`, `content/README.md` e `#_Informe/Informe_MyWeb.tex`.
 
@@ -1177,6 +1177,10 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 ## 1.11.34
 
 - Tooltip de títulos: solo en entradas truncadas con elipsis; si el texto cabe entero, no se muestra.
+
+## 1.11.35
+
+- Botón «Marcar todas como vistas»: texto mejor centrado y esquinas ligeramente redondeadas (NOVEDADES e HISTÓRICO).
 
 ---
 
