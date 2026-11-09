@@ -2638,6 +2638,25 @@ body:has(.home-split.is-archive) .seen-toolbar {
   outline-offset: 2px;
 }
 
+/* HISTÓRICO de noticias: mismos tonos dorados que los checks. */
+body:has(.home-split.is-archive) .seen-toolbar__all,
+.seen-toolbar[data-seen-toolbar="news"] .seen-toolbar__all {
+  border-color: rgba(184, 134, 11, 0.45);
+  background: rgba(212, 175, 55, 0.16);
+  color: #0f172a;
+}
+
+body:has(.home-split.is-archive) .seen-toolbar__all:hover,
+.seen-toolbar[data-seen-toolbar="news"] .seen-toolbar__all:hover {
+  background: rgba(212, 175, 55, 0.28);
+  border-color: rgba(184, 134, 11, 0.65);
+}
+
+body:has(.home-split.is-archive) .seen-toolbar__all:focus-visible,
+.seen-toolbar[data-seen-toolbar="news"] .seen-toolbar__all:focus-visible {
+  outline-color: #b8860b;
+}
+
 .seen-mark-btn {
   appearance: none;
   -webkit-appearance: none;

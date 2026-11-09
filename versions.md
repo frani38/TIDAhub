@@ -1,6 +1,6 @@
 Historial de versiones — T·I·D·A hub
 
-Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.40**).
+Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.41**).
 
 Formato: **MAJOR.MINOR.PATCH** (desde 1.1.0). Fuente de verdad: `data.js`. Documentación alineada en `README.md`, `github_TIDAhub.md`, `content/README.md` e `#_Informe/Informe_MyWeb.tex`.
 
@@ -1201,6 +1201,10 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 ## 1.11.40
 
 - Botón «Marcar todas como vistas»: mismo formato que ← VOLVER (píldora Orbitron, azul de cabecera).
+
+## 1.11.41
+
+- HISTÓRICO de noticias: botón «Marcar todas» en tono dorado de los checks (formato VOLVER intacto).
 
 ---
 
