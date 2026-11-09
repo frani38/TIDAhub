@@ -1218,12 +1218,13 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 
 - Hub Blockchain/Big Data: esquema de relación visible (SVG inline) y refresco de assets; imagen intro más compacta y mapa de sección.
 
-## 1.11.46
-
-- Hub Blockchain/Big Data: imagen inset más pequeña arriba-derecha dentro del texto; esquema HTML con tipografía legible y relación bidireccional (no pipeline).
 ## 1.11.45
 
 - Hub Blockchain/Big Data: sin frase «En esta sección»; imagen flotante arriba-derecha (más alta); esquema rediseñado antes del párrafo de cierre; tipografía del lede alineada al cuerpo de los apartados.
+
+## 1.11.46
+
+- Hub Blockchain/Big Data: imagen inset más pequeña arriba-derecha dentro del texto; esquema HTML con tipografía legible y relación bidireccional (no pipeline).
 
 ---
 
