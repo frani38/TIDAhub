@@ -2525,6 +2525,8 @@ body.theme-light .home-split.is-archive .year-result-date {
   background: rgba(122, 162, 255, 0.08);
 }
 
+.updates-archive .year-result,
+body:has(.home-split.is-archive) .year-result,
 .year-result:has(.seen-mark-btn) {
   grid-template-columns: var(--year-result-date-col) minmax(0, 1fr) auto;
 }
@@ -2590,26 +2592,47 @@ body:has(.home-split.is-archive) .seen-toolbar__all:focus-visible {
 .seen-mark-btn {
   appearance: none;
   -webkit-appearance: none;
-  width: 1.7rem;
-  height: 1.7rem;
-  margin: 0;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0.12rem 0 0;
   padding: 0;
-  border-radius: 999px;
-  border: 1px solid rgba(122, 162, 255, 0.5);
-  background: rgba(122, 162, 255, 0.16);
+  border-radius: 0.22rem;
+  border: 1.5px solid rgba(122, 162, 255, 0.55);
+  background: rgba(10, 18, 40, 0.35);
   color: #e8f0ff;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
   align-self: start;
   justify-self: end;
   flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+}
+
+.seen-mark-btn::after {
+  content: "";
+  width: 0.55rem;
+  height: 0.3rem;
+  border-left: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  transform: translateY(-0.08rem) rotate(-45deg);
+}
+
+.seen-mark-btn.is-seen {
+  background: rgba(122, 162, 255, 0.35);
+  border-color: rgba(151, 184, 255, 0.85);
+}
+
+.seen-mark-btn.is-seen::after {
+  border-left-color: #eef5ff;
+  border-bottom-color: #eef5ff;
 }
 
 .seen-mark-btn:hover {
-  background: rgba(122, 162, 255, 0.3);
-  border-color: rgba(151, 184, 255, 0.7);
+  background: rgba(122, 162, 255, 0.22);
+  border-color: rgba(151, 184, 255, 0.75);
 }
 
 .seen-mark-btn:focus-visible {
@@ -2619,12 +2642,22 @@ body:has(.home-split.is-archive) .seen-toolbar__all:focus-visible {
 
 body:has(.home-split.is-archive) .seen-mark-btn {
   color: #0f172a;
-  background: rgba(212, 175, 55, 0.2);
+  background: rgba(255, 255, 255, 0.72);
   border-color: rgba(184, 134, 11, 0.55);
 }
 
+body:has(.home-split.is-archive) .seen-mark-btn.is-seen {
+  background: rgba(212, 175, 55, 0.42);
+  border-color: rgba(146, 104, 8, 0.8);
+}
+
+body:has(.home-split.is-archive) .seen-mark-btn.is-seen::after {
+  border-left-color: #0f172a;
+  border-bottom-color: #0f172a;
+}
+
 body:has(.home-split.is-archive) .seen-mark-btn:hover {
-  background: rgba(212, 175, 55, 0.34);
+  background: rgba(212, 175, 55, 0.28);
   border-color: rgba(184, 134, 11, 0.75);
 }
 

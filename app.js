@@ -280,21 +280,23 @@
     } catch {}
   }
 
-  function clearUnseenNewsUi(keys) {
+  function syncNewsSeenUi(keys, isSeen = true) {
     const root = tabPanelEl || document;
-    const list = Array.isArray(keys) ? keys : [keys];
-    for (const raw of list) {
-      const k = String(raw || "").trim();
-      if (!k) continue;
-      root.querySelectorAll(`li.is-unseen-news[data-news-key="${CSS.escape(k)}"]`).forEach((row) => {
-        row.classList.remove("is-unseen-news");
-        row.querySelector(".seen-mark-btn")?.remove();
+    const list = (Array.isArray(keys) ? keys : [keys])
+      .map((k) => String(k || "").trim())
+      .filter(Boolean);
+    for (const k of list) {
+      root.querySelectorAll(`li[data-news-key="${CSS.escape(k)}"]`).forEach((row) => {
+        row.classList.toggle("is-unseen-news", !isSeen);
+        const btn = row.querySelector(".seen-mark-btn");
+        if (!(btn instanceof HTMLElement)) return;
+        btn.classList.toggle("is-seen", isSeen);
+        btn.setAttribute("aria-pressed", isSeen ? "true" : "false");
+        const label = isSeen ? "Marcada como vista" : "Marcar como vista";
+        btn.title = label;
+        btn.setAttribute("aria-label", label);
       });
     }
-    root.querySelectorAll("[data-seen-toolbar='news']").forEach((bar) => {
-      const scope = bar.closest(".home-year-results") || root;
-      if (!scope.querySelector("li.is-unseen-news")) bar.remove();
-    });
   }
 
   function markNewsItemSeen(key) {
@@ -305,7 +307,7 @@
       seen.add(k);
       saveSeenNewsIds(seen);
     }
-    clearUnseenNewsUi(k);
+    syncNewsSeenUi(k, true);
   }
 
   function markNewsItemsSeen(keys) {
@@ -321,7 +323,7 @@
       changed = true;
     }
     if (changed) saveSeenNewsIds(seen);
-    clearUnseenNewsUi(list);
+    syncNewsSeenUi(list, true);
   }
 
   function renderSeenToolbar({ kind, label = "Marcar todas como vistas" }) {
@@ -333,11 +335,12 @@
     `;
   }
 
-  function renderSeenMarkButton({ kind, key }) {
+  function renderSeenMarkButton({ kind, key, seen = false }) {
     const k = String(key || "").trim();
     if (!k) return "";
     const attr = kind === "updates" ? "data-mark-update-seen" : "data-mark-news-seen";
-    return `<button type="button" class="seen-mark-btn" ${attr}="${escapeHtml(k)}" title="Marcar como vista" aria-label="Marcar como vista">✓</button>`;
+    const label = seen ? "Marcada como vista" : "Marcar como vista";
+    return `<button type="button" class="seen-mark-btn${seen ? " is-seen" : ""}" ${attr}="${escapeHtml(k)}" aria-pressed="${seen ? "true" : "false"}" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}"></button>`;
   }
 
   function renderHomeNews(rawNews) {
@@ -469,13 +472,10 @@
         return `${y}-${m}`;
       })();
 
-      const seenNow = loadSeenNewsIds();
-      const yearUnseenKeys = list
-        .map((n) => getNewsItemKey(n))
-        .filter((k) => k && !seenNow.has(k));
+      const yearKeys = list.map((n) => getNewsItemKey(n)).filter(Boolean);
 
       yearResultsEl.innerHTML = `
-        ${yearUnseenKeys.length ? renderSeenToolbar({ kind: "news" }) : ""}
+        ${list.length ? renderSeenToolbar({ kind: "news" }) : ""}
         <div class="month-groups" aria-label="Histórico por meses">
           ${(() => {
             const buckets = new Map();
@@ -515,7 +515,7 @@
                       <li class="year-result${isUnseen ? " is-unseen-news" : ""}" data-news-key="${escapeHtml(newsKey)}">
                         ${renderPublishedAtMarkup(n.publishedAt, escapeHtml)}
                         ${titleEl}
-                        ${isUnseen ? renderSeenMarkButton({ kind: "news", key: newsKey }) : ""}
+                        ${renderSeenMarkButton({ kind: "news", key: newsKey, seen: !isUnseen })}
                       </li>
                     `;
                   })
@@ -534,7 +534,7 @@
         </div>
       `;
       yearResultsEl.querySelector("[data-seen-all='news']")?.addEventListener("click", () => {
-        markNewsItemsSeen(yearUnseenKeys);
+        markNewsItemsSeen(yearKeys);
       });
       yearResultsEl.querySelectorAll("[data-mark-news-seen]").forEach((btn) => {
         btn.addEventListener("click", (event) => {
@@ -632,11 +632,9 @@
       return `${y}-${m}`;
     })();
 
-    const hasUnseenUpdates = updates.some((u) => !seenUpdateIds.has(getUpdateItemKey(u)));
-
     tabPanelEl.innerHTML = `
       <div class="home-year-results">
-        ${hasUnseenUpdates ? renderSeenToolbar({ kind: "updates" }) : ""}
+        ${renderSeenToolbar({ kind: "updates" })}
         <div class="month-groups" aria-label="Novedades por meses">
           ${(() => {
             const buckets = new Map();
@@ -726,7 +724,7 @@
                       <li class="year-result year-result--update${isUnseen ? " is-unseen-update" : ""}" data-update-key="${escapeHtml(updateKey)}"${isUnseen && !linkAttrs ? ' title="Clic para marcar como vista"' : ""}>
                         <span class="year-result-date">${escapeHtml(formatDateOnly(u.publishedAt))}</span>
                         <span class="year-result-title">${oneLine}</span>
-                        ${isUnseen ? renderSeenMarkButton({ kind: "updates", key: updateKey }) : ""}
+                        ${renderSeenMarkButton({ kind: "updates", key: updateKey, seen: !isUnseen })}
                       </li>
                     `;
                   })
@@ -1607,21 +1605,26 @@
     } catch {}
   }
 
-  function clearUnseenUpdateUi(keys) {
+  function syncUpdateSeenUi(keys, isSeen = true) {
     if (!tabPanelEl) return;
-    const list = Array.isArray(keys) ? keys : [keys];
-    for (const raw of list) {
-      const k = String(raw || "").trim();
-      if (!k) continue;
+    const list = (Array.isArray(keys) ? keys : [keys])
+      .map((k) => String(k || "").trim())
+      .filter(Boolean);
+    for (const k of list) {
       tabPanelEl.querySelectorAll(`li.year-result[data-update-key="${CSS.escape(k)}"]`).forEach((li) => {
-        li.classList.remove("is-unseen-update");
-        li.removeAttribute("title");
-        li.style.cursor = "";
-        li.querySelector(".seen-mark-btn")?.remove();
+        li.classList.toggle("is-unseen-update", !isSeen);
+        if (isSeen) {
+          li.removeAttribute("title");
+          li.style.cursor = "";
+        }
+        const btn = li.querySelector(".seen-mark-btn");
+        if (!(btn instanceof HTMLElement)) return;
+        btn.classList.toggle("is-seen", isSeen);
+        btn.setAttribute("aria-pressed", isSeen ? "true" : "false");
+        const label = isSeen ? "Marcada como vista" : "Marcar como vista";
+        btn.title = label;
+        btn.setAttribute("aria-label", label);
       });
-    }
-    if (!tabPanelEl.querySelector("li.is-unseen-update")) {
-      tabPanelEl.querySelector("[data-seen-toolbar='updates']")?.remove();
     }
   }
 
@@ -1635,7 +1638,7 @@
       saveSeenUpdateIds(seen);
     }
     updateUpdatesIndicator({ nudge: false });
-    clearUnseenUpdateUi(k);
+    syncUpdateSeenUi(k, true);
   }
 
   function markAllUpdateItemsSeen() {
@@ -1651,7 +1654,7 @@
     }
     saveSeenUpdateIds(seen);
     updateUpdatesIndicator({ nudge: false });
-    clearUnseenUpdateUi(keys);
+    syncUpdateSeenUi(keys, true);
   }
 
   function hasUnseenUpdates() {
