@@ -2311,7 +2311,7 @@ window.MYWEB_DATA = {
         updatedAt: "2026-11-03",
         image: "./softskills/ss_autonomia.jpg",
         definition:
-          "Capacidad de avanzar con <strong>criterio propio</strong>: investigar, contrastar, documentar y pedir ayuda con evidencia. Se relaciona con <strong>motivación</strong>, <strong>autoconciencia</strong> y fiabilidad: autonomía no es aislarse, sino no depender de instrucciones constantes para cada paso; <strong>responsabilidad</strong> es hacerse cargo del resultado y de su trazabilidad (qué se decidió y por qué). Incluye anticipar riesgos, organizar el material y dejar el trabajo usable por otras personas. Quien es autónomo reduce cuellos de botella y eleva la confianza del entorno.",
+          "Capacidad de avanzar con <strong>criterio propio</strong>: investigar, contrastar, documentar y pedir ayuda con evidencia. Se relaciona con <strong>motivación</strong>, <strong>autoconciencia</strong> y <strong>fiabilidad</strong>: autonomía no es aislarse, sino no depender de instrucciones constantes para cada paso; <strong>responsabilidad</strong> es hacerse cargo del resultado y de su trazabilidad (qué se decidió y por qué). Incluye anticipar riesgos, organizar el material y dejar el trabajo usable por otras personas. Quien es autónomo reduce cuellos de botella y eleva la confianza del entorno.",
         examplesAcademic: [
           "Antes de preguntar en clase, revisar apuntes, libro y ejercicios; llegar con el punto exacto de bloqueo.",
           "Organizar carpetas por asignatura y tema para encontrar el material propio sin empezar de cero.",
