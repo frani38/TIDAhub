@@ -4467,7 +4467,8 @@ body.theme-light .bc-bd-aside-nav__tree {
   min-width: 0;
 }
 
-.bc-bd-lede__scheme img {
+.bc-bd-lede__scheme img,
+.bc-bd-lede__scheme svg {
   display: block;
   width: 100%;
   height: auto;
@@ -4535,7 +4536,8 @@ body.theme-light .bc-bd-lede__map {
     max-height: min(220px, 34vh);
   }
 
-  .bc-bd-lede__scheme img {
+  .bc-bd-lede__scheme img,
+  .bc-bd-lede__scheme svg {
     max-height: 10rem;
   }
 }

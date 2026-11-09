@@ -5046,18 +5046,44 @@
           const hubMap = String(pack?.hubMap || "").trim();
           const schemeImg =
             pack?.hubSchemeImage && typeof pack.hubSchemeImage === "object" ? pack.hubSchemeImage : null;
-          const schemeSrcFinal = encodeAssetSrc(schemeImg?.src);
           const schemeAlt = String(schemeImg?.alt || "Esquema Blockchain y Big Data").trim();
           const schemeCaption = String(schemeImg?.caption || "").trim();
+          const showScheme = Boolean(schemeImg?.src || schemeCaption || schemeAlt);
+          // SVG inline: evita fallos de <img> por caché/encoding en Pages.
+          const schemeSvg = showScheme
+            ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 168" role="img" aria-label="${escapeHtml(schemeAlt)}">
+                <rect width="1100" height="168" fill="#f8fafc"/>
+                <defs>
+                  <marker id="bcHubArr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L6,3 L0,6 Z" fill="#334155"/>
+                  </marker>
+                </defs>
+                <text x="550" y="22" text-anchor="middle" fill="#0f172a" font-family="Segoe UI,system-ui,sans-serif" font-size="15" font-weight="700">Dos tecnologias distintas que pueden converger</text>
+                <rect x="36" y="40" width="300" height="100" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+                <text x="186" y="72" text-anchor="middle" fill="#1d4ed8" font-family="Segoe UI,system-ui,sans-serif" font-size="15" font-weight="700">BLOCKCHAIN</text>
+                <text x="186" y="96" text-anchor="middle" fill="#0f172a" font-family="Segoe UI,system-ui,sans-serif" font-size="11">Registrar y verificar</text>
+                <text x="186" y="116" text-anchor="middle" fill="#475569" font-family="Segoe UI,system-ui,sans-serif" font-size="11">integridad / consenso / auditabilidad</text>
+                <rect x="400" y="48" width="300" height="84" rx="12" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+                <text x="550" y="78" text-anchor="middle" fill="#0f172a" font-family="Segoe UI,system-ui,sans-serif" font-size="12" font-weight="600">Solape posible</text>
+                <text x="550" y="100" text-anchor="middle" fill="#475569" font-family="Segoe UI,system-ui,sans-serif" font-size="11">anclar huellas / trazabilidad / analitica sobre ledgers</text>
+                <rect x="764" y="40" width="300" height="100" rx="12" fill="#dcfce7" stroke="#059669" stroke-width="2"/>
+                <text x="914" y="72" text-anchor="middle" fill="#047857" font-family="Segoe UI,system-ui,sans-serif" font-size="15" font-weight="700">BIG DATA</text>
+                <text x="914" y="96" text-anchor="middle" fill="#0f172a" font-family="Segoe UI,system-ui,sans-serif" font-size="11">Generar, almacenar y analizar</text>
+                <text x="914" y="116" text-anchor="middle" fill="#475569" font-family="Segoe UI,system-ui,sans-serif" font-size="11">volumen / velocidad / variedad / valor</text>
+                <line x1="336" y1="90" x2="400" y2="90" stroke="#334155" stroke-width="2" marker-end="url(#bcHubArr)"/>
+                <line x1="700" y1="90" x2="764" y2="90" stroke="#334155" stroke-width="2" marker-end="url(#bcHubArr)"/>
+                <text x="550" y="158" text-anchor="middle" fill="#475569" font-family="Segoe UI,system-ui,sans-serif" font-size="11">No son intercambiables: cada una resuelve un problema distinto</text>
+              </svg>`
+            : "";
           const paras = introParts.map((p) => `<p>${allowBcHtml(p)}</p>`).join("");
           const extraHtml =
-            hubMap || schemeSrcFinal
+            hubMap || schemeSvg
               ? `<div class="bc-bd-lede__extra">
                   ${hubMap ? `<p class="bc-bd-lede__map">${escapeHtml(hubMap)}</p>` : ""}
                   ${
-                    schemeSrcFinal
+                    schemeSvg
                       ? `<figure class="bc-bd-lede__scheme">
-                          <img src="${escapeHtml(schemeSrcFinal)}?v=${assetV}" alt="${escapeHtml(schemeAlt)}" loading="lazy" decoding="async" />
+                          ${schemeSvg}
                           ${schemeCaption ? `<figcaption>${escapeHtml(schemeCaption)}</figcaption>` : ""}
                         </figure>`
                       : ""
