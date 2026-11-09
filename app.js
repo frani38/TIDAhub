@@ -292,7 +292,7 @@
         if (!(btn instanceof HTMLElement)) return;
         btn.classList.toggle("is-seen", isSeen);
         btn.setAttribute("aria-pressed", isSeen ? "true" : "false");
-        const label = isSeen ? "Marcada como vista" : "Marcar como vista";
+        const label = isSeen ? "Desmarcar (dejar pendiente)" : "Marcar como vista";
         btn.title = label;
         btn.setAttribute("aria-label", label);
       });
@@ -308,6 +308,26 @@
       saveSeenNewsIds(seen);
     }
     syncNewsSeenUi(k, true);
+  }
+
+  function unmarkNewsItemSeen(key) {
+    const k = String(key || "").trim();
+    if (!k) return;
+    const seen = loadSeenNewsIds();
+    if (!seen.has(k)) {
+      syncNewsSeenUi(k, false);
+      return;
+    }
+    seen.delete(k);
+    saveSeenNewsIds(seen);
+    syncNewsSeenUi(k, false);
+  }
+
+  function toggleNewsItemSeen(key) {
+    const k = String(key || "").trim();
+    if (!k) return;
+    if (loadSeenNewsIds().has(k)) unmarkNewsItemSeen(k);
+    else markNewsItemSeen(k);
   }
 
   function markNewsItemsSeen(keys) {
@@ -339,7 +359,7 @@
     const k = String(key || "").trim();
     if (!k) return "";
     const attr = kind === "updates" ? "data-mark-update-seen" : "data-mark-news-seen";
-    const label = seen ? "Marcada como vista" : "Marcar como vista";
+    const label = seen ? "Desmarcar (dejar pendiente)" : "Marcar como vista";
     return `<button type="button" class="seen-mark-btn${seen ? " is-seen" : ""}" ${attr}="${escapeHtml(k)}" aria-pressed="${seen ? "true" : "false"}" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}"></button>`;
   }
 
@@ -541,7 +561,7 @@
           event.preventDefault();
           event.stopPropagation();
           const key = String(btn.getAttribute("data-mark-news-seen") || "").trim();
-          if (key) markNewsItemSeen(key);
+          if (key) toggleNewsItemSeen(key);
         });
       });
       bindNewsSeenClicks(yearResultsEl);
@@ -753,7 +773,7 @@
         event.preventDefault();
         event.stopPropagation();
         const key = String(btn.getAttribute("data-mark-update-seen") || "").trim();
-        if (key) markUpdateItemSeen(key);
+        if (key) toggleUpdateItemSeen(key);
       });
     });
 
@@ -782,13 +802,14 @@
       });
     });
 
-    // Avisos sin enlace: un clic en la fila marca la novedad como vista.
-    tabPanelEl.querySelectorAll("li.year-result.is-unseen-update").forEach((li) => {
+    // Avisos sin enlace: un clic en la fila (fuera del check) marca como vista.
+    tabPanelEl.querySelectorAll("li.year-result.year-result--update").forEach((li) => {
       if (li.querySelector("a.updates-item-link")) return;
-      li.style.cursor = "pointer";
-      li.addEventListener("click", () => {
+      if (li.classList.contains("is-unseen-update")) li.style.cursor = "pointer";
+      li.addEventListener("click", (event) => {
+        if (event.target instanceof Element && event.target.closest(".seen-mark-btn")) return;
         const key = String(li.getAttribute("data-update-key") || "").trim();
-        if (!key) return;
+        if (!key || !li.classList.contains("is-unseen-update")) return;
         markUpdateItemSeen(key);
       });
     });
@@ -1613,15 +1634,19 @@
     for (const k of list) {
       tabPanelEl.querySelectorAll(`li.year-result[data-update-key="${CSS.escape(k)}"]`).forEach((li) => {
         li.classList.toggle("is-unseen-update", !isSeen);
+        const hasLink = Boolean(li.querySelector("a.updates-item-link"));
         if (isSeen) {
           li.removeAttribute("title");
           li.style.cursor = "";
+        } else if (!hasLink) {
+          li.title = "Clic para marcar como vista";
+          li.style.cursor = "pointer";
         }
         const btn = li.querySelector(".seen-mark-btn");
         if (!(btn instanceof HTMLElement)) return;
         btn.classList.toggle("is-seen", isSeen);
         btn.setAttribute("aria-pressed", isSeen ? "true" : "false");
-        const label = isSeen ? "Marcada como vista" : "Marcar como vista";
+        const label = isSeen ? "Desmarcar (dejar pendiente)" : "Marcar como vista";
         btn.title = label;
         btn.setAttribute("aria-label", label);
       });
@@ -1639,6 +1664,27 @@
     }
     updateUpdatesIndicator({ nudge: false });
     syncUpdateSeenUi(k, true);
+  }
+
+  function unmarkUpdateItemSeen(key) {
+    const k = String(key || "").trim();
+    if (!k) return;
+    bootstrapSeenUpdateIdsIfNeeded();
+    const seen = loadSeenUpdateIds();
+    if (seen.has(k)) {
+      seen.delete(k);
+      saveSeenUpdateIds(seen);
+    }
+    updateUpdatesIndicator({ nudge: false });
+    syncUpdateSeenUi(k, false);
+  }
+
+  function toggleUpdateItemSeen(key) {
+    const k = String(key || "").trim();
+    if (!k) return;
+    bootstrapSeenUpdateIdsIfNeeded();
+    if (loadSeenUpdateIds().has(k)) unmarkUpdateItemSeen(k);
+    else markUpdateItemSeen(k);
   }
 
   function markAllUpdateItemsSeen() {
