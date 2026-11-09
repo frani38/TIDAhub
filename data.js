@@ -11,7 +11,7 @@ window.MYWEB_DATA = {
     El pie muestra "v" + version al cargar.
   */
   siteMeta: {
-    version: "1.11.45",
+    version: "1.11.46",
     updated: "2026-11-09",
     assetBust: "",
     /* Temporal: lazo negro (marca de agua) en INICIO. Pon false para quitarlo. */
@@ -1654,7 +1654,7 @@ window.MYWEB_DATA = {
       src: "./blockchain_bigdata/bc_bd_hub_esquema.svg",
       alt: "Esquema de relación entre Blockchain y Big Data",
       caption:
-        "Esquema: Blockchain registra y verifica; Big Data genera, almacena y analiza. Pueden converger, pero no se sustituyen."
+        "Blockchain registra y verifica; Big Data genera, almacena y analiza. Pueden encontrarse en casos concretos, pero no se sustituyen."
     },
     changelog: [
       {

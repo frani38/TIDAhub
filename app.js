@@ -5048,66 +5048,39 @@
           const schemeAlt = String(schemeImg?.alt || "Esquema Blockchain y Big Data").trim();
           const schemeCaption = String(schemeImg?.caption || "").trim();
           const showScheme = Boolean(schemeImg?.src || schemeCaption || schemeAlt);
-          // SVG inline: evita fallos de <img> por caché/encoding en Pages.
-          const schemeSvg = showScheme
-            ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 210" role="img" aria-label="${escapeHtml(schemeAlt)}">
-                <defs>
-                  <linearGradient id="bcHubBg" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#f8fafc"/>
-                    <stop offset="100%" stop-color="#eef2ff"/>
-                  </linearGradient>
-                  <linearGradient id="bcHubBlue" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#3b82f6"/>
-                    <stop offset="100%" stop-color="#1d4ed8"/>
-                  </linearGradient>
-                  <linearGradient id="bcHubGreen" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#34d399"/>
-                    <stop offset="100%" stop-color="#059669"/>
-                  </linearGradient>
-                  <linearGradient id="bcHubMid" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#ffffff"/>
-                    <stop offset="100%" stop-color="#f1f5f9"/>
-                  </linearGradient>
-                  <filter id="bcHubShadow" x="-8%" y="-10%" width="116%" height="130%">
-                    <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.14"/>
-                  </filter>
-                  <marker id="bcHubArr" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
-                    <path d="M0,0 L7,3.5 L0,7 Z" fill="#64748b"/>
-                  </marker>
-                </defs>
-                <rect width="1120" height="210" rx="14" fill="url(#bcHubBg)"/>
-                <text x="560" y="28" text-anchor="middle" fill="#0f172a" font-family="Segoe UI,system-ui,sans-serif" font-size="16" font-weight="700">Dos tecnolog&#237;as distintas que pueden converger</text>
-                <g filter="url(#bcHubShadow)">
-                  <rect x="40" y="48" width="300" height="118" rx="16" fill="url(#bcHubBlue)"/>
-                </g>
-                <circle cx="88" cy="78" r="16" fill="rgba(255,255,255,0.22)"/>
-                <rect x="80" y="70" width="7" height="16" rx="1.5" fill="#fff"/>
-                <rect x="89" y="70" width="7" height="16" rx="1.5" fill="#fff"/>
-                <path d="M87 70 v-4 a4 4 0 0 1 8 0 v4" fill="none" stroke="#fff" stroke-width="1.8"/>
-                <text x="190" y="84" text-anchor="middle" fill="#ffffff" font-family="Segoe UI,system-ui,sans-serif" font-size="17" font-weight="800">BLOCKCHAIN</text>
-                <text x="190" y="110" text-anchor="middle" fill="#dbeafe" font-family="Segoe UI,system-ui,sans-serif" font-size="12" font-weight="600">Registrar y verificar</text>
-                <text x="190" y="134" text-anchor="middle" fill="#bfdbfe" font-family="Segoe UI,system-ui,sans-serif" font-size="11">integridad · consenso · auditabilidad</text>
-                <g filter="url(#bcHubShadow)">
-                  <rect x="410" y="58" width="300" height="98" rx="16" fill="url(#bcHubMid)" stroke="#cbd5e1" stroke-width="1.5"/>
-                </g>
-                <circle cx="560" cy="86" r="14" fill="#e2e8f0"/>
-                <circle cx="554" cy="86" r="7" fill="none" stroke="#64748b" stroke-width="1.6"/>
-                <circle cx="566" cy="86" r="7" fill="none" stroke="#64748b" stroke-width="1.6"/>
-                <text x="560" y="116" text-anchor="middle" fill="#0f172a" font-family="Segoe UI,system-ui,sans-serif" font-size="13" font-weight="700">Solape posible</text>
-                <text x="560" y="136" text-anchor="middle" fill="#475569" font-family="Segoe UI,system-ui,sans-serif" font-size="11">huellas · trazabilidad · anal&#237;tica</text>
-                <g filter="url(#bcHubShadow)">
-                  <rect x="780" y="48" width="300" height="118" rx="16" fill="url(#bcHubGreen)"/>
-                </g>
-                <circle cx="828" cy="78" r="16" fill="rgba(255,255,255,0.22)"/>
-                <rect x="820" y="70" width="16" height="12" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
-                <path d="M823 74 h10 M823 78 h10" stroke="#fff" stroke-width="1.5"/>
-                <text x="930" y="84" text-anchor="middle" fill="#ffffff" font-family="Segoe UI,system-ui,sans-serif" font-size="17" font-weight="800">BIG DATA</text>
-                <text x="930" y="110" text-anchor="middle" fill="#d1fae5" font-family="Segoe UI,system-ui,sans-serif" font-size="12" font-weight="600">Generar, almacenar y analizar</text>
-                <text x="930" y="134" text-anchor="middle" fill="#a7f3d0" font-family="Segoe UI,system-ui,sans-serif" font-size="11">volumen · velocidad · variedad · valor</text>
-                <line x1="340" y1="107" x2="410" y2="107" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#bcHubArr)"/>
-                <line x1="710" y1="107" x2="780" y2="107" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#bcHubArr)"/>
-                <text x="560" y="192" text-anchor="middle" fill="#64748b" font-family="Segoe UI,system-ui,sans-serif" font-size="12">No son intercambiables: cada una resuelve un problema distinto</text>
-              </svg>`
+          // Esquema HTML (no SVG): tipografía legible y relación bidireccional, no pipeline.
+          const schemeInner = showScheme
+            ? `<p class="bc-bd-lede__scheme-title">Dos tecnolog&#237;as distintas que pueden converger</p>
+                <div class="bc-bd-scheme" role="img" aria-label="${escapeHtml(schemeAlt)}">
+                  <article class="bc-bd-scheme__card bc-bd-scheme__card--bc">
+                    <span class="bc-bd-scheme__label">Blockchain</span>
+                    <p class="bc-bd-scheme__role">Registrar y verificar con garant&#237;as criptogr&#225;ficas</p>
+                    <ul class="bc-bd-scheme__traits">
+                      <li>integridad</li>
+                      <li>consenso</li>
+                      <li>auditabilidad</li>
+                    </ul>
+                  </article>
+                  <div class="bc-bd-scheme__link">
+                    <span class="bc-bd-scheme__arrows" aria-hidden="true">&#8596;</span>
+                    <p class="bc-bd-scheme__link-title">Pueden encontrarse</p>
+                    <p class="bc-bd-scheme__link-note">sin sustituirse</p>
+                  </div>
+                  <article class="bc-bd-scheme__card bc-bd-scheme__card--bd">
+                    <span class="bc-bd-scheme__label">Big Data</span>
+                    <p class="bc-bd-scheme__role">Generar, almacenar y analizar a gran escala</p>
+                    <ul class="bc-bd-scheme__traits">
+                      <li>volumen</li>
+                      <li>velocidad</li>
+                      <li>variedad</li>
+                      <li>valor</li>
+                    </ul>
+                  </article>
+                  <div class="bc-bd-scheme__meet">
+                    <span class="bc-bd-scheme__meet-kicker">Donde se cruzan</span>
+                    <p>Anclar huellas de grandes conjuntos, trazabilidad de procesos con sensores, o anal&#237;tica sobre ledgers: colaboran en casos concretos, pero cada una sigue resolviendo un problema distinto.</p>
+                  </div>
+                </div>`
             : "";
           const closingPara = introParts.length ? introParts[introParts.length - 1] : "";
           const leadParas = introParts.length > 1 ? introParts.slice(0, -1) : [];
@@ -5121,9 +5094,9 @@
                 ${hubCaption ? `<figcaption>${escapeHtml(hubCaption)}</figcaption>` : ""}
               </figure>`
             : "";
-          const schemeHtml = schemeSvg
+          const schemeHtml = schemeInner
             ? `<figure class="bc-bd-lede__scheme">
-                ${schemeSvg}
+                ${schemeInner}
                 ${schemeCaption ? `<figcaption>${escapeHtml(schemeCaption)}</figcaption>` : ""}
               </figure>`
             : "";
@@ -5135,7 +5108,7 @@
           }
           ledeEl.classList.remove("bc-bd-lede--split");
           ledeEl.classList.add("bc-bd-lede--flow");
-          // Imagen flotante arriba-derecha; esquema antes del último párrafo (cierre).
+          // Imagen inset arriba-derecha dentro del texto; esquema antes del párrafo de cierre.
           ledeEl.innerHTML = `${figHtml}${leadHtml}${schemeHtml}${closingHtml}`;
           ledeEl.hidden = !ledeEl.innerHTML.trim();
         }
