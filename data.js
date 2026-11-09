@@ -2399,7 +2399,7 @@ window.MYWEB_DATA = {
         updatedAt: "2026-11-03",
         image: "./softskills/ss_aprendizaje.jpg",
         definition:
-          "Disposición a actualizar conocimientos y métodos de forma deliberada a lo largo del tiempo. Une <strong>curiosidad</strong>, aprendizaje permanente y alfabetización tecnológica. Implica formular buenas preguntas, buscar <strong>fuentes fiables</strong>, practicar y <strong>transferir</strong> lo aprendido a nuevas tareas. El aprendizaje continuo no es acumular cursos: es cerrar el ciclo observar → practicar → revisar → aplicar. Quien lo cultiva mantiene competencia y capacidad de reinventar el método cuando el contexto cambia.",
+          "Disposición a actualizar conocimientos y métodos de forma deliberada a lo largo del tiempo. Une <strong>curiosidad</strong>, <strong>aprendizaje permanente</strong> y <strong>alfabetización tecnológica</strong>. Implica formular buenas preguntas, buscar <strong>fuentes fiables</strong>, practicar y <strong>transferir</strong> lo aprendido a nuevas tareas. El aprendizaje continuo no es acumular cursos: es cerrar el ciclo observar → practicar → revisar → aplicar. Quien lo cultiva mantiene competencia y capacidad de reinventar el método cuando el contexto cambia.",
         examplesAcademic: [
           "Al terminar un tema, escribir tres preguntas propias y buscarlas en el libro o en una fuente citada.",
           "Probar un método de estudio distinto (mapa conceptual, ejercicios cronometrados, explicar en voz alta) y quedarse con el que mejor funciona de forma individual.",
