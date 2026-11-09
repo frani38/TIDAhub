@@ -2603,38 +2603,38 @@ body:has(.home-split.is-archive) .seen-toolbar {
   max-width: min(1420px, 100%);
 }
 
+/* Mismo formato visual que ← VOLVER (.help-title-back). */
 .seen-toolbar__all {
   appearance: none;
   -webkit-appearance: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--tech-font);
-  font-size: 0.72rem;
+  font-family: var(--display-font);
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1;
+  letter-spacing: 0.06em;
+  line-height: 1.15;
   text-transform: uppercase;
-  padding: 0.4rem 0.75rem;
-  border-radius: 0.35rem;
-  border: 1px solid rgba(184, 134, 11, 0.45);
-  background: rgba(212, 175, 55, 0.16);
-  color: #0f172a;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(122, 162, 255, 0.45);
+  background: rgba(122, 162, 255, 0.14);
+  color: #0f244d;
   cursor: pointer;
 }
 
 .seen-toolbar__all-text {
   display: inline-block;
-  line-height: 1;
+  line-height: 1.15;
 }
 
 .seen-toolbar__all:hover {
-  background: rgba(212, 175, 55, 0.28);
-  border-color: rgba(184, 134, 11, 0.65);
+  background: rgba(122, 162, 255, 0.2);
 }
 
 .seen-toolbar__all:focus-visible {
-  outline: 2px solid #b8860b;
+  outline: 2px solid rgba(122, 162, 255, 0.85);
   outline-offset: 2px;
 }
 
@@ -2689,21 +2689,7 @@ body:has(.home-split.is-archive) .seen-toolbar {
   outline-offset: 2px;
 }
 
-/* NOVEDADES: azul del aviso de entradas no vistas (HISTÓRICO sigue en dorado). */
-.updates-archive .seen-toolbar__all {
-  border-color: rgba(0, 150, 255, 0.5);
-  background: rgba(0, 150, 255, 0.14);
-}
-
-.updates-archive .seen-toolbar__all:hover {
-  background: rgba(0, 150, 255, 0.26);
-  border-color: rgba(0, 150, 255, 0.72);
-}
-
-.updates-archive .seen-toolbar__all:focus-visible {
-  outline-color: #0096ff;
-}
-
+/* NOVEDADES: checks en azul del aviso (el botón «Marcar todas» ya usa el estilo VOLVER). */
 .updates-archive .seen-mark-btn {
   border-color: rgba(0, 150, 255, 0.55);
 }
