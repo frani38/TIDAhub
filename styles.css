@@ -5929,6 +5929,40 @@ body.ai-assist-page .privacy-stack {
   .codex-detail__content {
     min-width: 0;
   }
+
+  /* Catálogos CÓDEX (Soft Skills, lecturas…): mismo scroll de documento que el resto. */
+  html:has(.codex-detail--readings),
+  html:has(.codex-detail) {
+    height: auto;
+    min-height: 100%;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: scroll;
+  }
+
+  body:has(.codex-detail--readings),
+  body:has(.codex-detail) {
+    height: auto;
+    max-height: none;
+    min-height: 100%;
+    overflow: visible;
+  }
+
+  body:has(.codex-detail--readings) .app,
+  body:has(.codex-detail) .app {
+    overflow: visible !important;
+    flex: 1 0 auto;
+    height: auto;
+    min-height: 0;
+  }
+
+  .tab-panel:has(.codex-detail--readings),
+  .tab-panel:has(.codex-detail) {
+    overflow: visible;
+    height: auto;
+    max-height: none;
+    min-height: 0;
+  }
 }
 
 /*
