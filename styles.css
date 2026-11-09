@@ -2615,13 +2615,19 @@ body:has(.home-split.is-archive) .seen-toolbar {
   letter-spacing: 0.04em;
   line-height: 1;
   text-transform: uppercase;
-  /* Menos padding arriba / más abajo: equilibra el aire óptico de Oxanium en mayúsculas. */
-  padding: 0.28rem 0.72rem 0.44rem;
+  padding: 0.4rem 0.75rem;
   border-radius: 0.35rem;
   border: 1px solid rgba(184, 134, 11, 0.45);
   background: rgba(212, 175, 55, 0.16);
   color: #0f172a;
   cursor: pointer;
+}
+
+/* Oxanium en mayúsculas: la tinta queda baja en la caja tipográfica; se sube el span. */
+.seen-toolbar__all-text {
+  display: inline-block;
+  line-height: 1;
+  transform: translateY(-0.2em);
 }
 
 .seen-toolbar__all:hover {

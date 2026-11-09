@@ -350,7 +350,7 @@
     const k = kind === "updates" ? "updates" : "news";
     return `
       <div class="seen-toolbar" data-seen-toolbar="${k}">
-        <button type="button" class="seen-toolbar__all" data-seen-all="${k}">${escapeHtml(label)}</button>
+        <button type="button" class="seen-toolbar__all" data-seen-all="${k}"><span class="seen-toolbar__all-text">${escapeHtml(label)}</span></button>
       </div>
     `;
   }
