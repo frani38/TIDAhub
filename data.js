@@ -232,6 +232,13 @@ window.MYWEB_DATA = {
   // { publishedAt: "YYYY-MM-DDTHH:mm", title: "Título", text: "Texto breve", url: "https://..." }
   news: [
     {
+      publishedAt: "2026-11-09T08:17",
+      title:
+        "Cómo vaciar las papeleras ocultas de Linux y recuperar espacio de almacenamiento en el disco duro",
+      text: "En Linux, borrar archivos suele enviarlos a ~/.local/share/Trash en lugar de liberar espacio de inmediato. Con trash-cli (p. ej. trash-empty) se puede vaciar esa papelera desde la terminal; también conviene revisar datos residuales de Flatpak y Snap con cuidado, sin borrar rutas a ciegas con rm -rf.",
+      url: "https://computerhoy.20minutos.es/software/como-vaciar-las-papeleras-ocultas-linux-recuperar-espacio-almacenamiento-disco-duro_7054438_0.html",
+    },
+    {
       publishedAt: "2026-11-09T08:16",
       title:
         "Es prácticamente imposible que un robot se rebele contra un humano, pero ya ha habido ejemplos",
