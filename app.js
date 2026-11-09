@@ -5033,17 +5033,43 @@
             .split(/\n\s*\n/)
             .map((p) => String(p || "").trim())
             .filter(Boolean);
+          const encodeAssetSrc = (raw) => {
+            const hubSrcRaw = String(raw || "").trim();
+            if (!hubSrcRaw) return "";
+            const abs = hubSrcRaw.startsWith("./") ? hubSrcRaw.slice(2) : hubSrcRaw.replace(/^\//, "");
+            return `./${abs.split("/").map((seg) => encodeURIComponent(seg)).join("/")}`;
+          };
           const hubImg = pack?.hubInlineImage && typeof pack.hubInlineImage === "object" ? pack.hubInlineImage : null;
-          const hubSrcRaw = String(hubImg?.src || "").trim();
-          const hubSrcFinal = hubSrcRaw
-            ? (() => {
-                const abs = hubSrcRaw.startsWith("./") ? hubSrcRaw.slice(2) : hubSrcRaw.replace(/^\//, "");
-                return `./${abs.split("/").map((seg) => encodeURIComponent(seg)).join("/")}`;
-              })()
-            : "";
+          const hubSrcFinal = encodeAssetSrc(hubImg?.src);
           const hubAlt = String(hubImg?.alt || "Big Data y Blockchain").trim();
           const hubCaption = String(hubImg?.caption || "").trim();
+          const hubMap = String(pack?.hubMap || "").trim();
+          const schemeImg =
+            pack?.hubSchemeImage && typeof pack.hubSchemeImage === "object" ? pack.hubSchemeImage : null;
+          const schemeSrcFinal = encodeAssetSrc(schemeImg?.src);
+          const schemeAlt = String(schemeImg?.alt || "Esquema Blockchain y Big Data").trim();
+          const schemeCaption = String(schemeImg?.caption || "").trim();
           const paras = introParts.map((p) => `<p>${allowBcHtml(p)}</p>`).join("");
+          const extraHtml =
+            hubMap || schemeSrcFinal
+              ? `<div class="bc-bd-lede__extra">
+                  ${hubMap ? `<p class="bc-bd-lede__map">${escapeHtml(hubMap)}</p>` : ""}
+                  ${
+                    schemeSrcFinal
+                      ? `<figure class="bc-bd-lede__scheme">
+                          <img src="${escapeHtml(schemeSrcFinal)}?v=${assetV}" alt="${escapeHtml(schemeAlt)}" loading="lazy" decoding="async" />
+                          ${schemeCaption ? `<figcaption>${escapeHtml(schemeCaption)}</figcaption>` : ""}
+                        </figure>`
+                      : ""
+                  }
+                </div>`
+              : "";
+          if (ledeEl.__bcHubFigCleanup) {
+            try {
+              ledeEl.__bcHubFigCleanup();
+            } catch {}
+            ledeEl.__bcHubFigCleanup = null;
+          }
           if (hubSrcFinal) {
             ledeEl.classList.add("bc-bd-lede--split");
             ledeEl.innerHTML = `
@@ -5052,49 +5078,11 @@
                 <img src="${escapeHtml(hubSrcFinal)}?v=${assetV}" alt="${escapeHtml(hubAlt)}" loading="lazy" decoding="async" />
                 ${hubCaption ? `<figcaption>${escapeHtml(hubCaption)}</figcaption>` : ""}
               </figure>
+              ${extraHtml}
             `;
-            const copyEl = ledeEl.querySelector(".bc-bd-lede__copy");
-            const imgEl = ledeEl.querySelector(".bc-bd-lede__fig img");
-            const syncHubFigToCopy = () => {
-              if (!(copyEl instanceof HTMLElement) || !(imgEl instanceof HTMLElement)) return;
-              // En móvil el layout es apilado: altura natural.
-              if (window.matchMedia("(max-width: 980px)").matches) {
-                imgEl.style.height = "";
-                return;
-              }
-              const h = Math.round(copyEl.getBoundingClientRect().height);
-              if (h > 0) imgEl.style.height = `${h}px`;
-            };
-            const imgReady = () => {
-              syncHubFigToCopy();
-              requestAnimationFrame(syncHubFigToCopy);
-            };
-            if (imgEl instanceof HTMLImageElement) {
-              if (imgEl.complete) imgReady();
-              else imgEl.addEventListener("load", imgReady, { once: true });
-            } else {
-              imgReady();
-            }
-            if (ledeEl.__bcHubFigCleanup) {
-              try {
-                ledeEl.__bcHubFigCleanup();
-              } catch {}
-            }
-            let ro = null;
-            if (typeof ResizeObserver === "function" && copyEl) {
-              ro = new ResizeObserver(() => syncHubFigToCopy());
-              ro.observe(copyEl);
-            }
-            window.addEventListener("resize", syncHubFigToCopy, { passive: true });
-            ledeEl.__bcHubFigCleanup = () => {
-              window.removeEventListener("resize", syncHubFigToCopy);
-              try {
-                ro?.disconnect?.();
-              } catch {}
-            };
           } else {
             ledeEl.classList.remove("bc-bd-lede--split");
-            ledeEl.innerHTML = paras;
+            ledeEl.innerHTML = `${paras}${extraHtml}`;
           }
           ledeEl.hidden = !ledeEl.innerHTML.trim();
         }

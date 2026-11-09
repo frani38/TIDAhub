@@ -1650,6 +1650,14 @@ window.MYWEB_DATA = {
       alt: "Ilustración de Big Data y Blockchain",
       caption: "Creación propia con ChatGPT."
     },
+    hubMap:
+      "En esta sección: fundamentos de Blockchain y de Big Data (teoría, ejemplos y figuras), un glosario común y referencias técnicas. Entra por el menú de la izquierda.",
+    hubSchemeImage: {
+      src: "./blockchain_bigdata/bc_bd_hub_esquema.svg",
+      alt: "Esquema de relación entre Blockchain y Big Data",
+      caption:
+        "Esquema: Blockchain registra y verifica; Big Data genera, almacena y analiza. Pueden converger, pero no se sustituyen."
+    },
     changelog: [
       {
         publishedAt: "2026-11-03T19:40",
