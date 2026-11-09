@@ -5574,6 +5574,9 @@ body.ai-assist-page .privacy-stack {
   color: #0f172a;
   background: transparent;
   border: 0;
+  /* Igual que bienvenida (.welcome-intro) y privacidad (.help-privacy). */
+  user-select: none;
+  cursor: default;
 }
 
 .ai-assist-body strong {
