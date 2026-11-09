@@ -5033,30 +5033,8 @@
             .split(/\n\s*\n/)
             .map((p) => String(p || "").trim())
             .filter(Boolean);
-          const encodeAssetSrc = (raw) => {
-            const hubSrcRaw = String(raw || "").trim();
-            if (!hubSrcRaw) return "";
-            const abs = hubSrcRaw.startsWith("./") ? hubSrcRaw.slice(2) : hubSrcRaw.replace(/^\//, "");
-            return `./${abs.split("/").map((seg) => encodeURIComponent(seg)).join("/")}`;
-          };
-          const schemeImg =
-            pack?.hubSchemeImage && typeof pack.hubSchemeImage === "object" ? pack.hubSchemeImage : null;
-          const schemeSrcFinal = encodeAssetSrc(schemeImg?.src);
-          const schemeAlt = String(schemeImg?.alt || "Esquema Blockchain y Big Data").trim();
-          const schemeCaption = String(schemeImg?.caption || "").trim();
-          const closingPara = introParts.length ? introParts[introParts.length - 1] : "";
-          const leadParas = introParts.length > 1 ? introParts.slice(0, -1) : [];
-          const leadHtml = leadParas.map((p) => `<p>${allowBcHtml(p)}</p>`).join("");
-          const closingHtml = closingPara
-            ? `<p class="bc-bd-lede__closing">${allowBcHtml(closingPara)}</p>`
-            : "";
-          // SVG inline (no <img>): Oxanium y filtros se aplican en el DOM de la página.
-          const schemeHtml = schemeSrcFinal
-            ? `<figure class="bc-bd-lede__scheme">
-                <div class="bc-bd-lede__scheme-host" data-bc-scheme-host="1" aria-busy="true"></div>
-                ${schemeCaption ? `<figcaption>${escapeHtml(schemeCaption)}</figcaption>` : ""}
-              </figure>`
-            : "";
+          // Hub solo texto por ahora (esquema/imagen aplazados hasta indicación).
+          const parasHtml = introParts.map((p) => `<p>${allowBcHtml(p)}</p>`).join("");
           if (ledeEl.__bcHubFigCleanup) {
             try {
               ledeEl.__bcHubFigCleanup();
@@ -5065,59 +5043,8 @@
           }
           ledeEl.classList.remove("bc-bd-lede--split");
           ledeEl.classList.add("bc-bd-lede--flow");
-          // Texto + esquema SVG antes del párrafo de cierre (sin imagen flotante).
-          ledeEl.innerHTML = `${leadHtml}${schemeHtml}${closingHtml}`;
+          ledeEl.innerHTML = parasHtml;
           ledeEl.hidden = !ledeEl.innerHTML.trim();
-
-          const schemeHost = ledeEl.querySelector("[data-bc-scheme-host]");
-          if (schemeHost instanceof HTMLElement && schemeSrcFinal) {
-            const injectSchemeSvg = (raw) => {
-              const cleaned = String(raw || "")
-                .replace(/^\uFEFF/, "")
-                .replace(/<\?xml[^>]*>/i, "")
-                .trim();
-              if (!cleaned || cleaned.indexOf("<svg") === -1) {
-                schemeHost.innerHTML = `<p class="bc-bd-lede__scheme-fallback">${escapeHtml(schemeAlt)}</p>`;
-                schemeHost.removeAttribute("aria-busy");
-                return;
-              }
-              schemeHost.innerHTML = cleaned;
-              const svgEl = schemeHost.querySelector("svg");
-              if (svgEl) {
-                svgEl.setAttribute("aria-label", schemeAlt);
-                svgEl.classList.add("bc-bd-lede__scheme-svg");
-              }
-              schemeHost.removeAttribute("aria-busy");
-            };
-            const schemeCacheV = String(window.MYWEB_ASSET_V || assetV || "");
-            if (
-              window.__MYWEB_BC_BD_SCHEME_SVG_V__ === schemeCacheV &&
-              typeof window.__MYWEB_BC_BD_SCHEME_SVG__ === "string" &&
-              window.__MYWEB_BC_BD_SCHEME_SVG__
-            ) {
-              injectSchemeSvg(window.__MYWEB_BC_BD_SCHEME_SVG__);
-            } else {
-              fetch(`${schemeSrcFinal}?v=${encodeURIComponent(schemeCacheV)}`, {
-                cache: "no-store",
-                credentials: "same-origin",
-              })
-                .then((r) => {
-                  if (!r.ok) throw new Error("scheme svg " + r.status);
-                  return r.text();
-                })
-                .then((txt) => {
-                  window.__MYWEB_BC_BD_SCHEME_SVG__ = txt;
-                  window.__MYWEB_BC_BD_SCHEME_SVG_V__ = schemeCacheV;
-                  if (ledeEl.contains(schemeHost)) injectSchemeSvg(txt);
-                })
-                .catch(() => {
-                  if (ledeEl.contains(schemeHost)) {
-                    schemeHost.innerHTML = `<p class="bc-bd-lede__scheme-fallback">${escapeHtml(schemeAlt)}</p>`;
-                    schemeHost.removeAttribute("aria-busy");
-                  }
-                });
-            }
-          }
         }
 
         const openBcHub = () => {
