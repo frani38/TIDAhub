@@ -1,6 +1,6 @@
 Historial de versiones — T·I·D·A hub
 
-Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.41**).
+Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.42**).
 
 Formato: **MAJOR.MINOR.PATCH** (desde 1.1.0). Fuente de verdad: `data.js`. Documentación alineada en `README.md`, `github_TIDAhub.md`, `content/README.md` e `#_Informe/Informe_MyWeb.tex`.
 
@@ -1205,6 +1205,10 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 ## 1.11.41
 
 - HISTÓRICO de noticias: botón «Marcar todas» en tono dorado de los checks (formato VOLVER intacto).
+
+## 1.11.42
+
+- Ventana < 1680px: títulos de sección y aside de CÓDEX dejan de quedar fixed al viewport y se desplazan con el scroll del documento (como la cabecera).
 
 ---
 

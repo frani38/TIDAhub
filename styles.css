@@ -5890,6 +5890,45 @@ body.ai-assist-page .privacy-stack {
     height: auto;
     max-height: none;
   }
+
+  /*
+    Scroll del documento (html): títulos y aside de CÓDEX deben ir en flujo,
+    como la cabecera. Si siguen fixed al viewport, no acompañan el scroll H/V.
+  */
+  #unit-title {
+    position: static;
+    top: auto;
+    left: auto;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .content-card {
+    padding-top: 0;
+  }
+
+  .codex-detail {
+    display: grid;
+    grid-template-columns: var(--codex-aside-w) minmax(0, 1fr);
+    column-gap: var(--codex-aside-gap);
+    align-items: start;
+    padding: 0.4rem 1.25rem;
+  }
+
+  .codex-detail__aside,
+  .codex-detail__aside--readings {
+    position: static;
+    top: auto;
+    left: auto;
+    width: auto;
+    max-width: none;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .codex-detail__content {
+    min-width: 0;
+  }
 }
 
 /*
@@ -6428,6 +6467,15 @@ body.ai-assist-page .privacy-stack {
     line-height: 1.15;
     letter-spacing: 0.04em;
     border-width: 1px;
+  }
+
+  /* Anula la rejilla 2 columnas del PC reducido: en táctil el aside va encima. */
+  .codex-detail {
+    display: block;
+    grid-template-columns: none;
+    column-gap: 0;
+    padding-left: clamp(0.5rem, 2vw, 1.25rem);
+    padding-right: clamp(0.5rem, 2vw, 1.25rem);
   }
 
   .codex-detail__aside,

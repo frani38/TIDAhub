@@ -1344,6 +1344,15 @@
     }
   }
 
+  /** Ventana < lienzo 1680: scroll en html; no anclar chrome fixed al viewport. */
+  function isDocumentScrollViewport() {
+    try {
+      return !!(window.matchMedia && window.matchMedia("(max-width: 1679.98px)").matches);
+    } catch {
+      return false;
+    }
+  }
+
   function clearSectionTitleDock() {
     document.documentElement.style.removeProperty("--unit-title-top");
     document.documentElement.style.removeProperty("--unit-title-left");
@@ -1355,7 +1364,7 @@
   /** Ancla #unit-title (y VOLVER) bajo la cabecera en todas las secciones. */
   function syncSectionTitleDock() {
     if (!unitTitleEl || !contentCardEl) return;
-    if (isCompactViewport()) {
+    if (isDocumentScrollViewport()) {
       clearSectionTitleDock();
       return;
     }
@@ -3511,8 +3520,8 @@
 
     const syncCodexAsideAlignment = () =>
       new Promise((resolve) => {
-        // En tablet/móvil el aside va en flujo estático: no medir ni desplazar.
-        if (isCompactViewport()) {
+        // Ventana reducida / táctil: aside en flujo; no medir ni fijar al viewport.
+        if (isDocumentScrollViewport()) {
           document.documentElement.style.removeProperty("--codex-aside-top");
           document.documentElement.style.removeProperty("--codex-aside-left");
           resolve();
