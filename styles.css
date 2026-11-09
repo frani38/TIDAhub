@@ -2673,6 +2673,39 @@ body:has(.home-split.is-archive) .seen-toolbar {
   outline-offset: 2px;
 }
 
+/* NOVEDADES: azul del aviso de entradas no vistas (HISTÓRICO sigue en dorado). */
+.updates-archive .seen-toolbar__all {
+  border-color: rgba(0, 150, 255, 0.5);
+  background: rgba(0, 150, 255, 0.14);
+}
+
+.updates-archive .seen-toolbar__all:hover {
+  background: rgba(0, 150, 255, 0.26);
+  border-color: rgba(0, 150, 255, 0.72);
+}
+
+.updates-archive .seen-toolbar__all:focus-visible {
+  outline-color: #0096ff;
+}
+
+.updates-archive .seen-mark-btn {
+  border-color: rgba(0, 150, 255, 0.55);
+}
+
+.updates-archive .seen-mark-btn.is-seen {
+  background: rgba(0, 150, 255, 0.38);
+  border-color: rgba(0, 110, 200, 0.85);
+}
+
+.updates-archive .seen-mark-btn:hover {
+  background: rgba(0, 150, 255, 0.24);
+  border-color: rgba(0, 150, 255, 0.75);
+}
+
+.updates-archive .seen-mark-btn:focus-visible {
+  outline-color: #0096ff;
+}
+
 .year-result-date {
   color: rgba(255, 255, 255, 0.82);
   font-size: 0.86rem;
