@@ -2531,6 +2531,40 @@ body:has(.home-split.is-archive) .year-result,
   grid-template-columns: var(--year-result-date-col) minmax(0, 1fr) auto;
 }
 
+/* Tooltip estilizado (Oxanium): sustituye al title nativo, no recortable por ellipsis. */
+.text-tip {
+  position: relative;
+  display: block;
+  min-width: 0;
+}
+
+.text-tip[data-tooltip]:not([data-tooltip=""]):hover::after,
+.text-tip[data-tooltip]:not([data-tooltip=""]):focus-within::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 0;
+  top: calc(100% + 0.3rem);
+  z-index: 95;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: min(42rem, 72vw);
+  padding: 0.48rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid rgba(15, 23, 42, 0.2);
+  background: #ffffff;
+  color: #0f172a;
+  font-family: var(--tech-font);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.38;
+  letter-spacing: 0.01em;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
+  pointer-events: none;
+}
+
 /* Marcar vistas (NOVEDADES / HISTÓRICO de noticias) */
 .seen-toolbar {
   display: flex;

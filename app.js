@@ -528,14 +528,14 @@
                   .map((n) => {
                     const newsKey = getNewsItemKey(n);
                     const isUnseen = !seenIds.has(newsKey);
-                    const tip = n.title ? ` title="${escapeHtml(n.title)}"` : "";
-                    const titleEl = n.url
-                      ? `<a class="year-result-title year-result-title-link" href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer" data-news-key="${escapeHtml(newsKey)}"${tip}>${escapeHtml(n.title)}</a>`
-                      : `<span class="year-result-title"${tip}>${escapeHtml(n.title)}</span>`;
+                    const tipAttr = n.title ? ` data-tooltip="${escapeHtml(n.title)}"` : "";
+                    const titleInner = n.url
+                      ? `<a class="year-result-title year-result-title-link" href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer" data-news-key="${escapeHtml(newsKey)}">${escapeHtml(n.title)}</a>`
+                      : `<span class="year-result-title">${escapeHtml(n.title)}</span>`;
                     return `
                       <li class="year-result${isUnseen ? " is-unseen-news" : ""}" data-news-key="${escapeHtml(newsKey)}">
                         ${renderPublishedAtMarkup(n.publishedAt, escapeHtml)}
-                        ${titleEl}
+                        <span class="text-tip"${tipAttr}>${titleInner}</span>
                         ${renderSeenMarkButton({ kind: "news", key: newsKey, seen: !isUnseen })}
                       </li>
                     `;
@@ -715,10 +715,9 @@
                     // el hipervínculo va siempre en el texto descriptivo.
                     const linkedName = (labelClass, name) => {
                       const plain = String(name || "");
-                      const tip = plain ? ` title="${escapeHtml(plain)}"` : "";
                       return linkAttrsWithKey
-                        ? `<a class="updates-item-link ${labelClass}" ${linkAttrsWithKey}${tip}>${escapeHtml(plain)}</a>`
-                        : `<span class="${labelClass}"${tip}>${escapeHtml(plain)}</span>`;
+                        ? `<a class="updates-item-link ${labelClass}" ${linkAttrsWithKey}>${escapeHtml(plain)}</a>`
+                        : `<span class="${labelClass}">${escapeHtml(plain)}</span>`;
                     };
                     const fullPlainLine = (() => {
                       if (u.__kind === "reading") return `LIBRO: ${String(u.__bookTitle || "").trim()}`;
@@ -765,7 +764,7 @@
                     return `
                       <li class="year-result year-result--update${isUnseen ? " is-unseen-update" : ""}" data-update-key="${escapeHtml(updateKey)}"${rowTip}>
                         <span class="year-result-date">${escapeHtml(formatDateOnly(u.publishedAt))}</span>
-                        <span class="year-result-title" title="${escapeHtml(fullPlainLine)}">${oneLine}</span>
+                        <span class="text-tip" data-tooltip="${escapeHtml(fullPlainLine)}"><span class="year-result-title">${oneLine}</span></span>
                         ${renderSeenMarkButton({ kind: "updates", key: updateKey, seen: !isUnseen })}
                       </li>
                     `;
