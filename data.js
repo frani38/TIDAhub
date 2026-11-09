@@ -2396,10 +2396,10 @@ window.MYWEB_DATA = {
         title: "Curiosidad y aprendizaje continuo",
         domains: ["cognición"],
         addedAt: "2026-11-02",
-        updatedAt: "2026-11-03",
+        updatedAt: "2026-11-09",
         image: "./softskills/ss_aprendizaje.jpg",
         definition:
-          "Disposición a actualizar conocimientos y métodos de forma deliberada a lo largo del tiempo. Une <strong>curiosidad</strong>, <strong>aprendizaje permanente</strong> y <strong>alfabetización tecnológica</strong>. Implica formular buenas preguntas, buscar <strong>fuentes fiables</strong>, practicar y <strong>transferir</strong> lo aprendido a nuevas tareas. El aprendizaje continuo no es acumular cursos: es cerrar el ciclo observar → practicar → revisar → aplicar. Quien lo cultiva mantiene competencia y capacidad de reinventar el método cuando el contexto cambia.",
+          "Disposición a actualizar conocimientos y métodos de forma deliberada a lo largo del tiempo. Une <strong>curiosidad</strong>, <strong>aprendizaje permanente</strong> y <strong>alfabetización tecnológica</strong>. Implica formular buenas preguntas, buscar <strong>fuentes fiables</strong>, practicar y <strong>transferir</strong> lo aprendido a nuevas tareas. El aprendizaje continuo no consiste en acumular cursos o títulos: consiste en cerrar el ciclo <strong>observar → practicar → revisar → aplicar</strong>, comprobando con hechos si el método funciona y qué hay que ajustar. Quien lo cultiva mantiene la competencia al día, reduce la dependencia de un único procedimiento y es capaz de reinventar el enfoque cuando cambian herramientas, normas o el propio contexto de trabajo.",
         examplesAcademic: [
           "Al terminar un tema, escribir tres preguntas propias y buscarlas en el libro o en una fuente citada.",
           "Probar un método de estudio distinto (mapa conceptual, ejercicios cronometrados, explicar en voz alta) y quedarse con el que mejor funciona de forma individual.",
