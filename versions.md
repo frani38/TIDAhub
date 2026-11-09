@@ -1,6 +1,6 @@
 Historial de versiones — T·I·D·A hub
 
-Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.30**).
+Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.31**).
 
 Formato: **MAJOR.MINOR.PATCH** (desde 1.1.0). Fuente de verdad: `data.js`. Documentación alineada en `README.md`, `github_TIDAhub.md`, `content/README.md` e `#_Informe/Informe_MyWeb.tex`.
 
@@ -1161,6 +1161,10 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 ## 1.11.30
 
 - NOVEDADES / HISTÓRICO: se restaura elipsis en títulos largos (el wrapper del tooltip ya no deja desbordar el texto sobre el check); tooltip sin negrita y más ancho.
+
+## 1.11.31
+
+- Tooltip de títulos largos: un poco más ancho y tipografía ligeramente menor.
 
 ---
 
