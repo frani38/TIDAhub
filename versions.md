@@ -1,6 +1,6 @@
 Historial de versiones — T·I·D·A hub
 
-Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.28**).
+Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.29**).
 
 Formato: **MAJOR.MINOR.PATCH** (desde 1.1.0). Fuente de verdad: `data.js`. Documentación alineada en `README.md`, `github_TIDAhub.md`, `content/README.md` e `#_Informe/Informe_MyWeb.tex`.
 
@@ -1145,6 +1145,10 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 ## 1.11.26
 
 - NOVEDADES: botón y checks con el mismo tono dorado que HISTÓRICO; Oxanium unificado en ambos.
+
+## 1.11.29
+
+- Botón «Marcar todas como vistas»: esquinas en ángulo recto (NOVEDADES e HISTÓRICO).
 
 ## 1.11.28
 
