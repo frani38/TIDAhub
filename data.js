@@ -2333,7 +2333,7 @@ window.MYWEB_DATA = {
         updatedAt: "2026-11-03",
         image: "./softskills/ss_exponer.jpg",
         definition:
-          "Comunicar en poco tiempo el <strong>problema</strong>, la <strong>propuesta</strong>, la <strong>evidencia</strong> y los <strong>límites del trabajo</strong>. Combina relato y prueba (sin datos no convence; sin estructura no se entiende) y desarrolla claridad argumental. Una buena exposición adapta el lenguaje al público, anticipa objeciones y cierra con una petición concreta. El objetivo es que quien escucha pueda decidir o actuar.",
+          "Comunicar en poco tiempo el <strong>problema</strong>, la <strong>propuesta</strong>, la <strong>evidencia</strong> y los <strong>límites del trabajo</strong>. Combina relato y prueba (sin datos no se convence; sin estructura no se entiende) y desarrolla claridad argumental. Una buena exposición adapta el lenguaje al público, anticipa objeciones y cierra con una petición concreta. El objetivo es que quien escucha pueda decidir o actuar.",
         examplesAcademic: [
           "Estructurar la exposición propia: pregunta o tema → ideas clave → ejemplo o dato → conclusión.",
           "Ensayar en voz alta con el tiempo real marcado, no solo leer mentalmente las diapositivas.",
