@@ -2484,10 +2484,10 @@ body.theme-light .home-split.is-archive .year-result-date {
 .home-split.is-archive .year-result-title,
 .home-split.is-archive a.year-result-title-link {
   color: #0f172a;
-  white-space: normal;
-  overflow: visible;
-  overflow-wrap: break-word;
-  word-break: normal;
+  /* Escritorio: elipsis + title nativo con texto completo al hover. */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   line-height: 1.4;
 }
 
@@ -6481,7 +6481,9 @@ body.ai-assist-page .privacy-stack {
     row-gap: 0.2rem;
   }
 
-  .updates-archive .year-result-title {
+  .updates-archive .year-result-title,
+  .home-split.is-archive .year-result-title,
+  .home-split.is-archive a.year-result-title-link {
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
