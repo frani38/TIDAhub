@@ -2352,15 +2352,15 @@ window.MYWEB_DATA = {
         title: "Uso ético y responsable de la IA",
         domains: ["digital"],
         addedAt: "2026-11-02",
-        updatedAt: "2026-11-03",
+        updatedAt: "2026-11-09",
         image: "./softskills/ss_ia.jpg",
         definition:
           "Emplear sistemas de inteligencia artificial como apoyo al trabajo manteniendo el <strong>criterio humano</strong>: saber qué pueden y qué no pueden hacer, <strong>contrastar salidas</strong>, <strong>proteger datos</strong> y <strong>asumir la autoría</strong> y las consecuencias del resultado final. Implica <strong>ética</strong>, supervisión humana, atención a sesgos y <strong>privacidad</strong>, con una actitud crítica pero abierta. No es «saber programar modelos»; es decidir cuándo usar la IA, cómo verificarla y cuándo no delegar el juicio. También exige documentar el uso cuando procede y evitar introducir información sensible en herramientas no autorizadas. La IA amplifica tanto el acierto como el error si falta ese criterio.",
         examplesAcademic: [
           "Usar la inteligencia artificial para un esquema o un repaso y luego reescribir con palabras propias, contrastando el libro.",
           "No pegar datos personales, exámenes ni trabajos ajenos en herramientas externas.",
-          "Declarar el uso de inteligencia artificial si lo pide el enunciado o la rúbrica.",
-          "Revisar fechas, fórmulas y citas: si la herramienta inventa algo, corregirlo antes de entregar."
+          "Declarar siempre el uso de inteligencia artificial y el alcance utilizado (qué partes y con qué finalidad).",
+          "Revisar fechas, fórmulas y citas contrastando la información para comprobar si es real o inventada; si la herramienta inventa algo, corregirlo antes de entregar."
         ],
         examplesProfessional: [
           "Usar la inteligencia artificial para un borrador de procedimiento o informe y validarlo con normativa y datos reales.",
