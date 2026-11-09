@@ -1918,6 +1918,7 @@ body.theme-light .help-form-status.is-error {
   padding: 0.5rem 0.6rem;
   border-color: rgba(15, 23, 42, 0.14);
   background: transparent;
+  column-gap: 0.35rem;
 }
 
 .updates-archive .year-result-date {
@@ -1999,6 +2000,8 @@ body.theme-light .help-form-status.is-error {
   width: 100%;
   max-width: 1360px;
   margin: 0.35rem auto 0;
+  /* Solo fecha DD.MM.YYYY (sin hora): columna más estrecha para acercar el texto */
+  --year-result-date-col: 7.4rem;
 }
 
 /* NOVEDADES / HISTÓRICO: scroll en .app (zona central), no en html (evita barra sobre header/pie). */
