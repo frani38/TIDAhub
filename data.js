@@ -232,6 +232,13 @@ window.MYWEB_DATA = {
   // { publishedAt: "YYYY-MM-DDTHH:mm", title: "Título", text: "Texto breve", url: "https://..." }
   news: [
     {
+      publishedAt: "2026-11-09T08:16",
+      title:
+        "Es prácticamente imposible que un robot se rebele contra un humano, pero ya ha habido ejemplos",
+      text: "La rebelión de las máquinas sigue siendo ciencia ficción, pero ya hay accidentes y usos indebidos: un humanoide en China dio una patada a un niño en una exhibición, un brazo robótico fracturó el dedo de un menor en un torneo de ajedrez en Moscú, y en Colonia se investiga el acoso sexual a una menor mediante un robot teledirigido. El riesgo real viene de fallos de sensores, mala configuración o control humano malicioso, no de una conciencia propia.",
+      url: "https://computerhoy.20minutos.es/tecnologia/es-practicamente-imposible-que-un-robot-se-rebele-contra-un-humano-pero-ya-ha-habido-ejemplos_7050978_0.html",
+    },
+    {
       publishedAt: "2026-11-07T09:22",
       title:
         "Policía Nacional: WhatsApp puede instalar malware en el móvil si la descarga automática está activa",
