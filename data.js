@@ -2220,7 +2220,7 @@ window.MYWEB_DATA = {
         title: "Pensamiento crítico",
         domains: ["cognición"],
         addedAt: "2026-11-02",
-        updatedAt: "2026-11-03",
+        updatedAt: "2026-11-09",
         image: "./softskills/ss_critico.jpg",
         definition:
           "Evaluar afirmaciones y propuestas con criterios de <strong>evidencia</strong>: fuente, método, límites y consecuencias. El <strong>pensamiento analítico</strong> se concreta aquí como <strong>comprobar antes de decidir</strong> —no como «pensar en negativo»—. Incluye contrastar apuntes, tutoriales, salidas de inteligencia artificial u otros informes, y distinguir lo demostrable de lo meramente plausible. También implica formular buenas preguntas, detectar sesgos o lagunas y aceptar revisar una conclusión cuando aparecen datos mejores. En el estudio y en el trabajo reduce errores al separar opinión, hipótesis y prueba.",
@@ -2234,7 +2234,7 @@ window.MYWEB_DATA = {
           "Comparar una oferta de proveedor con ensayos, normas aplicables y casos reales similares.",
           "Ante un indicador de calidad o rendimiento muy positivo, preguntar qué queda fuera de esa medida y qué riesgo puede ocultar.",
           "Al interpretar datos de actividad, rechazos o incidencias, distinguir correlación de causalidad.",
-          "Pedir evidencia (ensayo, medición o referencia normativa) antes de aprobar un cambio relevante."
+          "Ante un «siempre se ha hecho así», pedir datos de seguridad, coste o calidad que justifiquen mantener el procedimiento."
         ]
       },
       {
