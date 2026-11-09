@@ -2242,14 +2242,14 @@ window.MYWEB_DATA = {
         title: "Gestión del tiempo",
         domains: ["autogestión"],
         addedAt: "2026-11-02",
-        updatedAt: "2026-11-03",
+        updatedAt: "2026-11-09",
         image: "./softskills/ss_tiempo.jpg",
         definition:
           "Planificación por <strong>hitos realistas</strong> y control del alcance cuando aparece el retraso. Se relaciona con <strong>fiabilidad</strong>, <strong>priorización</strong> y gestión de recursos: no es solo «estar ocupado», sino desbloquear la entrega, reservar margen de verificación y decidir qué se recorta si el calendario se tensa. Incluye estimar el esfuerzo con honestidad, secuenciar dependencias y comunicar desvíos a tiempo. Gestionar el tiempo es gestionar compromiso y calidad, no solo el reloj.",
         examplesAcademic: [
           "Planificar la propia semana de exámenes: teoría, ejercicios y un repaso corto; no dejarlo todo para la noche anterior.",
           "En un trabajo largo, reservar el último día solo para revisar formato, citas y erratas.",
-          "Si coinciden tareas de varias asignaturas, empezar por la que más cuenta en la nota o por la que más cuesta personalmente.",
+          "Si coinciden tareas de varias asignaturas, empezar por la que más cuesta personalmente.",
           "Marcar fechas intermedias (borrador, ensayo de la exposición) además de la entrega final."
         ],
         examplesProfessional: [
