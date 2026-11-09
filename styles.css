@@ -2558,35 +2558,20 @@ body:has(.home-split.is-archive) .seen-toolbar {
   text-transform: uppercase;
   padding: 0.38rem 0.7rem;
   border-radius: 999px;
-  border: 1px solid rgba(122, 162, 255, 0.42);
-  background: rgba(122, 162, 255, 0.14);
-  color: #e8f0ff;
+  border: 1px solid rgba(184, 134, 11, 0.45);
+  background: rgba(212, 175, 55, 0.16);
+  color: #0f172a;
   cursor: pointer;
 }
 
 .seen-toolbar__all:hover {
-  background: rgba(122, 162, 255, 0.24);
-  border-color: rgba(151, 184, 255, 0.55);
-}
-
-.seen-toolbar__all:focus-visible {
-  outline: 2px solid #9fc0ff;
-  outline-offset: 2px;
-}
-
-body:has(.home-split.is-archive) .seen-toolbar__all {
-  color: #0f172a;
-  background: rgba(212, 175, 55, 0.16);
-  border-color: rgba(184, 134, 11, 0.45);
-}
-
-body:has(.home-split.is-archive) .seen-toolbar__all:hover {
   background: rgba(212, 175, 55, 0.28);
   border-color: rgba(184, 134, 11, 0.65);
 }
 
-body:has(.home-split.is-archive) .seen-toolbar__all:focus-visible {
-  outline-color: #b8860b;
+.seen-toolbar__all:focus-visible {
+  outline: 2px solid #b8860b;
+  outline-offset: 2px;
 }
 
 .seen-mark-btn {
@@ -2597,9 +2582,9 @@ body:has(.home-split.is-archive) .seen-toolbar__all:focus-visible {
   margin: 0.12rem 0 0;
   padding: 0;
   border-radius: 0.22rem;
-  border: 1.5px solid rgba(122, 162, 255, 0.55);
-  background: rgba(10, 18, 40, 0.35);
-  color: #e8f0ff;
+  border: 1.5px solid rgba(184, 134, 11, 0.55);
+  background: rgba(255, 255, 255, 0.72);
+  color: #0f172a;
   font-size: 0.78rem;
   font-weight: 700;
   line-height: 1;
@@ -2621,53 +2606,23 @@ body:has(.home-split.is-archive) .seen-toolbar__all:focus-visible {
 }
 
 .seen-mark-btn.is-seen {
-  background: rgba(122, 162, 255, 0.35);
-  border-color: rgba(151, 184, 255, 0.85);
-}
-
-.seen-mark-btn.is-seen::after {
-  border-left-color: #eef5ff;
-  border-bottom-color: #eef5ff;
-}
-
-.seen-mark-btn:hover {
-  background: rgba(122, 162, 255, 0.22);
-  border-color: rgba(151, 184, 255, 0.75);
-}
-
-.seen-mark-btn:focus-visible {
-  outline: 2px solid #9fc0ff;
-  outline-offset: 2px;
-}
-
-body:has(.home-split.is-archive) .seen-mark-btn {
-  color: #0f172a;
-  background: rgba(255, 255, 255, 0.72);
-  border-color: rgba(184, 134, 11, 0.55);
-}
-
-body:has(.home-split.is-archive) .seen-mark-btn.is-seen {
   background: rgba(212, 175, 55, 0.42);
   border-color: rgba(146, 104, 8, 0.8);
 }
 
-body:has(.home-split.is-archive) .seen-mark-btn.is-seen::after {
+.seen-mark-btn.is-seen::after {
   border-left-color: #0f172a;
   border-bottom-color: #0f172a;
 }
 
-body:has(.home-split.is-archive) .seen-mark-btn:hover {
+.seen-mark-btn:hover {
   background: rgba(212, 175, 55, 0.28);
   border-color: rgba(184, 134, 11, 0.75);
 }
 
-body:has(.home-split.is-archive) .seen-mark-btn:focus-visible {
-  outline-color: #b8860b;
-}
-
-body.theme-light .seen-toolbar__all,
-body.theme-light .seen-mark-btn {
-  color: #0f172a;
+.seen-mark-btn:focus-visible {
+  outline: 2px solid #b8860b;
+  outline-offset: 2px;
 }
 
 .year-result-date {
