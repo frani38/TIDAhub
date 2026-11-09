@@ -11,7 +11,7 @@ window.MYWEB_DATA = {
     El pie muestra "v" + version al cargar.
   */
   siteMeta: {
-    version: "1.11.47",
+    version: "1.11.48",
     updated: "2026-11-09",
     assetBust: "",
     /* Temporal: lazo negro (marca de agua) en INICIO. Pon false para quitarlo. */
@@ -1651,10 +1651,10 @@ window.MYWEB_DATA = {
       caption: "Creación propia con ChatGPT."
     },
     hubSchemeImage: {
-      src: "./blockchain_bigdata/bc_bd_hub_esquema.svg",
-      alt: "Esquema de relación entre Blockchain y Big Data",
+      src: "./blockchain_bigdata/bc_bd_hub_sinergia.png",
+      alt: "Sinergia Blockchain y Big Data: confianza e inteligencia para decisiones de mayor valor, con casos de uso",
       caption:
-        "Blockchain registra y verifica; Big Data genera, almacena y analiza. Pueden encontrarse en casos concretos, pero no se sustituyen."
+        "Sinergia: Blockchain aporta confianza del dato; Big Data aporta inteligencia analítica. Juntas pueden orientar decisiones de mayor valor en casos de uso concretos."
     },
     changelog: [
       {

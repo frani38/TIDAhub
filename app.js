@@ -5045,43 +5045,9 @@
           const hubCaption = String(hubImg?.caption || "").trim();
           const schemeImg =
             pack?.hubSchemeImage && typeof pack.hubSchemeImage === "object" ? pack.hubSchemeImage : null;
+          const schemeSrcFinal = encodeAssetSrc(schemeImg?.src);
           const schemeAlt = String(schemeImg?.alt || "Esquema Blockchain y Big Data").trim();
           const schemeCaption = String(schemeImg?.caption || "").trim();
-          const showScheme = Boolean(schemeImg?.src || schemeCaption || schemeAlt);
-          // Esquema HTML (no SVG): tipografía legible y relación bidireccional, no pipeline.
-          const schemeInner = showScheme
-            ? `<p class="bc-bd-lede__scheme-title">Dos tecnolog&#237;as distintas que pueden converger</p>
-                <div class="bc-bd-scheme" role="img" aria-label="${escapeHtml(schemeAlt)}">
-                  <article class="bc-bd-scheme__card bc-bd-scheme__card--bc">
-                    <span class="bc-bd-scheme__label">Blockchain</span>
-                    <p class="bc-bd-scheme__role">Registrar y verificar con garant&#237;as criptogr&#225;ficas</p>
-                    <ul class="bc-bd-scheme__traits">
-                      <li>integridad</li>
-                      <li>consenso</li>
-                      <li>auditabilidad</li>
-                    </ul>
-                  </article>
-                  <div class="bc-bd-scheme__link">
-                    <span class="bc-bd-scheme__arrows" aria-hidden="true">&#8596;</span>
-                    <p class="bc-bd-scheme__link-title">Pueden encontrarse</p>
-                    <p class="bc-bd-scheme__link-note">sin sustituirse</p>
-                  </div>
-                  <article class="bc-bd-scheme__card bc-bd-scheme__card--bd">
-                    <span class="bc-bd-scheme__label">Big Data</span>
-                    <p class="bc-bd-scheme__role">Generar, almacenar y analizar a gran escala</p>
-                    <ul class="bc-bd-scheme__traits">
-                      <li>volumen</li>
-                      <li>velocidad</li>
-                      <li>variedad</li>
-                      <li>valor</li>
-                    </ul>
-                  </article>
-                  <div class="bc-bd-scheme__meet">
-                    <span class="bc-bd-scheme__meet-kicker">Donde se cruzan</span>
-                    <p>Anclar huellas de grandes conjuntos, trazabilidad de procesos con sensores, o anal&#237;tica sobre ledgers: colaboran en casos concretos, pero cada una sigue resolviendo un problema distinto.</p>
-                  </div>
-                </div>`
-            : "";
           const closingPara = introParts.length ? introParts[introParts.length - 1] : "";
           const leadParas = introParts.length > 1 ? introParts.slice(0, -1) : [];
           const leadHtml = leadParas.map((p) => `<p>${allowBcHtml(p)}</p>`).join("");
@@ -5094,9 +5060,9 @@
                 ${hubCaption ? `<figcaption>${escapeHtml(hubCaption)}</figcaption>` : ""}
               </figure>`
             : "";
-          const schemeHtml = schemeInner
+          const schemeHtml = schemeSrcFinal
             ? `<figure class="bc-bd-lede__scheme">
-                ${schemeInner}
+                <img src="${escapeHtml(schemeSrcFinal)}?v=${assetV}" alt="${escapeHtml(schemeAlt)}" loading="lazy" decoding="async" />
                 ${schemeCaption ? `<figcaption>${escapeHtml(schemeCaption)}</figcaption>` : ""}
               </figure>`
             : "";

@@ -1,6 +1,6 @@
 Historial de versiones — T·I·D·A hub
 
-Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.47**).
+Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.48**).
 
 Formato: **MAJOR.MINOR.PATCH** (desde 1.1.0). Fuente de verdad: `data.js`. Documentación alineada en `README.md`, `github_TIDAhub.md`, `content/README.md` e `#_Informe/Informe_MyWeb.tex`.
 
@@ -1229,6 +1229,10 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 ## 1.11.47
 
 - Corrección: restaurar `<!doctype html>` en las páginas HTML (el `<!` se había perdido y el navegador mostraba `doctype html>` encima de la cabecera).
+
+## 1.11.48
+
+- Hub Blockchain/Big Data: nuevo esquema «Sinergia: más valor con los datos» (infografía) en lugar del esquema HTML anterior.
 
 ---
 

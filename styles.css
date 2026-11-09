@@ -4437,168 +4437,33 @@ body.theme-light .bc-bd-aside-nav__tree {
   display: block;
   margin: 0.95rem 0 0.75rem;
   min-width: 0;
-  padding: 0.85rem 0.95rem 0.9rem;
+  padding: 0;
   border: 1px solid rgba(15, 23, 42, 0.1);
   border-radius: 14px;
-  background: linear-gradient(165deg, #f8fafc 0%, #eef2ff 55%, #f0fdf4 100%);
+  background: #ffffff;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
-.bc-bd-lede__scheme-title {
-  margin: 0 0 0.7rem;
-  text-align: center;
-  font-family: var(--tech-font);
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  color: #0f172a;
-  line-height: 1.3;
-}
-
-.bc-bd-scheme {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  gap: 0.55rem 0.45rem;
-  align-items: stretch;
-}
-
-.bc-bd-scheme__card {
-  margin: 0;
-  padding: 0.75rem 0.8rem 0.8rem;
-  border-radius: 12px;
-  box-sizing: border-box;
-  min-width: 0;
-}
-
-.bc-bd-scheme__card--bc {
-  background: linear-gradient(160deg, #2563eb 0%, #1d4ed8 100%);
-  color: #eff6ff;
-  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.22);
-}
-
-.bc-bd-scheme__card--bd {
-  background: linear-gradient(160deg, #10b981 0%, #047857 100%);
-  color: #ecfdf5;
-  box-shadow: 0 6px 16px rgba(5, 150, 105, 0.22);
-}
-
-.bc-bd-scheme__label {
+.bc-bd-lede__scheme img {
   display: block;
-  margin: 0 0 0.35rem;
-  font-family: var(--tech-font);
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  line-height: 1.2;
-}
-
-.bc-bd-scheme__role {
-  margin: 0 0 0.45rem;
-  font-size: 0.92rem;
-  font-weight: 600;
-  line-height: 1.35;
-  opacity: 0.95;
-}
-
-.bc-bd-scheme__traits {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.28rem;
-}
-
-.bc-bd-scheme__traits li {
-  margin: 0;
-  padding: 0.18rem 0.45rem;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  line-height: 1.2;
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.bc-bd-scheme__link {
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.28rem;
-  min-width: 7.5rem;
-  max-width: 9.5rem;
-  padding: 0.55rem 0.5rem;
-  border-radius: 12px;
-  border: 1.5px dashed #64748b;
-  background: rgba(255, 255, 255, 0.88);
-  box-sizing: border-box;
-  text-align: center;
-}
-
-.bc-bd-scheme__arrows {
-  display: block;
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #334155;
-  letter-spacing: 0.08em;
-  line-height: 1;
-}
-
-.bc-bd-scheme__link-title {
-  margin: 0;
-  font-family: var(--tech-font);
-  font-size: 0.86rem;
-  font-weight: 800;
-  color: #0f172a;
-  line-height: 1.25;
-}
-
-.bc-bd-scheme__link-note {
-  margin: 0;
-  font-size: 0.78rem;
-  line-height: 1.3;
-  color: #475569;
-}
-
-.bc-bd-scheme__meet {
-  grid-column: 1 / -1;
-  margin: 0.15rem 0 0;
-  padding: 0.55rem 0.7rem;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(100, 116, 139, 0.28);
-  text-align: center;
-}
-
-.bc-bd-scheme__meet-kicker {
-  display: block;
-  margin: 0 0 0.2rem;
-  font-family: var(--tech-font);
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: #334155;
-}
-
-.bc-bd-scheme__meet p {
-  margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  color: #1e293b;
-  text-align: center;
-  text-justify: auto;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center top;
+  background: #f8fafc;
 }
 
 .bc-bd-lede__scheme figcaption {
-  margin-top: 0.45rem;
+  margin: 0;
+  padding: 0.45rem 0.7rem 0.55rem;
   font-size: 0.78rem;
   line-height: 1.3;
   color: #64748b;
   text-align: center;
   font-style: italic;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .bc-bd-lede p {
@@ -4644,19 +4509,6 @@ body.theme-light .bc-bd-lede__scheme figcaption {
 
   .bc-bd-lede__fig img {
     max-height: min(200px, 32vh);
-  }
-
-  .bc-bd-scheme {
-    grid-template-columns: 1fr;
-  }
-
-  .bc-bd-scheme__link {
-    max-width: none;
-    min-width: 0;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.35rem 0.55rem;
   }
 }
 
