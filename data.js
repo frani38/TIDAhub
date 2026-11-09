@@ -2245,7 +2245,7 @@ window.MYWEB_DATA = {
         updatedAt: "2026-11-09",
         image: "./softskills/ss_tiempo.jpg",
         definition:
-          "Planificación por <strong>hitos realistas</strong> y control del alcance cuando aparece el retraso. Se relaciona con <strong>fiabilidad</strong>, <strong>priorización</strong> y gestión de recursos: no es solo «estar ocupado», sino desbloquear la entrega, reservar margen de verificación y decidir qué se recorta si el calendario se tensa. Incluye estimar el esfuerzo con honestidad, secuenciar dependencias y comunicar desvíos a tiempo. Gestionar el tiempo es gestionar compromiso y calidad, no solo el reloj.",
+          "Planificación por <strong>hitos realistas</strong> y control del alcance cuando aparece el retraso. Se relaciona con <strong>fiabilidad</strong>, <strong>priorización</strong> y <strong>gestión de recursos</strong>: no es solo «estar ocupado», sino desbloquear la entrega, reservar margen de verificación y decidir qué se recorta si el calendario se tensa. Incluye estimar el esfuerzo con honestidad, secuenciar dependencias y comunicar desvíos a tiempo. Gestionar el tiempo es gestionar compromiso y calidad, no solo el reloj.",
         examplesAcademic: [
           "Planificar la propia semana de exámenes: teoría, ejercicios y un repaso corto; no dejarlo todo para la noche anterior.",
           "En un trabajo largo, reservar el último día solo para revisar formato, citas y erratas.",
