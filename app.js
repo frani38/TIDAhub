@@ -5033,32 +5033,8 @@
             .split(/\n\s*\n/)
             .map((p) => String(p || "").trim())
             .filter(Boolean);
-          const encodeAssetSrc = (raw) => {
-            const hubSrcRaw = String(raw || "").trim();
-            if (!hubSrcRaw) return "";
-            const abs = hubSrcRaw.startsWith("./") ? hubSrcRaw.slice(2) : hubSrcRaw.replace(/^\//, "");
-            return `./${abs.split("/").map((seg) => encodeURIComponent(seg)).join("/")}`;
-          };
-          const hubImg = pack?.hubInlineImage && typeof pack.hubInlineImage === "object" ? pack.hubInlineImage : null;
-          const hubSrcFinal = encodeAssetSrc(hubImg?.src);
-          const hubAlt = String(hubImg?.alt || "Blockchain y Big Data").trim();
-          const hubCaption = String(hubImg?.caption || "").trim();
-          const insertAfter = Math.max(0, Number(hubImg?.insertAfterPara) || 0);
-          const figHtml = hubSrcFinal
-            ? `<figure class="bc-bd-lede__fig bc-bd-lede__fig--mid">
-                <img src="${escapeHtml(hubSrcFinal)}?v=${assetV}" alt="${escapeHtml(hubAlt)}" loading="lazy" decoding="async" />
-                ${hubCaption ? `<figcaption>${escapeHtml(hubCaption)}</figcaption>` : ""}
-              </figure>`
-            : "";
-          const partsHtml = introParts.map((p) => `<p>${allowBcHtml(p)}</p>`);
-          let ledeHtml = "";
-          if (figHtml && insertAfter > 0 && insertAfter < partsHtml.length) {
-            ledeHtml = [...partsHtml.slice(0, insertAfter), figHtml, ...partsHtml.slice(insertAfter)].join("");
-          } else if (figHtml && insertAfter >= partsHtml.length && partsHtml.length) {
-            ledeHtml = `${partsHtml.join("")}${figHtml}`;
-          } else {
-            ledeHtml = `${figHtml}${partsHtml.join("")}`;
-          }
+          // Hub solo texto (imagen/esquema aplazados).
+          const parasHtml = introParts.map((p) => `<p>${allowBcHtml(p)}</p>`).join("");
           if (ledeEl.__bcHubFigCleanup) {
             try {
               ledeEl.__bcHubFigCleanup();
@@ -5067,7 +5043,7 @@
           }
           ledeEl.classList.remove("bc-bd-lede--split");
           ledeEl.classList.add("bc-bd-lede--flow");
-          ledeEl.innerHTML = ledeHtml;
+          ledeEl.innerHTML = parasHtml;
           ledeEl.hidden = !ledeEl.innerHTML.trim();
         }
 
