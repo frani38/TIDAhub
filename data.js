@@ -11,7 +11,7 @@ window.MYWEB_DATA = {
     El pie muestra "v" + version al cargar.
   */
   siteMeta: {
-    version: "1.11.44",
+    version: "1.11.45",
     updated: "2026-11-09",
     assetBust: "",
     /* Temporal: lazo negro (marca de agua) en INICIO. Pon false para quitarlo. */
@@ -1650,8 +1650,6 @@ window.MYWEB_DATA = {
       alt: "Ilustración de Big Data y Blockchain",
       caption: "Creación propia con ChatGPT."
     },
-    hubMap:
-      "En esta sección: fundamentos de Blockchain y de Big Data (teoría, ejemplos y figuras), un glosario común y referencias técnicas. Entra por el menú de la izquierda.",
     hubSchemeImage: {
       src: "./blockchain_bigdata/bc_bd_hub_esquema.svg",
       alt: "Esquema de relación entre Blockchain y Big Data",

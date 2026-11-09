@@ -5043,7 +5043,6 @@
           const hubSrcFinal = encodeAssetSrc(hubImg?.src);
           const hubAlt = String(hubImg?.alt || "Big Data y Blockchain").trim();
           const hubCaption = String(hubImg?.caption || "").trim();
-          const hubMap = String(pack?.hubMap || "").trim();
           const schemeImg =
             pack?.hubSchemeImage && typeof pack.hubSchemeImage === "object" ? pack.hubSchemeImage : null;
           const schemeAlt = String(schemeImg?.alt || "Esquema Blockchain y Big Data").trim();
@@ -5051,65 +5050,93 @@
           const showScheme = Boolean(schemeImg?.src || schemeCaption || schemeAlt);
           // SVG inline: evita fallos de <img> por caché/encoding en Pages.
           const schemeSvg = showScheme
-            ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 168" role="img" aria-label="${escapeHtml(schemeAlt)}">
-                <rect width="1100" height="168" fill="#f8fafc"/>
+            ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 210" role="img" aria-label="${escapeHtml(schemeAlt)}">
                 <defs>
-                  <marker id="bcHubArr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                    <path d="M0,0 L6,3 L0,6 Z" fill="#334155"/>
+                  <linearGradient id="bcHubBg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#f8fafc"/>
+                    <stop offset="100%" stop-color="#eef2ff"/>
+                  </linearGradient>
+                  <linearGradient id="bcHubBlue" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3b82f6"/>
+                    <stop offset="100%" stop-color="#1d4ed8"/>
+                  </linearGradient>
+                  <linearGradient id="bcHubGreen" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#34d399"/>
+                    <stop offset="100%" stop-color="#059669"/>
+                  </linearGradient>
+                  <linearGradient id="bcHubMid" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="100%" stop-color="#f1f5f9"/>
+                  </linearGradient>
+                  <filter id="bcHubShadow" x="-8%" y="-10%" width="116%" height="130%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.14"/>
+                  </filter>
+                  <marker id="bcHubArr" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+                    <path d="M0,0 L7,3.5 L0,7 Z" fill="#64748b"/>
                   </marker>
                 </defs>
-                <text x="550" y="22" text-anchor="middle" fill="#0f172a" font-family="Segoe UI,system-ui,sans-serif" font-size="15" font-weight="700">Dos tecnologias distintas que pueden converger</text>
-                <rect x="36" y="40" width="300" height="100" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
-                <text x="186" y="72" text-anchor="middle" fill="#1d4ed8" font-family="Segoe UI,system-ui,sans-serif" font-size="15" font-weight="700">BLOCKCHAIN</text>
-                <text x="186" y="96" text-anchor="middle" fill="#0f172a" font-family="Segoe UI,system-ui,sans-serif" font-size="11">Registrar y verificar</text>
-                <text x="186" y="116" text-anchor="middle" fill="#475569" font-family="Segoe UI,system-ui,sans-serif" font-size="11">integridad / consenso / auditabilidad</text>
-                <rect x="400" y="48" width="300" height="84" rx="12" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
-                <text x="550" y="78" text-anchor="middle" fill="#0f172a" font-family="Segoe UI,system-ui,sans-serif" font-size="12" font-weight="600">Solape posible</text>
-                <text x="550" y="100" text-anchor="middle" fill="#475569" font-family="Segoe UI,system-ui,sans-serif" font-size="11">anclar huellas / trazabilidad / analitica sobre ledgers</text>
-                <rect x="764" y="40" width="300" height="100" rx="12" fill="#dcfce7" stroke="#059669" stroke-width="2"/>
-                <text x="914" y="72" text-anchor="middle" fill="#047857" font-family="Segoe UI,system-ui,sans-serif" font-size="15" font-weight="700">BIG DATA</text>
-                <text x="914" y="96" text-anchor="middle" fill="#0f172a" font-family="Segoe UI,system-ui,sans-serif" font-size="11">Generar, almacenar y analizar</text>
-                <text x="914" y="116" text-anchor="middle" fill="#475569" font-family="Segoe UI,system-ui,sans-serif" font-size="11">volumen / velocidad / variedad / valor</text>
-                <line x1="336" y1="90" x2="400" y2="90" stroke="#334155" stroke-width="2" marker-end="url(#bcHubArr)"/>
-                <line x1="700" y1="90" x2="764" y2="90" stroke="#334155" stroke-width="2" marker-end="url(#bcHubArr)"/>
-                <text x="550" y="158" text-anchor="middle" fill="#475569" font-family="Segoe UI,system-ui,sans-serif" font-size="11">No son intercambiables: cada una resuelve un problema distinto</text>
+                <rect width="1120" height="210" rx="14" fill="url(#bcHubBg)"/>
+                <text x="560" y="28" text-anchor="middle" fill="#0f172a" font-family="Segoe UI,system-ui,sans-serif" font-size="16" font-weight="700">Dos tecnolog&#237;as distintas que pueden converger</text>
+                <g filter="url(#bcHubShadow)">
+                  <rect x="40" y="48" width="300" height="118" rx="16" fill="url(#bcHubBlue)"/>
+                </g>
+                <circle cx="88" cy="78" r="16" fill="rgba(255,255,255,0.22)"/>
+                <rect x="80" y="70" width="7" height="16" rx="1.5" fill="#fff"/>
+                <rect x="89" y="70" width="7" height="16" rx="1.5" fill="#fff"/>
+                <path d="M87 70 v-4 a4 4 0 0 1 8 0 v4" fill="none" stroke="#fff" stroke-width="1.8"/>
+                <text x="190" y="84" text-anchor="middle" fill="#ffffff" font-family="Segoe UI,system-ui,sans-serif" font-size="17" font-weight="800">BLOCKCHAIN</text>
+                <text x="190" y="110" text-anchor="middle" fill="#dbeafe" font-family="Segoe UI,system-ui,sans-serif" font-size="12" font-weight="600">Registrar y verificar</text>
+                <text x="190" y="134" text-anchor="middle" fill="#bfdbfe" font-family="Segoe UI,system-ui,sans-serif" font-size="11">integridad · consenso · auditabilidad</text>
+                <g filter="url(#bcHubShadow)">
+                  <rect x="410" y="58" width="300" height="98" rx="16" fill="url(#bcHubMid)" stroke="#cbd5e1" stroke-width="1.5"/>
+                </g>
+                <circle cx="560" cy="86" r="14" fill="#e2e8f0"/>
+                <circle cx="554" cy="86" r="7" fill="none" stroke="#64748b" stroke-width="1.6"/>
+                <circle cx="566" cy="86" r="7" fill="none" stroke="#64748b" stroke-width="1.6"/>
+                <text x="560" y="116" text-anchor="middle" fill="#0f172a" font-family="Segoe UI,system-ui,sans-serif" font-size="13" font-weight="700">Solape posible</text>
+                <text x="560" y="136" text-anchor="middle" fill="#475569" font-family="Segoe UI,system-ui,sans-serif" font-size="11">huellas · trazabilidad · anal&#237;tica</text>
+                <g filter="url(#bcHubShadow)">
+                  <rect x="780" y="48" width="300" height="118" rx="16" fill="url(#bcHubGreen)"/>
+                </g>
+                <circle cx="828" cy="78" r="16" fill="rgba(255,255,255,0.22)"/>
+                <rect x="820" y="70" width="16" height="12" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+                <path d="M823 74 h10 M823 78 h10" stroke="#fff" stroke-width="1.5"/>
+                <text x="930" y="84" text-anchor="middle" fill="#ffffff" font-family="Segoe UI,system-ui,sans-serif" font-size="17" font-weight="800">BIG DATA</text>
+                <text x="930" y="110" text-anchor="middle" fill="#d1fae5" font-family="Segoe UI,system-ui,sans-serif" font-size="12" font-weight="600">Generar, almacenar y analizar</text>
+                <text x="930" y="134" text-anchor="middle" fill="#a7f3d0" font-family="Segoe UI,system-ui,sans-serif" font-size="11">volumen · velocidad · variedad · valor</text>
+                <line x1="340" y1="107" x2="410" y2="107" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#bcHubArr)"/>
+                <line x1="710" y1="107" x2="780" y2="107" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#bcHubArr)"/>
+                <text x="560" y="192" text-anchor="middle" fill="#64748b" font-family="Segoe UI,system-ui,sans-serif" font-size="12">No son intercambiables: cada una resuelve un problema distinto</text>
               </svg>`
             : "";
-          const paras = introParts.map((p) => `<p>${allowBcHtml(p)}</p>`).join("");
-          const extraHtml =
-            hubMap || schemeSvg
-              ? `<div class="bc-bd-lede__extra">
-                  ${hubMap ? `<p class="bc-bd-lede__map">${escapeHtml(hubMap)}</p>` : ""}
-                  ${
-                    schemeSvg
-                      ? `<figure class="bc-bd-lede__scheme">
-                          ${schemeSvg}
-                          ${schemeCaption ? `<figcaption>${escapeHtml(schemeCaption)}</figcaption>` : ""}
-                        </figure>`
-                      : ""
-                  }
-                </div>`
-              : "";
+          const closingPara = introParts.length ? introParts[introParts.length - 1] : "";
+          const leadParas = introParts.length > 1 ? introParts.slice(0, -1) : [];
+          const leadHtml = leadParas.map((p) => `<p>${allowBcHtml(p)}</p>`).join("");
+          const closingHtml = closingPara
+            ? `<p class="bc-bd-lede__closing">${allowBcHtml(closingPara)}</p>`
+            : "";
+          const figHtml = hubSrcFinal
+            ? `<figure class="bc-bd-lede__fig">
+                <img src="${escapeHtml(hubSrcFinal)}?v=${assetV}" alt="${escapeHtml(hubAlt)}" loading="lazy" decoding="async" />
+                ${hubCaption ? `<figcaption>${escapeHtml(hubCaption)}</figcaption>` : ""}
+              </figure>`
+            : "";
+          const schemeHtml = schemeSvg
+            ? `<figure class="bc-bd-lede__scheme">
+                ${schemeSvg}
+                ${schemeCaption ? `<figcaption>${escapeHtml(schemeCaption)}</figcaption>` : ""}
+              </figure>`
+            : "";
           if (ledeEl.__bcHubFigCleanup) {
             try {
               ledeEl.__bcHubFigCleanup();
             } catch {}
             ledeEl.__bcHubFigCleanup = null;
           }
-          if (hubSrcFinal) {
-            ledeEl.classList.add("bc-bd-lede--split");
-            ledeEl.innerHTML = `
-              <div class="bc-bd-lede__copy">${paras}</div>
-              <figure class="bc-bd-lede__fig">
-                <img src="${escapeHtml(hubSrcFinal)}?v=${assetV}" alt="${escapeHtml(hubAlt)}" loading="lazy" decoding="async" />
-                ${hubCaption ? `<figcaption>${escapeHtml(hubCaption)}</figcaption>` : ""}
-              </figure>
-              ${extraHtml}
-            `;
-          } else {
-            ledeEl.classList.remove("bc-bd-lede--split");
-            ledeEl.innerHTML = `${paras}${extraHtml}`;
-          }
+          ledeEl.classList.remove("bc-bd-lede--split");
+          ledeEl.classList.add("bc-bd-lede--flow");
+          // Imagen flotante arriba-derecha; esquema antes del último párrafo (cierre).
+          ledeEl.innerHTML = `${figHtml}${leadHtml}${schemeHtml}${closingHtml}`;
           ledeEl.hidden = !ledeEl.innerHTML.trim();
         }
 

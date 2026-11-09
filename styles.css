@@ -4372,6 +4372,7 @@ body.theme-light .bc-bd-aside-nav__tree {
   border-left-color: rgba(29, 78, 216, 0.28);
 }
 
+/* Mismo cuerpo tipográfico que .bc-bd-columns--single .bc-bd-section__body */
 .bc-bd-lede {
   margin: 0 0 0.55rem;
   max-width: none;
@@ -4379,39 +4380,27 @@ body.theme-light .bc-bd-aside-nav__tree {
   box-sizing: border-box;
   color: var(--text-soft, #c5d0e8);
   font-family: var(--tech-font);
-  font-size: 0.9rem;
-  line-height: 1.42;
+  font-size: 0.95rem;
+  line-height: 1.55;
   text-align: justify;
   text-justify: inter-word;
 }
 
-/* Intro: texto + imagen reducida; debajo, mapa breve + esquema (sin forzar altura de imagen al texto). */
-.bc-bd-lede--split {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(170px, 30%);
-  grid-template-areas:
-    "copy fig"
-    "extra extra";
-  gap: 0.55rem 1rem;
-  align-items: start;
+/* Imagen flotante arriba-derecha; esquema a ancho completo antes del párrafo de cierre. */
+.bc-bd-lede--flow {
+  display: block;
 }
 
-.bc-bd-lede__copy {
-  grid-area: copy;
-  min-width: 0;
-}
-
-.bc-bd-lede__copy p {
-  margin: 0;
-}
-
-.bc-bd-lede__copy p + p {
-  margin-top: 0.55rem;
+.bc-bd-lede--flow::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .bc-bd-lede__fig {
-  grid-area: fig;
-  margin: 0;
+  float: right;
+  width: min(40%, 440px);
+  margin: 0.1rem 0 0.85rem 1.1rem;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -4423,7 +4412,7 @@ body.theme-light .bc-bd-aside-nav__tree {
   display: block;
   width: 100%;
   height: auto;
-  max-height: min(240px, 28vh);
+  max-height: min(340px, 40vh);
   object-fit: cover;
   object-position: center center;
   border: 1px solid rgba(15, 23, 42, 0.1);
@@ -4441,43 +4430,21 @@ body.theme-light .bc-bd-aside-nav__tree {
   font-style: italic;
 }
 
-.bc-bd-lede__extra {
-  grid-area: extra;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.bc-bd-lede__map {
-  margin: 0;
-  padding: 0.45rem 0.65rem;
-  border-radius: 10px;
-  border: 1px solid rgba(37, 99, 235, 0.22);
-  background: rgba(37, 99, 235, 0.06);
-  color: #0f172a;
-  font-size: 0.86rem;
-  line-height: 1.4;
-  text-align: left;
-  text-justify: auto;
-}
-
 .bc-bd-lede__scheme {
-  margin: 0;
+  clear: both;
+  display: block;
+  margin: 0.85rem 0 0.75rem;
   min-width: 0;
 }
 
-.bc-bd-lede__scheme img,
 .bc-bd-lede__scheme svg {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 9.25rem;
-  object-fit: contain;
-  object-position: center top;
+  max-height: 11.5rem;
   border: 1px solid rgba(15, 23, 42, 0.1);
-  border-radius: 12px;
-  background: #f8fafc;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
 }
 
 .bc-bd-lede__scheme figcaption {
@@ -4494,7 +4461,12 @@ body.theme-light .bc-bd-aside-nav__tree {
 }
 
 .bc-bd-lede p + p {
-  margin-top: 0.85rem;
+  margin-top: 0.7rem;
+}
+
+.bc-bd-lede__closing {
+  clear: both;
+  margin-top: 0.75rem;
 }
 
 .bc-bd-lede strong,
@@ -4509,7 +4481,7 @@ body.theme-light .bc-bd-section__body strong {
 }
 
 body.theme-light .bc-bd-lede {
-  color: #334155;
+  color: #1e293b;
 }
 
 body.theme-light .bc-bd-lede__fig figcaption,
@@ -4517,28 +4489,19 @@ body.theme-light .bc-bd-lede__scheme figcaption {
   color: #64748b;
 }
 
-body.theme-light .bc-bd-lede__map {
-  color: #0f172a;
-  background: rgba(37, 99, 235, 0.06);
-  border-color: rgba(37, 99, 235, 0.22);
-}
-
 @media (max-width: 980px) {
-  .bc-bd-lede--split {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "copy"
-      "fig"
-      "extra";
+  .bc-bd-lede__fig {
+    float: none;
+    width: min(100%, 420px);
+    margin: 0 auto 0.85rem;
   }
 
   .bc-bd-lede__fig img {
-    max-height: min(220px, 34vh);
+    max-height: min(280px, 38vh);
   }
 
-  .bc-bd-lede__scheme img,
   .bc-bd-lede__scheme svg {
-    max-height: 10rem;
+    max-height: 12rem;
   }
 }
 
