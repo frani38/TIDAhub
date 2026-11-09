@@ -1,6 +1,6 @@
 Historial de versiones — T·I·D·A hub
 
-Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.48**).
+Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.49**).
 
 Formato: **MAJOR.MINOR.PATCH** (desde 1.1.0). Fuente de verdad: `data.js`. Documentación alineada en `README.md`, `github_TIDAhub.md`, `content/README.md` e `#_Informe/Informe_MyWeb.tex`.
 
@@ -1233,6 +1233,10 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 ## 1.11.48
 
 - Hub Blockchain/Big Data: nuevo esquema «Sinergia: más valor con los datos» (infografía) en lugar del esquema HTML anterior.
+
+## 1.11.49
+
+- Bust de caché forzado (`assetBust`) para que el hub BC/BD y el pie recojan el esquema de sinergia en clientes con HTML/JS retenido.
 
 ---
 

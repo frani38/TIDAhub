@@ -11,9 +11,9 @@ window.MYWEB_DATA = {
     El pie muestra "v" + version al cargar.
   */
   siteMeta: {
-    version: "1.11.48",
+    version: "1.11.49",
     updated: "2026-11-09",
-    assetBust: "",
+    assetBust: "sinergia",
     /* Temporal: lazo negro (marca de agua) en INICIO. Pon false para quitarlo. */
     mourningRibbon: false,
   },
