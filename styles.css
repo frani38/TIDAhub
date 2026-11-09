@@ -2531,9 +2531,14 @@ body:has(.home-split.is-archive) .year-result,
   grid-template-columns: var(--year-result-date-col) minmax(0, 1fr) auto;
 }
 
-/* Tooltip estilizado (Oxanium): sustituye al title nativo, no recortable por ellipsis. */
-.text-tip {
+/* Tooltip estilizado (Oxanium): sustituye al title nativo, no recortable por ellipsis.
+   Se ancla al .year-result para igualar el borde derecho del recuadro. */
+.year-result:has(> .text-tip) {
   position: relative;
+}
+
+.text-tip {
+  position: static;
   display: block;
   min-width: 0;
   max-width: 100%;
@@ -2556,12 +2561,14 @@ body:has(.home-split.is-archive) .year-result,
 .text-tip[data-tooltip]:not([data-tooltip=""]):focus-within::after {
   content: attr(data-tooltip);
   position: absolute;
+  /* Mismo ancho interior que el recuadro de la fila (borde izquierdo a derecho). */
   left: 0;
+  right: 0;
   top: calc(100% + 0.3rem);
   z-index: 95;
   box-sizing: border-box;
-  width: max-content;
-  max-width: min(64rem, 95vw);
+  width: auto;
+  max-width: none;
   padding: 0.48rem 0.65rem;
   border-radius: 8px;
   border: 1px solid rgba(15, 23, 42, 0.2);
