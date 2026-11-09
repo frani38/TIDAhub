@@ -363,6 +363,48 @@
     return `<button type="button" class="seen-mark-btn${seen ? " is-seen" : ""}" ${attr}="${escapeHtml(k)}" aria-pressed="${seen ? "true" : "false"}" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}"></button>`;
   }
 
+  /** Tooltip solo si el titular está truncado con elipsis (scrollWidth > clientWidth). */
+  function syncTextTipTooltips(root = document) {
+    const scope = root instanceof Element || root instanceof Document ? root : document;
+    scope.querySelectorAll(".text-tip[data-tooltip-full]").forEach((tip) => {
+      if (!(tip instanceof HTMLElement)) return;
+      const full = String(tip.getAttribute("data-tooltip-full") || "").trim();
+      if (!full) {
+        tip.removeAttribute("data-tooltip");
+        return;
+      }
+      const measure =
+        tip.querySelector(".year-result-title") instanceof HTMLElement
+          ? tip.querySelector(".year-result-title")
+          : tip;
+      const truncated =
+        measure instanceof HTMLElement && measure.scrollWidth > measure.clientWidth + 1;
+      if (truncated) tip.setAttribute("data-tooltip", full);
+      else tip.removeAttribute("data-tooltip");
+    });
+  }
+
+  function scheduleTextTipTooltipSync(root) {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => syncTextTipTooltips(root));
+    });
+  }
+
+  let textTipResizeTimer = 0;
+  function wireTextTipTooltipSync() {
+    if (wireTextTipTooltipSync._done) return;
+    wireTextTipTooltipSync._done = true;
+    window.addEventListener("resize", () => {
+      window.clearTimeout(textTipResizeTimer);
+      textTipResizeTimer = window.setTimeout(() => syncTextTipTooltips(document), 120);
+    });
+    document.addEventListener("toggle", (event) => {
+      const t = event.target;
+      if (!(t instanceof HTMLDetailsElement) || !t.classList.contains("month-group")) return;
+      scheduleTextTipTooltipSync(t);
+    });
+  }
+
   function renderHomeNews(rawNews) {
     const recentEl = tabPanelEl?.querySelector(".home-news__recent");
     const historyEl = tabPanelEl?.querySelector(".home-news__history");
@@ -528,7 +570,7 @@
                   .map((n) => {
                     const newsKey = getNewsItemKey(n);
                     const isUnseen = !seenIds.has(newsKey);
-                    const tipAttr = n.title ? ` data-tooltip="${escapeHtml(n.title)}"` : "";
+                    const tipAttr = n.title ? ` data-tooltip-full="${escapeHtml(n.title)}"` : "";
                     const titleInner = n.url
                       ? `<a class="year-result-title year-result-title-link" href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer" data-news-key="${escapeHtml(newsKey)}">${escapeHtml(n.title)}</a>`
                       : `<span class="year-result-title">${escapeHtml(n.title)}</span>`;
@@ -566,6 +608,8 @@
         });
       });
       bindNewsSeenClicks(yearResultsEl);
+      wireTextTipTooltipSync();
+      scheduleTextTipTooltipSync(yearResultsEl);
 
       // Móvil/tablet: el listado queda fuera de vista (año se pulsa abajo en NOTICIAS).
       requestAnimationFrame(() => {
@@ -764,7 +808,7 @@
                     return `
                       <li class="year-result year-result--update${isUnseen ? " is-unseen-update" : ""}" data-update-key="${escapeHtml(updateKey)}"${rowTip}>
                         <span class="year-result-date">${escapeHtml(formatDateOnly(u.publishedAt))}</span>
-                        <span class="text-tip" data-tooltip="${escapeHtml(fullPlainLine)}"><span class="year-result-title">${oneLine}</span></span>
+                        <span class="text-tip" data-tooltip-full="${escapeHtml(fullPlainLine)}"><span class="year-result-title">${oneLine}</span></span>
                         ${renderSeenMarkButton({ kind: "updates", key: updateKey, seen: !isUnseen })}
                       </li>
                     `;
@@ -784,6 +828,9 @@
         </div>
       </div>
     `;
+
+    wireTextTipTooltipSync();
+    scheduleTextTipTooltipSync(tabPanelEl);
 
     tabPanelEl.querySelector("[data-seen-all='updates']")?.addEventListener("click", () => {
       markAllUpdateItemsSeen();
