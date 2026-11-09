@@ -4449,7 +4449,7 @@ body.theme-light .bc-bd-aside-nav__tree {
 }
 
 .bc-bd-lede__scheme-host {
-  min-height: 12rem;
+  min-height: 8rem;
   background: linear-gradient(165deg, #f8fafc 0%, #eef2ff 55%, #f5f3ff 100%);
 }
 

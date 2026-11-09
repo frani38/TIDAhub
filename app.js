@@ -5039,10 +5039,6 @@
             const abs = hubSrcRaw.startsWith("./") ? hubSrcRaw.slice(2) : hubSrcRaw.replace(/^\//, "");
             return `./${abs.split("/").map((seg) => encodeURIComponent(seg)).join("/")}`;
           };
-          const hubImg = pack?.hubInlineImage && typeof pack.hubInlineImage === "object" ? pack.hubInlineImage : null;
-          const hubSrcFinal = encodeAssetSrc(hubImg?.src);
-          const hubAlt = String(hubImg?.alt || "Big Data y Blockchain").trim();
-          const hubCaption = String(hubImg?.caption || "").trim();
           const schemeImg =
             pack?.hubSchemeImage && typeof pack.hubSchemeImage === "object" ? pack.hubSchemeImage : null;
           const schemeSrcFinal = encodeAssetSrc(schemeImg?.src);
@@ -5053,12 +5049,6 @@
           const leadHtml = leadParas.map((p) => `<p>${allowBcHtml(p)}</p>`).join("");
           const closingHtml = closingPara
             ? `<p class="bc-bd-lede__closing">${allowBcHtml(closingPara)}</p>`
-            : "";
-          const figHtml = hubSrcFinal
-            ? `<figure class="bc-bd-lede__fig">
-                <img src="${escapeHtml(hubSrcFinal)}?v=${assetV}" alt="${escapeHtml(hubAlt)}" loading="lazy" decoding="async" />
-                ${hubCaption ? `<figcaption>${escapeHtml(hubCaption)}</figcaption>` : ""}
-              </figure>`
             : "";
           // SVG inline (no <img>): Oxanium y filtros se aplican en el DOM de la página.
           const schemeHtml = schemeSrcFinal
@@ -5075,8 +5065,8 @@
           }
           ledeEl.classList.remove("bc-bd-lede--split");
           ledeEl.classList.add("bc-bd-lede--flow");
-          // Imagen inset arriba-derecha dentro del texto; esquema SVG antes del párrafo de cierre.
-          ledeEl.innerHTML = `${figHtml}${leadHtml}${schemeHtml}${closingHtml}`;
+          // Texto + esquema SVG antes del párrafo de cierre (sin imagen flotante).
+          ledeEl.innerHTML = `${leadHtml}${schemeHtml}${closingHtml}`;
           ledeEl.hidden = !ledeEl.innerHTML.trim();
 
           const schemeHost = ledeEl.querySelector("[data-bc-scheme-host]");
