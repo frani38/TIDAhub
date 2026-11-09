@@ -2623,11 +2623,9 @@ body:has(.home-split.is-archive) .seen-toolbar {
   cursor: pointer;
 }
 
-/* Oxanium en mayúsculas: la tinta queda baja en la caja tipográfica; se sube el span. */
 .seen-toolbar__all-text {
   display: inline-block;
   line-height: 1;
-  transform: translateY(-0.2em);
 }
 
 .seen-toolbar__all:hover {
