@@ -280,6 +280,23 @@
     } catch {}
   }
 
+  function clearUnseenNewsUi(keys) {
+    const root = tabPanelEl || document;
+    const list = Array.isArray(keys) ? keys : [keys];
+    for (const raw of list) {
+      const k = String(raw || "").trim();
+      if (!k) continue;
+      root.querySelectorAll(`li.is-unseen-news[data-news-key="${CSS.escape(k)}"]`).forEach((row) => {
+        row.classList.remove("is-unseen-news");
+        row.querySelector(".seen-mark-btn")?.remove();
+      });
+    }
+    root.querySelectorAll("[data-seen-toolbar='news']").forEach((bar) => {
+      const scope = bar.closest(".home-year-results") || root;
+      if (!scope.querySelector("li.is-unseen-news")) bar.remove();
+    });
+  }
+
   function markNewsItemSeen(key) {
     const k = String(key || "").trim();
     if (!k) return;
@@ -288,11 +305,39 @@
       seen.add(k);
       saveSeenNewsIds(seen);
     }
-    // Quitar resalte en panel NOTICIAS e HISTÓRICO a la vez (misma clave).
-    const root = tabPanelEl || document;
-    root.querySelectorAll(`li.is-unseen-news[data-news-key="${CSS.escape(k)}"]`).forEach((row) => {
-      row.classList.remove("is-unseen-news");
-    });
+    clearUnseenNewsUi(k);
+  }
+
+  function markNewsItemsSeen(keys) {
+    const list = (Array.isArray(keys) ? keys : [])
+      .map((k) => String(k || "").trim())
+      .filter(Boolean);
+    if (!list.length) return;
+    const seen = loadSeenNewsIds();
+    let changed = false;
+    for (const k of list) {
+      if (seen.has(k)) continue;
+      seen.add(k);
+      changed = true;
+    }
+    if (changed) saveSeenNewsIds(seen);
+    clearUnseenNewsUi(list);
+  }
+
+  function renderSeenToolbar({ kind, label = "Marcar todas como vistas" }) {
+    const k = kind === "updates" ? "updates" : "news";
+    return `
+      <div class="seen-toolbar" data-seen-toolbar="${k}">
+        <button type="button" class="seen-toolbar__all" data-seen-all="${k}">${escapeHtml(label)}</button>
+      </div>
+    `;
+  }
+
+  function renderSeenMarkButton({ kind, key }) {
+    const k = String(key || "").trim();
+    if (!k) return "";
+    const attr = kind === "updates" ? "data-mark-update-seen" : "data-mark-news-seen";
+    return `<button type="button" class="seen-mark-btn" ${attr}="${escapeHtml(k)}" title="Marcar como vista" aria-label="Marcar como vista">✓</button>`;
   }
 
   function renderHomeNews(rawNews) {
@@ -424,7 +469,13 @@
         return `${y}-${m}`;
       })();
 
+      const seenNow = loadSeenNewsIds();
+      const yearUnseenKeys = list
+        .map((n) => getNewsItemKey(n))
+        .filter((k) => k && !seenNow.has(k));
+
       yearResultsEl.innerHTML = `
+        ${yearUnseenKeys.length ? renderSeenToolbar({ kind: "news" }) : ""}
         <div class="month-groups" aria-label="Histórico por meses">
           ${(() => {
             const buckets = new Map();
@@ -448,15 +499,15 @@
             }
 
             return orderedMonthKeys
-              .map((monthKey, idx) => {
+              .map((monthKey) => {
                 const openMonthKey = orderedMonthKeys.includes(currentMonthKey) ? currentMonthKey : orderedMonthKeys[0] || "";
                 const m = Number(String(monthKey).slice(5, 7));
                 const monthLabel = m >= 1 && m <= 12 ? monthNames[m - 1] : monthKey;
-                const seenNow = loadSeenNewsIds();
+                const seenIds = loadSeenNewsIds();
                 const rows = (buckets.get(monthKey) || [])
                   .map((n) => {
                     const newsKey = getNewsItemKey(n);
-                    const isUnseen = !seenNow.has(newsKey);
+                    const isUnseen = !seenIds.has(newsKey);
                     const titleEl = n.url
                       ? `<a class="year-result-title year-result-title-link" href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer" data-news-key="${escapeHtml(newsKey)}">${escapeHtml(n.title)}</a>`
                       : `<span class="year-result-title">${escapeHtml(n.title)}</span>`;
@@ -464,6 +515,7 @@
                       <li class="year-result${isUnseen ? " is-unseen-news" : ""}" data-news-key="${escapeHtml(newsKey)}">
                         ${renderPublishedAtMarkup(n.publishedAt, escapeHtml)}
                         ${titleEl}
+                        ${isUnseen ? renderSeenMarkButton({ kind: "news", key: newsKey }) : ""}
                       </li>
                     `;
                   })
@@ -481,6 +533,17 @@
           })()}
         </div>
       `;
+      yearResultsEl.querySelector("[data-seen-all='news']")?.addEventListener("click", () => {
+        markNewsItemsSeen(yearUnseenKeys);
+      });
+      yearResultsEl.querySelectorAll("[data-mark-news-seen]").forEach((btn) => {
+        btn.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const key = String(btn.getAttribute("data-mark-news-seen") || "").trim();
+          if (key) markNewsItemSeen(key);
+        });
+      });
       bindNewsSeenClicks(yearResultsEl);
 
       // Móvil/tablet: el listado queda fuera de vista (año se pulsa abajo en NOTICIAS).
@@ -569,8 +632,11 @@
       return `${y}-${m}`;
     })();
 
+    const hasUnseenUpdates = updates.some((u) => !seenUpdateIds.has(getUpdateItemKey(u)));
+
     tabPanelEl.innerHTML = `
       <div class="home-year-results">
+        ${hasUnseenUpdates ? renderSeenToolbar({ kind: "updates" }) : ""}
         <div class="month-groups" aria-label="Novedades por meses">
           ${(() => {
             const buckets = new Map();
@@ -660,6 +726,7 @@
                       <li class="year-result year-result--update${isUnseen ? " is-unseen-update" : ""}" data-update-key="${escapeHtml(updateKey)}"${isUnseen && !linkAttrs ? ' title="Clic para marcar como vista"' : ""}>
                         <span class="year-result-date">${escapeHtml(formatDateOnly(u.publishedAt))}</span>
                         <span class="year-result-title">${oneLine}</span>
+                        ${isUnseen ? renderSeenMarkButton({ kind: "updates", key: updateKey }) : ""}
                       </li>
                     `;
                   })
@@ -679,13 +746,18 @@
       </div>
     `;
 
-    const clearUnseenClass = (key) => {
-      if (!key) return;
-      tabPanelEl.querySelectorAll(`li.year-result[data-update-key="${CSS.escape(key)}"]`).forEach((li) => {
-        li.classList.remove("is-unseen-update");
-        li.removeAttribute("title");
+    tabPanelEl.querySelector("[data-seen-all='updates']")?.addEventListener("click", () => {
+      markAllUpdateItemsSeen();
+    });
+
+    tabPanelEl.querySelectorAll("[data-mark-update-seen]").forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const key = String(btn.getAttribute("data-mark-update-seen") || "").trim();
+        if (key) markUpdateItemSeen(key);
       });
-    };
+    });
 
     tabPanelEl.querySelectorAll("a.updates-item-link").forEach((a) => {
       a.addEventListener("click", (e) => {
@@ -693,17 +765,11 @@
         const href = String(a.getAttribute("href") || "");
         if (href && href !== "#" && !href.startsWith("#")) {
           // Enlace externo: marcar como vista y dejar el comportamiento por defecto.
-          if (key) {
-            markUpdateItemSeen(key);
-            clearUnseenClass(key);
-          }
+          if (key) markUpdateItemSeen(key);
           return;
         }
         e.preventDefault();
-        if (key) {
-          markUpdateItemSeen(key);
-          clearUnseenClass(key);
-        }
+        if (key) markUpdateItemSeen(key);
         const codexId = String(a.getAttribute("data-codex-id") || "").trim();
         const readingId = String(a.getAttribute("data-reading-id") || "").trim();
         const gameId = String(a.getAttribute("data-game-id") || "").trim();
@@ -726,7 +792,6 @@
         const key = String(li.getAttribute("data-update-key") || "").trim();
         if (!key) return;
         markUpdateItemSeen(key);
-        clearUnseenClass(key);
       });
     });
 
@@ -1542,15 +1607,51 @@
     } catch {}
   }
 
+  function clearUnseenUpdateUi(keys) {
+    if (!tabPanelEl) return;
+    const list = Array.isArray(keys) ? keys : [keys];
+    for (const raw of list) {
+      const k = String(raw || "").trim();
+      if (!k) continue;
+      tabPanelEl.querySelectorAll(`li.year-result[data-update-key="${CSS.escape(k)}"]`).forEach((li) => {
+        li.classList.remove("is-unseen-update");
+        li.removeAttribute("title");
+        li.style.cursor = "";
+        li.querySelector(".seen-mark-btn")?.remove();
+      });
+    }
+    if (!tabPanelEl.querySelector("li.is-unseen-update")) {
+      tabPanelEl.querySelector("[data-seen-toolbar='updates']")?.remove();
+    }
+  }
+
   function markUpdateItemSeen(key) {
     const k = String(key || "").trim();
     if (!k) return;
     bootstrapSeenUpdateIdsIfNeeded();
     const seen = loadSeenUpdateIds();
-    if (seen.has(k)) return;
-    seen.add(k);
+    if (!seen.has(k)) {
+      seen.add(k);
+      saveSeenUpdateIds(seen);
+    }
+    updateUpdatesIndicator({ nudge: false });
+    clearUnseenUpdateUi(k);
+  }
+
+  function markAllUpdateItemsSeen() {
+    bootstrapSeenUpdateIdsIfNeeded();
+    const items = collectAllUpdates();
+    const seen = loadSeenUpdateIds();
+    const keys = [];
+    for (const u of items) {
+      const k = getUpdateItemKey(u);
+      if (!k) continue;
+      keys.push(k);
+      seen.add(k);
+    }
     saveSeenUpdateIds(seen);
     updateUpdatesIndicator({ nudge: false });
+    clearUnseenUpdateUi(keys);
   }
 
   function hasUnseenUpdates() {

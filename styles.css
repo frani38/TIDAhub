@@ -2530,6 +2530,118 @@ body.theme-light .home-split.is-archive .year-result-date {
   background: rgba(122, 162, 255, 0.08);
 }
 
+.year-result:has(.seen-mark-btn) {
+  grid-template-columns: var(--year-result-date-col) minmax(0, 1fr) auto;
+}
+
+/* Marcar vistas (NOVEDADES / HISTÓRICO de noticias) */
+.seen-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto 0.55rem;
+  padding: 0 0.15rem;
+  box-sizing: border-box;
+}
+
+body:has(.home-split.is-archive) .seen-toolbar {
+  max-width: min(1420px, 100%);
+}
+
+.seen-toolbar__all {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: var(--display-font);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.38rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(122, 162, 255, 0.42);
+  background: rgba(122, 162, 255, 0.14);
+  color: #e8f0ff;
+  cursor: pointer;
+}
+
+.seen-toolbar__all:hover {
+  background: rgba(122, 162, 255, 0.24);
+  border-color: rgba(151, 184, 255, 0.55);
+}
+
+.seen-toolbar__all:focus-visible {
+  outline: 2px solid #9fc0ff;
+  outline-offset: 2px;
+}
+
+body:has(.home-split.is-archive) .seen-toolbar__all {
+  color: #0f172a;
+  background: rgba(212, 175, 55, 0.16);
+  border-color: rgba(184, 134, 11, 0.45);
+}
+
+body:has(.home-split.is-archive) .seen-toolbar__all:hover {
+  background: rgba(212, 175, 55, 0.28);
+  border-color: rgba(184, 134, 11, 0.65);
+}
+
+body:has(.home-split.is-archive) .seen-toolbar__all:focus-visible {
+  outline-color: #b8860b;
+}
+
+.seen-mark-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.7rem;
+  height: 1.7rem;
+  margin: 0;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(122, 162, 255, 0.5);
+  background: rgba(122, 162, 255, 0.16);
+  color: #e8f0ff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  align-self: start;
+  justify-self: end;
+  flex: 0 0 auto;
+}
+
+.seen-mark-btn:hover {
+  background: rgba(122, 162, 255, 0.3);
+  border-color: rgba(151, 184, 255, 0.7);
+}
+
+.seen-mark-btn:focus-visible {
+  outline: 2px solid #9fc0ff;
+  outline-offset: 2px;
+}
+
+body:has(.home-split.is-archive) .seen-mark-btn {
+  color: #0f172a;
+  background: rgba(212, 175, 55, 0.2);
+  border-color: rgba(184, 134, 11, 0.55);
+}
+
+body:has(.home-split.is-archive) .seen-mark-btn:hover {
+  background: rgba(212, 175, 55, 0.34);
+  border-color: rgba(184, 134, 11, 0.75);
+}
+
+body:has(.home-split.is-archive) .seen-mark-btn:focus-visible {
+  outline-color: #b8860b;
+}
+
+body.theme-light .seen-toolbar__all,
+body.theme-light .seen-mark-btn {
+  color: #0f172a;
+}
+
 .year-result-date {
   color: rgba(255, 255, 255, 0.82);
   font-size: 0.86rem;
