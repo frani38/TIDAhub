@@ -232,6 +232,13 @@ window.MYWEB_DATA = {
   // { publishedAt: "YYYY-MM-DDTHH:mm", title: "Título", text: "Texto breve", url: "https://..." }
   news: [
     {
+      publishedAt: "2026-11-10T10:02",
+      title:
+        'Julia Silge (Stack Overflow) sobre Python: "tiene todas las opciones para ser el lenguaje principal de mayor crecimiento"',
+      text: "La científica de datos Julia Silge destaca la hegemonía de Python por su curva de aprendizaje accesible, su papel central en datos e IA/ML y su ecosistema versátil (web, automatización, DevOps, analítica). Según patrones de Stack Overflow, sigue siendo el lenguaje más visitado y su expansión no muestra signos claros de desaceleración.",
+      url: "https://computerhoy.20minutos.es/software/julia-silge-cientifica-datos-sobre-programar-python-tiene-todas-las-opciones-para-ser-considerado-lenguaje-programacion-principal-mayor-crecimiento_7044121_0.html",
+    },
+    {
       publishedAt: "2026-11-09T08:17",
       title:
         "Cómo vaciar las papeleras ocultas de Linux y recuperar espacio de almacenamiento en el disco duro",
