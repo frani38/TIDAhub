@@ -232,6 +232,13 @@ window.MYWEB_DATA = {
   // { publishedAt: "YYYY-MM-DDTHH:mm", title: "Título", text: "Texto breve", url: "https://..." }
   news: [
     {
+      publishedAt: "2026-11-11T12:08",
+      title:
+        "Descubren una forma de espiar tu ordenador a través de las paredes usando IA y sin instalar malware",
+      text: "Deep-TEMPEST reconstruye en tiempo real lo que muestra un PC captando emisiones electromagnéticas de cables HDMI con una red neuronal, sin malware ni acceso a la red, e incluso a través de paredes. El sistema no deja rastro detectable; las mitigaciones pasan por blindaje, ferritas y entornos pensados para reducir fugas electromagnéticas.",
+      url: "https://computerhoy.20minutos.es/ciberseguridad/descubren-una-forma-espiar-tu-ordenador-traves-las-paredes-usando-ia-sin-instalar-malware_7058914_0.html",
+    },
+    {
       publishedAt: "2026-11-10T10:02",
       title:
         'Julia Silge (Stack Overflow) sobre Python: "tiene todas las opciones para ser el lenguaje principal de mayor crecimiento"',
