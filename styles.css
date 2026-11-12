@@ -64,7 +64,7 @@ body.theme-light header {
     linear-gradient(135deg, rgba(7, 12, 28, 0.64), rgba(10, 18, 40, 0.56) 45%, rgba(7, 12, 28, 0.64)),
     radial-gradient(980px 520px at -10% -45%, rgba(122, 162, 255, 0.2) 0%, transparent 62%),
     radial-gradient(880px 520px at 115% 0%, rgba(151, 184, 255, 0.16) 0%, transparent 65%),
-    url("./banners/banner-industry-tech.jpg");
+    url("./banners/banner-industry-tech.webp");
   background-size: cover, auto, auto, cover;
   background-position: center, center, center, center;
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
@@ -2867,7 +2867,7 @@ a.year-result-title-link:hover {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-image: url("./banners/pcb.png");
+  background-image: url("./banners/pcb.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -5736,7 +5736,7 @@ body.ai-assist-page .app::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: url("./banners/banner-ia.jpg");
+  background-image: url("./banners/banner-ia.webp");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

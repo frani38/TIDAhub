@@ -56,10 +56,10 @@
   const ICONS_VERSION = String(DATA?.siteMeta?.version || "1").trim().replace(/^v/i, "") || "1";
 
   const SECTION_ICONS = {
-    teoria: `<img src="./icons/teoria.png?v=${ICONS_VERSION}" alt="" decoding="async" loading="lazy" />`,
-    actividades: `<img src="./icons/actividades.png?v=${ICONS_VERSION}" alt="" decoding="async" loading="lazy" />`,
-    practicas: `<img src="./icons/practicas.png?v=${ICONS_VERSION}" alt="" decoding="async" loading="lazy" />`,
-    recursos: `<img src="./icons/recursos.png?v=${ICONS_VERSION}" alt="" decoding="async" loading="lazy" />`
+    teoria: `<img src="./icons/teoria.webp?v=${ICONS_VERSION}" alt="" decoding="async" loading="lazy" />`,
+    actividades: `<img src="./icons/actividades.webp?v=${ICONS_VERSION}" alt="" decoding="async" loading="lazy" />`,
+    practicas: `<img src="./icons/practicas.webp?v=${ICONS_VERSION}" alt="" decoding="async" loading="lazy" />`,
+    recursos: `<img src="./icons/recursos.webp?v=${ICONS_VERSION}" alt="" decoding="async" loading="lazy" />`
   };
 
   const STAGE_OPTIONS = {
@@ -122,7 +122,7 @@
     const mourningRibbonHtml = mourningRibbon
       ? `<img
             class="welcome-mourning-watermark"
-            src="./image/lazo_negro-remove.png?v=${assetV}"
+            src="./image/lazo_negro-remove.webp?v=${assetV}"
             alt=""
             aria-hidden="true"
             draggable="false"
@@ -3221,7 +3221,7 @@
         <div class="about-section__layout">
           <div class="about-section__photo">
             <img
-              src="./image/yo.png?v=${escapeHtml(String(window.MYWEB_ASSET_V || DATA.siteMeta?.version || "").trim())}"
+              src="./image/yo.webp?v=${escapeHtml(String(window.MYWEB_ASSET_V || DATA.siteMeta?.version || "").trim())}"
               alt="Fotografía del autor del sitio"
               draggable="false"
               decoding="async"
@@ -3502,7 +3502,7 @@
       <button type="button" class="codex-card unit-material-card" data-codex-id="${escapeHtml(it.id)}">
         <div class="codex-card__icon unit-material-card__icon">
           <img
-            src="./icons/${escapeHtml(it.icon)}.png?v=${ICONS_VERSION}"
+            src="./icons/${escapeHtml(it.icon)}.webp?v=${ICONS_VERSION}"
             alt=""
             decoding="async"
             loading="lazy"
@@ -3854,7 +3854,7 @@
                 title="Inicio de la sección"
               >
                 <img
-                  src="./icons/${escapeHtml(it.icon)}.png?v=${ICONS_VERSION}"
+                  src="./icons/${escapeHtml(it.icon)}.webp?v=${ICONS_VERSION}"
                   alt=""
                   decoding="async"
                   loading="lazy"
