@@ -232,6 +232,13 @@ window.MYWEB_DATA = {
   // { publishedAt: "YYYY-MM-DDTHH:mm", title: "Título", text: "Texto breve", url: "https://..." }
   news: [
     {
+      publishedAt: "2026-11-16T10:33",
+      title:
+        'Guido van Rossum anuncia el fallecimiento de Tim Peters: "sin Peters, Python no sería lo que es hoy"',
+      text: "El creador de Python homenajea a Tim Peters (1952–2026), autor del Zen of Python (PEP 20) y de Timsort, mentor temprano en el diseño del lenguaje y figura clave de la comunidad (también conocido como «Timbot»). Peters aportó además herramientas como doctest y timeit, y formó parte de la junta de la Python Software Foundation.",
+      url: "https://computerhoy.20minutos.es/software/guido-van-rossum-creador-python-anuncia-fallecimiento-tim-peters-creador-las-miticas-19-lineas-para-mi-era-un-mentor-sin-peters-python-no-seria-que-es-hoy_7060741_0.html",
+    },
+    {
       publishedAt: "2026-11-11T12:08",
       title:
         "Descubren una forma de espiar tu ordenador a través de las paredes usando IA y sin instalar malware",
