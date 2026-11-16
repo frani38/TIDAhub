@@ -25,7 +25,7 @@ Para una unidad con `id` = `unitId`:
 content/<unitId>/
 ```
 
-Los nombres por defecto se alinean con `sectionTabs` (p. ej. `teoria.pdf`, `actividades.pdf`, …), salvo rutas propias en la unidad. En la práctica pueden ser **PDF** u otros formatos servibles (**PNG / JPG / WebP**, etc.) según lo que referencie `data.js` y acepte la interfaz.
+Los nombres por defecto se alinean con `sectionTabs` (p. ej. `teoria.pdf`, `actividades.pdf`, …), salvo rutas propias en la unidad. En la práctica pueden ser **PDF** u otros formatos servibles; para imágenes raster se prioriza **WebP** (mejor peso/calidad que JPG/PNG) y **SVG** para esquemas.
 
 Ejemplo: `./content/<unitId>/teoria.pdf` (relativo a la raíz del sitio).
 
@@ -41,7 +41,7 @@ Si falta un fichero, el enlace puede abrir una URL inexistente hasta que exista.
 ## Buenas prácticas
 
 - Prioriza **claridad visual** e ideas clave frente a documentos densos.
-- Evita ficheros enormes (Pages y el navegador lo notan); comprime imágenes antes de subirlas.
+- Evita ficheros enormes (Pages y el navegador lo notan); comprime imágenes antes de subirlas y, si son raster, usa **WebP**.
 - Respeta derechos de terceros; el sitio declara **CC BY-NC-SA 4.0**.
 - Tras publicar, comprueba la unidad en DOCENCIA con **Ctrl+F5** (la primera vez tras un bump de assets).
 
@@ -59,9 +59,11 @@ Si falta un fichero, el enlace puede abrir una URL inexistente hasta que exista.
 | Carpeta | Uso |
 | --- | --- |
 | `content/<unitId>/` | Materiales DOCENCIA por unidad |
-| `books/` | Portadas de **Lecturas** (CÓDEX) |
-| `softskills/` | Ilustraciones de fichas **Soft Skills** (CÓDEX) |
-| `icons/` | Iconos de hub CÓDEX / DOCENCIA |
-| `banners/`, `image/`, `logo/` | Identidad y decoración |
+| `books/` | Portadas de **Lecturas** (CÓDEX, WebP) |
+| `softskills/` | Ilustraciones de fichas **Soft Skills** (CÓDEX, WebP) |
+| `media/` | Pósteres **MEDIA** (CÓDEX, WebP) |
+| `icons/` | Iconos de hub CÓDEX / DOCENCIA (WebP) |
+| `blockchain_bigdata/` | Figuras BC/BD (SVG + refs WebP) |
+| `banners/`, `image/`, `logo/` | Identidad y decoración (WebP / SVG) |
 
 Visión general: `README.md`. Publicación: `github_TIDAhub.md`. Historial: `versions.md`.

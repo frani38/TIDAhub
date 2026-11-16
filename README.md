@@ -6,7 +6,7 @@ Hub web **estático** de **Tecnología, Ingeniería y Digitalización Aplicada**
 - **Web publicada (GitHub Pages):** [frani38.github.io/TIDAhub](https://frani38.github.io/TIDAhub/)
 - Guía de puesta en marcha online: **`github_TIDAhub.md`**
 - Historial de versiones: **`versions.md`**
-- Versión actual del pie: ver `data.js` → `siteMeta.version` (p. ej. **1.10.1**)
+- Versión actual del pie: ver `data.js` → `siteMeta.version` (hoy **1.11.56**)
 
 ## Objetivo del proyecto
 
@@ -16,7 +16,7 @@ Hub web **estático** de **Tecnología, Ingeniería y Digitalización Aplicada**
 - **Búsqueda rápida** (cabecera): resultados globales (docencia, noticias, legislación y entradas indexadas en `data.js`), sin duplicar enlaces genéricos del menú.
 - **PROYECTOS**: evidencias y trabajos que muestran aplicación real de los contenidos.
 - **LEGISLACIÓN**: normativa de referencia para el marco curricular (`data.js` → `legislation`); en móvil, columnas **Nacional** → **Asturias**.
-- **CÓDEX**: catálogo transversal (lecturas con portadas en `books/`, media, juegos, enlaces, **Hacking ético**, **Blockchain y Big Data**, **Soft Skills**, etc.) según `data.js`. Soft Skills: 11 fichas (`softSkills` + imágenes en `softskills/`) con definición, ejemplos académico/laboral, filtro por dominio e ilustraciones; avisos en NOVEDADES vía `softSkills.changelog`. Blockchain y Big Data: intro + dos columnas teóricas/ejemplos (`blockchainBigData`, figuras en `blockchain_bigdata/`) y referencias; aviso vía `blockchainBigData.changelog`. Atrás desde un subapartado vuelve al hub (`codexId` en el historial). En móvil: título + ← VOLVER en la misma línea; al abrir un subapartado el scroll vuelve arriba (logo + filtros).
+- **CÓDEX**: catálogo transversal (lecturas con portadas WebP en `books/`, media, juegos, enlaces, **Hacking ético**, **Blockchain y Big Data**, **Soft Skills**, etc.) según `data.js`. Soft Skills: 11 fichas (`softSkills` + imágenes WebP en `softskills/`) con definición, ejemplos académico/laboral, filtro por dominio e ilustraciones; avisos en NOVEDADES vía `softSkills.changelog`. Blockchain y Big Data: hub intro textual + dos columnas teóricas/ejemplos (`blockchainBigData`, figuras en `blockchain_bigdata/`, preferible SVG) y referencias; aviso vía `blockchainBigData.changelog`. Atrás desde un subapartado vuelve al hub (`codexId` en el historial). En móvil: título + ← VOLVER en la misma línea; al abrir un subapartado el scroll vuelve arriba (logo + filtros).
 - **SOBRE MÍ**: contexto del autor/proyecto, imagen en `./image/` y **publicaciones académicas** (DOI/ISBN cuando aplica).
 - **AYUDA**: formulario de contacto con envío real vía **Web3Forms**; tras enviar, **Enviado** y retorno a INICIO. Política de privacidad en la propia sección (título AYUDA + ← VOLVER al margen en móvil; scroll al tope al abrir) y en **`privacidad.html`**.
 - Tipografías **Orbitron / Oxanium** embebidas en `./fonts/` (sin depender de Google Fonts).
@@ -50,9 +50,11 @@ MyWeb/   (repo TIDAhub)
 ├── fonts/             # Orbitron, Oxanium (woff2)
 ├── image/             # p. ej. retrato SOBRE MÍ
 ├── banners/
-├── icons/             # iconos de CÓDEX / DOCENCIA (optimizados)
-├── books/             # portadas de lecturas
-├── softskills/        # fichas visuales Soft Skills
+├── icons/             # iconos de CÓDEX / DOCENCIA (WebP)
+├── books/             # portadas de lecturas (WebP)
+├── softskills/        # fichas visuales Soft Skills (WebP)
+├── media/             # pósteres MEDIA (WebP)
+├── blockchain_bigdata/# figuras BC/BD (SVG + refs WebP)
 ├── logo/
 ├── content/
 │   └── <unitId>/      # materiales por apartado (PDF, imágenes, infografías, …)
@@ -77,9 +79,9 @@ Abrir `index.html` directamente puede funcionar; es preferible un servidor HTTP 
 - **`levels`**: etapa → niveles → materias → unidades (`id`, `label`, `code`, opcional `intro`, `pdfs` / rutas de material).
 - **`sectionTabs`**: id de pestaña, etiqueta y fichero por defecto de cada apartado.
 - **`news`**, **`updates`**, **`legislation`**.
-- **`readings`**, **`games`**, **`media`** (CÓDEX; `addedAt` y portadas/imágenes locales).
-- **`softSkills`**: intro, `changelog` (NOVEDADES de sección), `items` (dominios, definición, ejemplos, `image` en `./softskills/`).
-- **`blockchainBigData`**: intro, `changelog`, `columns` (Blockchain / Big Data con secciones, ejemplos e imágenes en `./blockchain_bigdata/`) y `refs`.
+- **`readings`**, **`games`**, **`media`** (CÓDEX; `addedAt` y portadas/imágenes locales en **WebP**).
+- **`softSkills`**: intro, `changelog` (NOVEDADES de sección), `items` (dominios, definición, ejemplos, `image` en `./softskills/*.webp`).
+- **`blockchainBigData`**: intro, `changelog`, `columns` (Blockchain / Big Data con secciones, ejemplos e imágenes en `./blockchain_bigdata/`, preferible **SVG** para esquemas) y `refs`.
 - **`siteSearchEntries`**, **`contentIndex`** (+ opcional **`contentIndexZones`**).
 - **`siteMeta`**: `version` y `updated` (pie del sitio y anti-caché de assets).
 
@@ -126,7 +128,7 @@ Abrir `index.html` directamente puede funcionar; es preferible un servidor HTTP 
 
 ### Versión del sitio (`siteMeta` en `data.js`)
 
-Formato **MAJOR.MINOR.PATCH** (p. ej. `1.10.1` → pie `v1.10.0`). Fuente única: `siteMeta.version`. Historial narrativo: `versions.md`. Anti-caché de CSS/JS/iconos: `window.MYWEB_ASSET_V` en HTML alineado con esa versión; `data.js` se refresca vía `version-boot.js` sin exigir bump.
+Formato **MAJOR.MINOR.PATCH** (p. ej. `1.11.56` → pie `v1.11.56`). Fuente única: `siteMeta.version`. Historial narrativo: `versions.md`. Anti-caché de CSS/JS/iconos: `window.MYWEB_ASSET_V` en HTML alineado con esa versión; `data.js` se refresca vía `version-boot.js` sin exigir bump.
 
 | Dígito | Cuándo |
 | --- | --- |
@@ -150,4 +152,4 @@ La versión **solo** se incrementa cuando cambia la web que ve el visitante (o s
 - Completar unidades en `content/<unitId>/` con material visual (infografías, pósters, presentaciones, PDF selectivos).
 - Ampliar CÓDEX / Soft Skills / `contentIndex` / `siteSearchEntries`.
 - Mantener `news`, `updates`, `legislation`, `softSkills.changelog` y `blockchainBigData.changelog` al día.
-- Mantener iconos/portadas/fichas (`books/`, `softskills/`) razonablemente ligeros al añadir medios nuevos.
+- Mantener iconos/portadas/fichas (`books/`, `softskills/`, `media/`, `icons/`) en **WebP** (o **SVG** para diagramas) y razonablemente ligeros al añadir medios nuevos.

@@ -1496,3 +1496,15 @@ Nota: **1.1.16** y **1.1.17** fueron bumps por contenido; **1.5.1** fue el últi
 | **1.10.26** | CÓDEX: aside sticky (logo + filtros/nav) |
 | **1.10.27** | CÓDEX: aside fijo real (fixed + sync) |
 | **1.10.28** | CÓDEX: aside fijo sin arrastre al scroll |
+| **1.10.29** | Título de sección fijo bajo cabecera (escritorio) |
+| **1.10.31** | Corrige doctype HTML corrupto sobre la cabecera |
+| **1.10.35–.36** | CÓDEX: HACKING Y CIBERSEGURIDAD (nombre de sección) |
+| **1.10.40–.56** | Asistencia IA / Privacidad: banner, tipografía, scroll |
+| **1.11.0** | Oxanium en texto de lectura; Orbitron en marca |
+| **1.11.2** | Orbitron en botones/títulos/rótulos CÓDEX |
+| **1.11.42–.43** | Viewport <1680px: títulos/aside dejan de ser fixed |
+| **1.11.44–.55** | Hub Blockchain/Big Data: iteración visual → intro textual |
+| **1.11.51** | NOVEDADES: menos espacio fecha–texto |
+| **1.11.56** | Assets raster del sitio a WebP (~51% menos peso) |
+
+Nota (docs, sin bump): informe LaTeX y `*.md` alineados a **1.11.56** (WebP, hub BC/BD textual, URL `TIDAhub`).

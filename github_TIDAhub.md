@@ -144,7 +144,7 @@ Formato de **tres dígitos** (ej. `1.2.22` → se muestra `v1.2.22`):
   - **No bumpear** en altas/ediciones solo de contenido editorial (libros, juegos, media, noticias, legislación, materiales de `content/`/`books/`/`softskills/` si solo son catálogo, …) ni en documentación/reglas puras (`README`, `versions.md`, informe LaTeX, `.cursor/rules`, …)
 - Publicación automática a `main`: `.cursor/rules/auto-publish.mdc`
 
-Versión actual de referencia: ver `siteMeta.version` en `data.js` (p. ej. **1.10.1**) e historial en `versions.md`.
+Versión actual de referencia: ver `siteMeta.version` en `data.js` (hoy **1.11.56**) e historial en `versions.md`.
 
 ---
 
@@ -260,7 +260,7 @@ Si cambias de proveedor de mensajería, actualiza esos textos a la vez que el c�
 - **Layout híbrido:** lienzo de diseño 1680px en PC; ventana más estrecha → scroll H+V (sin zoom). El layout compacto solo en dispositivos táctiles (`hover: none` + `pointer: coarse`).  
 - **Móvil/tablet:** cabecera y lema adaptativos; CÓDEX con título+VOLVER en una línea, iconos de sección dimensionados y scroll al tope al abrir subapartados; avisos EN CONSTRUCCIÓN / PRÓXIMAMENTE con tipografía contenida; pie no fijo.  
 - **Soft Skills (1.6.x–1.8.x):** fichas en CÓDEX (`data.js` → `softSkills`, imágenes en `softskills/`), filtro por dominio, tags en la barra del título, colores naturales sin filtros CSS; NOVEDADES de sección vía `changelog`.
-- **Blockchain y Big Data (1.9.0):** CÓDEX (`blockchainBigData`), intro + columnas paralelas, figuras en `blockchain_bigdata/`, referencias NIST/DigComp/AEPD; aviso en NOVEDADES vía `changelog`.  
+- **Blockchain y Big Data (1.9.0+):** CÓDEX (`blockchainBigData`), hub intro textual + columnas paralelas, figuras en `blockchain_bigdata/` (preferible SVG; refs WebP), referencias NIST/DigComp/AEPD; aviso en NOVEDADES vía `changelog`.  
 - **Fuentes locales** en `fonts/`: no dependen de CDNs bloqueados.  
 - **Historial del navegador:** hashes + `history.pushState` para atrás/adelante entre secciones; subapartados de CÓDEX registran `codexId` (atrás → hub); `history.scrollRestoration = "manual"`.  
 - **Web3Forms free:** honeypot + antispam; Restrict to Domains solo en Pro.
@@ -276,7 +276,7 @@ Si cambias de proveedor de mensajería, actualiza esos textos a la vez que el c�
 | CSS/JS/iconos antiguos | Comprobar que `MYWEB_ASSET_V` / `siteMeta.version` se bumpeó; Ctrl+F5 |
 | Noticias/libros no aparecen | `version-boot.js` debe cargar `data.js` sin caché; Ctrl+F5; ¿push a `main`? |
 | Web cortada en PC estrecho | Debe haber scroll H+V con lienzo 1680px (no reflow móvil); Ctrl+F5 |
-| Iconos o portadas muy lentos | Tamaño de ficheros en `icons/` / `books/`; preferir PNG/JPG ligeros |
+| Iconos o portadas muy lentos | Tamaño de ficheros en `icons/` / `books/` / `media/`; preferir **WebP** (diagramas en **SVG**) |
 | Pie con versión antigua | Caché de HTML/assets; forzar recarga tras publicar (`?v=` / Ctrl+F5) |
 | AYUDA no envía | Ver §7.9 (clave, dominio, cupo, spam) |
 | `git` no se reconoce | Reabrir terminal tras instalar Git; comprobar PATH |
