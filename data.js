@@ -232,6 +232,13 @@ window.MYWEB_DATA = {
   // { publishedAt: "YYYY-MM-DDTHH:mm", title: "Título", text: "Texto breve", url: "https://..." }
   news: [
     {
+      publishedAt: "2026-11-17T08:45",
+      title:
+        "Euro-Office, la alternativa europea a Microsoft Office, ya se puede descargar gratis en escritorio (Windows, macOS y Linux)",
+      text: "La suite ofimática de código abierto Euro-Office (Nextcloud Office Desktop) llega a Windows 11, macOS y Linux con trabajo sin conexión, tipografías del sistema, firmas digitales y edición colaborativa vía Nextcloud. Impulsada por un consorcio europeo (Nextcloud, IONOS, Open-Xchange, Office.eu), es gratuita, soberana y compatible con formatos Microsoft y ODF; el código está en GitHub bajo AGPL v3.",
+      url: "https://computerhoy.20minutos.es/software/euro-office-alternativa-europea-microsoft-office-ya-esta-disponible-para-descargar-gratis-version-escritorio-para-windows-macos-linux_7061439_0.html",
+    },
+    {
       publishedAt: "2026-11-16T10:33",
       title:
         'Guido van Rossum anuncia el fallecimiento de Tim Peters: "sin Peters, Python no sería lo que es hoy"',
