@@ -232,6 +232,13 @@ window.MYWEB_DATA = {
   // { publishedAt: "YYYY-MM-DDTHH:mm", title: "Título", text: "Texto breve", url: "https://..." }
   news: [
     {
+      publishedAt: "2026-11-18T12:40",
+      title:
+        "Google afirma que hackers rusos han llevado a cabo el primer ciberataque de IA totalmente automatizado",
+      text: "El Grupo de Inteligencia de Amenazas de Google y Mandiant documentan el primer ataque de principio a fin gestionado por IA sin intervención humana, atribuido a operadores de habla rusa y dirigido a webs francesas (educación, entretenimiento y medios). El núcleo es «exploit_agent»: analiza parches, genera exploits, explora redes, adivina contraseñas e instala webshells de forma autónoma; prioriza velocidad frente al sigilo y Google avisa de que las campañas autónomas se volverán habituales.",
+      url: "https://computerhoy.20minutos.es/ciberseguridad/google-afirma-que-hackers-rusos-han-llevado-cabo-primer-ciberataque-ia-totalmente-automatizado_7062123_0.html",
+    },
+    {
       publishedAt: "2026-11-17T08:45",
       title:
         "Euro-Office, la alternativa europea a Microsoft Office, ya se puede descargar gratis en escritorio (Windows, macOS y Linux)",
