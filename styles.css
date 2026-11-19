@@ -733,8 +733,8 @@ main {
   position: relative;
   --home-news-w: var(--quick-search-track-w);
   /*
-    Reserva el panel NOTICIAS. Con news a right:-1rem (entra en el padding 1rem de .app),
-    padding-right = news-w deja 1rem de hueco texto↔noticias = padding izq. de .app.
+    Reserva el panel NOTICIAS (mismo ancho y borde derecho que búsqueda+BUSCAR:
+    right:0 dentro del card, alineado al padding 1rem de header-inner / .app).
   */
   padding-right: var(--home-news-w);
   box-sizing: border-box;
@@ -2842,14 +2842,13 @@ a.year-result-title-link:hover {
   user-select: text;
   cursor: default;
   /*
-    Absolute respecto a .content-card.is-home (no fixed al viewport):
-    así queda pegado al borde derecho del diseño también con scroll horizontal,
-    sin solapar el texto ni dejar bandas blancas.
+    Absolute respecto a .content-card.is-home (no fixed al viewport).
+    right:0 = mismo borde derecho que la búsqueda de cabecera (padding 1rem).
   */
   position: absolute;
   z-index: 10;
   top: 0;
-  right: -1rem; /* compensa el padding horizontal de .app */
+  right: 0;
   bottom: auto;
   width: var(--home-news-w);
   max-width: var(--home-news-w);
