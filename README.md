@@ -100,7 +100,8 @@ Abrir `index.html` directamente puede funcionar; es preferible un servidor HTTP 
 
 ### NOVEDADES
 
-- Cada entrada no visitada (manual o LIBRO/JUEGO/MEDIA) lleva **resalte azul**.
+- Formato: **`SECCIÓN: subapartado - elemento (descripción breve)`** (p. ej. `CÓDEX: MEDIA - Título (…)`). Catálogo y changelogs de sección lo generan así; en avisos manuales `title` = sección y `text` = el resto enlazable.
+- Cada entrada no visitada lleva **resalte azul**.
 - Al abrir la ficha (o acusar recibo en avisos sin enlace) se marca vista en `localStorage` y se quita el resalte.
 - El botón **NOVEDADES** brilla mientras quede alguna pendiente; al entrar en INICIO puede hacer un nudge breve (~10 s).
 - Seed inicial: entradas con más de ~14 días se consideran ya vistas para no resaltar todo el archivo histórico.

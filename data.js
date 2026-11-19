@@ -11,7 +11,7 @@ window.MYWEB_DATA = {
     El pie muestra "v" + version al cargar.
   */
   siteMeta: {
-    version: "1.11.65",
+    version: "1.11.66",
     updated: "2026-11-19",
     assetBust: "",
     /* Temporal: lazo negro (marca de agua) en INICIO. Pon false para quitarlo. */
@@ -449,13 +449,13 @@ window.MYWEB_DATA = {
   ],
 
   // Novedades/mejoras de la web (panel NOVEDADES).
-  // Formato:
-  // { publishedAt: "YYYY-MM-DDTHH:mm", title: "Etiqueta breve", text: "Texto descriptivo (enlazable)",
+  // Formato visible: «SECCIÓN: subapartado - elemento (descripción breve)».
+  // Manuales:
+  // { publishedAt: "YYYY-MM-DDTHH:mm", title: "SECCIÓN", text: "subapartado - elemento (descripción)",
   //   navTarget?: "codex"|"docencia"|..., codexId?: "codex_lr", readingId?/gameId?/mediaId?, url? }
-  // Regla de enlace: la etiqueta queda en texto normal; el hipervínculo es siempre el texto descriptivo
-  // (título del libro/juego/media, blurb Soft Skills, o `text` en avisos manuales).
-  // Los libros/juegos/media con `addedAt` generan entradas automáticas LIBRO:/JUEGO:/MEDIA:.
-  // Soft Skills: avisos de sección vía softSkills.changelog (un aviso por cambio, no por ficha).
+  // Regla de enlace: la sección (title) es texto fijo; el hipervínculo es `text`.
+  // Catálogo CÓDEX: lecturas/juegos/media con `addedAt` → «CÓDEX: Lecturas|Juegos|MEDIA - título (desc)».
+  // Soft Skills / Blockchain: changelog de sección → «CÓDEX: Soft Skills|Blockchain y Big Data - {text}».
   updates: [],
 
   // Lecturas recomendadas (CÓDEX → LECTURAS RECOMENDADAS)
@@ -1711,7 +1711,7 @@ window.MYWEB_DATA = {
     changelog: [
       {
         publishedAt: "2026-11-03T19:40",
-        text: "Nuevo apartado Blockchain y Big Data en CÓDEX: introducción, teoría por temas (Blockchain / Big Data), ejemplos didácticos, figuras y referencias técnicas."
+        text: "Nuevo apartado: introducción, teoría por temas (Blockchain / Big Data), ejemplos didácticos, figuras y referencias técnicas."
       }
     ],
     columns: [
@@ -2217,7 +2217,7 @@ window.MYWEB_DATA = {
 
   // Soft Skills (CÓDEX → SOFT SKILLS)
   // image: ficha visual en ./softskills/
-  // changelog: avisos de sección en NOVEDADES → «Soft Skills: {text}» (uno por cambio, no por ficha).
+  // changelog: avisos en NOVEDADES → «CÓDEX: Soft Skills - {text}» (uno por cambio, no por ficha).
   // domains canónicos: cognición | colaboración | comunicación | autogestión | digital
   softSkills: {
     intro:
@@ -2225,7 +2225,7 @@ window.MYWEB_DATA = {
     changelog: [
       {
         publishedAt: "2026-11-03T12:30",
-        text: "Nuevo apartado Soft Skills en CÓDEX: fichas de competencias humanas con definición, ejemplos educativo/laboral, filtro por dominio y referencias internacionales."
+        text: "Nuevo apartado: fichas de competencias humanas con definición, ejemplos educativo/laboral, filtro por dominio y referencias internacionales."
       }
     ],
     items: [

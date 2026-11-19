@@ -736,8 +736,6 @@
                   );
                 const rows = list
                   .map((u) => {
-                    const safeTitle = escapeHtml(u.title);
-                    const safeText = u.text ? escapeHtml(u.text) : "";
                     const linkAttrs = (() => {
                       const externalUrl = String(u.__url || "").trim();
                       if (externalUrl) {
@@ -764,51 +762,53 @@
                     const linkAttrsWithKey = linkAttrs
                       ? `${linkAttrs} data-update-key="${escapeHtml(updateKey)}"`
                       : "";
-                    // Regla NOVEDADES: la etiqueta (LIBRO:/JUEGO:/…) es texto fijo;
-                    // el hipervínculo va siempre en el texto descriptivo.
+                    // Regla NOVEDADES: etiqueta de sección fija (p. ej. «CÓDEX:»);
+                    // el hipervínculo es «subapartado - elemento (descripción breve)».
                     const linkedName = (labelClass, name) => {
                       const plain = String(name || "");
                       return linkAttrsWithKey
                         ? `<a class="updates-item-link ${labelClass}" ${linkAttrsWithKey}>${escapeHtml(plain)}</a>`
                         : `<span class="${labelClass}">${escapeHtml(plain)}</span>`;
                     };
-                    const fullPlainLine = (() => {
-                      if (u.__kind === "reading") return `LIBRO: ${String(u.__bookTitle || "").trim()}`;
-                      if (u.__kind === "game") return `JUEGO: ${String(u.__gameTitle || "").trim()}`;
-                      if (u.__kind === "media") return `MEDIA: ${String(u.__mediaTitle || "").trim()}`;
+                    const detailPlain = (() => {
+                      if (u.__updateDetail) return String(u.__updateDetail).trim();
+                      if (u.__kind === "reading") return `Lecturas - ${String(u.__bookTitle || "").trim()}`;
+                      if (u.__kind === "game") return `Juegos - ${String(u.__gameTitle || "").trim()}`;
+                      if (u.__kind === "media") return `MEDIA - ${String(u.__mediaTitle || "").trim()}`;
                       if (u.__kind === "softskills") {
-                        return `Soft Skills: ${String(u.__softSkillsBlurb || u.text || "").trim()}`;
+                        return `Soft Skills - ${String(u.__softSkillsBlurb || u.text || "").trim()}`;
                       }
                       if (u.__kind === "blockchain") {
-                        return `Blockchain y Big Data: ${String(u.__blockchainBlurb || u.text || "").trim()}`;
+                        return `Blockchain y Big Data - ${String(u.__blockchainBlurb || u.text || "").trim()}`;
                       }
-                      const manualDesc = String(u.text || "").trim();
-                      if (manualDesc) return `${String(u.title || "").trim()}: ${manualDesc}`;
-                      return String(u.title || "").trim();
+                      return String(u.text || u.title || "").trim();
                     })();
-                    const oneLine = (() => {
-                      if (u.__kind === "reading") {
-                        return `LIBRO: ${linkedName("updates-book-title", u.__bookTitle || "")}`;
+                    const sectionLabel = (() => {
+                      if (
+                        u.__kind === "reading" ||
+                        u.__kind === "game" ||
+                        u.__kind === "media" ||
+                        u.__kind === "softskills" ||
+                        u.__kind === "blockchain"
+                      ) {
+                        return "CÓDEX";
                       }
-                      if (u.__kind === "game") {
-                        return `JUEGO: ${linkedName("updates-game-title", u.__gameTitle || "")}`;
-                      }
-                      if (u.__kind === "media") {
-                        return `MEDIA: ${linkedName("updates-media-title", u.__mediaTitle || "")}`;
-                      }
-                      if (u.__kind === "softskills") {
-                        return `Soft Skills: ${linkedName("updates-softskills-title", u.__softSkillsBlurb || u.text || "")}`;
-                      }
-                      if (u.__kind === "blockchain") {
-                        return `Blockchain y Big Data: ${linkedName("updates-blockchain-title", u.__blockchainBlurb || u.text || "")}`;
-                      }
-                      // Avisos manuales: etiqueta = título; enlace = texto descriptivo (o el título si no hay texto).
-                      const manualDesc = String(u.text || "").trim();
-                      if (manualDesc) {
-                        return `${safeTitle}: ${linkedName("updates-manual-title", manualDesc)}`;
-                      }
-                      return linkedName("updates-manual-title", u.title || "");
+                      return String(u.title || "").trim() || "NOVEDAD";
                     })();
+                    const detailClass =
+                      u.__kind === "reading"
+                        ? "updates-book-title"
+                        : u.__kind === "game"
+                          ? "updates-game-title"
+                          : u.__kind === "media"
+                            ? "updates-media-title"
+                            : u.__kind === "softskills"
+                              ? "updates-softskills-title"
+                              : u.__kind === "blockchain"
+                                ? "updates-blockchain-title"
+                                : "updates-manual-title";
+                    const fullPlainLine = `${sectionLabel}: ${detailPlain}`;
+                    const oneLine = `${escapeHtml(sectionLabel)}: ${linkedName(detailClass, detailPlain)}`;
                     const isUnseen = !seenUpdateIds.has(updateKey);
                     const rowTip =
                       isUnseen && !linkAttrs
@@ -1494,6 +1494,23 @@
       })
       .filter(Boolean);
 
+    const shortUpdateDesc = (value, maxLen = 110) => {
+      const t = String(value || "")
+        .replace(/\s+/g, " ")
+        .trim();
+      if (!t) return "";
+      if (t.length <= maxLen) return t;
+      const cut = t.slice(0, maxLen - 1);
+      const at = cut.lastIndexOf(" ");
+      return `${(at > 40 ? cut.slice(0, at) : cut).trimEnd()}…`;
+    };
+
+    const catalogUpdateLine = (subsection, title, description) => {
+      const name = String(title || "").trim();
+      const blurb = shortUpdateDesc(description);
+      return blurb ? `${subsection} - ${name} (${blurb})` : `${subsection} - ${name}`;
+    };
+
     const readingsRaw = Array.isArray(DATA.readings) ? DATA.readings : [];
     const readingUpdates = readingsRaw
       .map((r, idx) => {
@@ -1501,10 +1518,11 @@
         const title = String(r?.title || "").trim();
         const id = String(r?.id || "").trim();
         if (!publishedAt || !title) return null;
+        const detail = catalogUpdateLine("Lecturas", title, r?.description);
         const n = normalizeUpdateItem({
           publishedAt,
-          title: `LIBRO: ${title}`,
-          text: ""
+          title: "CÓDEX",
+          text: detail
         });
         if (!n) return null;
         return {
@@ -1513,6 +1531,7 @@
           __ms: parsePublishedAtToMs(n.publishedAt),
           __kind: "reading",
           __bookTitle: title,
+          __updateDetail: detail,
           __codexId: "codex_lr",
           __readingId: id
         };
@@ -1526,10 +1545,11 @@
         const title = String(g?.title || "").trim();
         const id = String(g?.id || "").trim();
         if (!publishedAt || !title) return null;
+        const detail = catalogUpdateLine("Juegos", title, g?.description);
         const n = normalizeUpdateItem({
           publishedAt,
-          title: `JUEGO: ${title}`,
-          text: ""
+          title: "CÓDEX",
+          text: detail
         });
         if (!n) return null;
         return {
@@ -1538,6 +1558,7 @@
           __ms: parsePublishedAtToMs(n.publishedAt),
           __kind: "game",
           __gameTitle: title,
+          __updateDetail: detail,
           __codexId: "codex_jt",
           __gameId: id
         };
@@ -1551,10 +1572,11 @@
         const title = String(m?.title || "").trim();
         const id = String(m?.id || "").trim();
         if (!publishedAt || !title) return null;
+        const detail = catalogUpdateLine("MEDIA", title, m?.description);
         const n = normalizeUpdateItem({
           publishedAt,
-          title: `MEDIA: ${title}`,
-          text: ""
+          title: "CÓDEX",
+          text: detail
         });
         if (!n) return null;
         return {
@@ -1563,6 +1585,7 @@
           __ms: parsePublishedAtToMs(n.publishedAt),
           __kind: "media",
           __mediaTitle: title,
+          __updateDetail: detail,
           __codexId: "codex_av",
           __mediaId: id
         };
@@ -1588,10 +1611,11 @@
       const publishedAt = String(entry?.publishedAt || "").trim();
       const text = String(entry?.text || "").trim();
       if (!publishedAt || !text) return null;
+      const detail = `Blockchain y Big Data - ${text}`;
       const n = normalizeUpdateItem({
         publishedAt,
-        title: "Blockchain y Big Data",
-        text
+        title: "CÓDEX",
+        text: detail
       });
       if (!n) return null;
       return {
@@ -1600,6 +1624,7 @@
         __ms: parsePublishedAtToMs(n.publishedAt),
         __kind: "blockchain",
         __blockchainBlurb: text,
+        __updateDetail: detail,
         __codexId: "codex_bc"
       };
     });
@@ -1609,10 +1634,11 @@
       const publishedAt = String(entry?.publishedAt || "").trim();
       const text = String(entry?.text || "").trim();
       if (!publishedAt || !text) return null;
+      const detail = `Soft Skills - ${text}`;
       const n = normalizeUpdateItem({
         publishedAt,
-        title: "Soft Skills",
-        text
+        title: "CÓDEX",
+        text: detail
       });
       if (!n) return null;
       return {
@@ -1621,6 +1647,7 @@
         __ms: parsePublishedAtToMs(n.publishedAt),
         __kind: "softskills",
         __softSkillsBlurb: text,
+        __updateDetail: detail,
         __codexId: "codex_ss"
       };
     });
