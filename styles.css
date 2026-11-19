@@ -302,6 +302,13 @@ body {
   --site-canvas-main-h: 780px;
   --home-title-h: 3.6rem;
   --touch-target-min: 44px;
+  /* Ancho del control de búsqueda (input 320px + gap + botón BUSCAR) = panel NOTICIAS. */
+  --quick-search-input-w: 320px;
+  --quick-search-gap: 0.45rem;
+  --quick-search-btn-w: 89.53125px;
+  --quick-search-track-w: calc(
+    var(--quick-search-input-w) + var(--quick-search-gap) + var(--quick-search-btn-w)
+  );
 }
 
 header {
@@ -479,14 +486,17 @@ body.theme-light header .brand-logo img {
 .header-search {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: var(--quick-search-gap);
+  width: var(--quick-search-track-w);
   margin-left: auto;
   flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .header-search input {
   /* Ancho fijo de escritorio (no depende del viewport). */
-  width: 320px;
+  width: var(--quick-search-input-w);
+  flex: 0 0 var(--quick-search-input-w);
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 10px;
   background: rgba(7, 12, 28, 0.28);
@@ -495,6 +505,16 @@ body.theme-light header .brand-logo img {
   font-family: var(--display-font);
   font-size: 0.88rem;
   appearance: none;
+  box-sizing: border-box;
+}
+
+.header-search .search-action-btn {
+  width: var(--quick-search-btn-w);
+  flex: 0 0 var(--quick-search-btn-w);
+  box-sizing: border-box;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
 }
 
 /* Mismo aspecto que un campo de texto (type=search evita decoraciones del motor) */
@@ -711,7 +731,7 @@ main {
 
 .content-card.is-home {
   position: relative;
-  --home-news-w: 500px;
+  --home-news-w: var(--quick-search-track-w);
   /*
     Reserva el panel NOTICIAS. Con news a right:-1rem (entra en el padding 1rem de .app),
     padding-right = news-w deja 1rem de hueco texto↔noticias = padding izq. de .app.
@@ -1861,7 +1881,7 @@ body.theme-light .help-form-status.is-error {
 }
 
 .home-split {
-  --home-news-w: 500px;
+  --home-news-w: var(--quick-search-track-w);
   display: block;
   /* La reserva del panel vive en .content-card.is-home. */
   padding-left: 0;
@@ -6258,8 +6278,12 @@ body.ai-assist-page .privacy-stack {
   }
 
   .header-search .search-action-btn {
+    width: auto;
+    flex: 0 0 auto;
     min-height: var(--touch-target-min);
     min-width: 5.5rem;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
   }
 
   .app {
