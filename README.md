@@ -107,8 +107,9 @@ Abrir `index.html` directamente puede funcionar; es preferible un servidor HTTP 
 
 ### NOTICIAS (panel de INICIO)
 
+- Formato reciente: **titular + imagen** de portada del artículo (`image` en `data.js`; `text` opcional para búsqueda). Al añadir noticias nuevas, incluir siempre `image`.
 - Cada noticia no visitada lleva **resalte dorado** (también en el HISTÓRICO).
-- Al hacer clic en el título con enlace se marca vista y el resalte se quita **a la vez** en el panel lateral y en el histórico.
+- Al hacer clic en el título o la imagen con enlace se marca vista y el resalte se quita **a la vez** en el panel lateral y en el histórico.
 - Misma idea de seed (~14 días) que en NOVEDADES.
 
 ## AYUDA y privacidad

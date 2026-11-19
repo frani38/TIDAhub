@@ -3060,7 +3060,7 @@ body:has(.home-split.is-archive) .year-result.is-unseen-news {
 
 .news-title {
   font-weight: 750;
-  font-size: 0.86rem;
+  font-size: calc(0.86rem + 1pt);
   color: #ffffff;
   letter-spacing: 0.02em;
   text-align: justify;
@@ -3070,7 +3070,7 @@ body:has(.home-split.is-archive) .year-result.is-unseen-news {
 a.news-title-link {
   display: block;
   font-weight: 750;
-  font-size: 0.86rem;
+  font-size: calc(0.86rem + 1pt);
   color: #ffffff;
   letter-spacing: 0.02em;
   text-decoration: none;

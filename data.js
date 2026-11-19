@@ -11,7 +11,7 @@ window.MYWEB_DATA = {
     El pie muestra "v" + version al cargar.
   */
   siteMeta: {
-    version: "1.11.57",
+    version: "1.11.58",
     updated: "2026-11-19",
     assetBust: "",
     /* Temporal: lazo negro (marca de agua) en INICIO. Pon false para quitarlo. */
@@ -229,8 +229,8 @@ window.MYWEB_DATA = {
   // - publishedAt: único campo de fecha/hora (la que ve el usuario).
   //   Es la fecha y hora que tú asignas al dar de alta la noticia en esta web, en formato "YYYY-MM-DDTHH:mm" (sin Z).
   //   No tiene por qué coincidir con la fecha del artículo externo.
-  // { publishedAt: "YYYY-MM-DDTHH:mm", title: "Título", text?: "Texto breve", image?: "https://...", url: "https://..." }
-  // Si hay `image`, en el panel reciente se muestra la imagen (ancho del bloque) en lugar del texto.
+  // { publishedAt: "YYYY-MM-DDTHH:mm", title: "Título", image: "https://...", text?: "Texto breve", url: "https://..." }
+  // Formato reciente: titular + imagen de portada del artículo (ancho del bloque). `text` opcional (búsqueda / respaldo).
   news: [
     {
       publishedAt: "2026-11-19T08:30",
@@ -246,6 +246,8 @@ window.MYWEB_DATA = {
       title:
         "Google afirma que hackers rusos han llevado a cabo el primer ciberataque de IA totalmente automatizado",
       text: "El Grupo de Inteligencia de Amenazas de Google y Mandiant documentan el primer ataque de principio a fin gestionado por IA sin intervención humana, atribuido a operadores de habla rusa y dirigido a webs francesas (educación, entretenimiento y medios). El núcleo es «exploit_agent»: analiza parches, genera exploits, explora redes, adivina contraseñas e instala webshells de forma autónoma; prioriza velocidad frente al sigilo y Google avisa de que las campañas autónomas se volverán habituales.",
+      image:
+        "https://imagenes.computerhoy.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/11/17/6afc4cd99b6f37-97868983.jpeg",
       url: "https://computerhoy.20minutos.es/ciberseguridad/google-afirma-que-hackers-rusos-han-llevado-cabo-primer-ciberataque-ia-totalmente-automatizado_7062123_0.html",
     },
     {
@@ -253,6 +255,8 @@ window.MYWEB_DATA = {
       title:
         "Euro-Office, la alternativa europea a Microsoft Office, ya se puede descargar gratis en escritorio (Windows, macOS y Linux)",
       text: "La suite ofimática de código abierto Euro-Office (Nextcloud Office Desktop) llega a Windows 11, macOS y Linux con trabajo sin conexión, tipografías del sistema, firmas digitales y edición colaborativa vía Nextcloud. Impulsada por un consorcio europeo (Nextcloud, IONOS, Open-Xchange, Office.eu), es gratuita, soberana y compatible con formatos Microsoft y ODF; el código está en GitHub bajo AGPL v3.",
+      image:
+        "https://imagenes.computerhoy.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/11/16/6afad83707a037-89363174.png",
       url: "https://computerhoy.20minutos.es/software/euro-office-alternativa-europea-microsoft-office-ya-esta-disponible-para-descargar-gratis-version-escritorio-para-windows-macos-linux_7061439_0.html",
     },
     {
@@ -260,6 +264,8 @@ window.MYWEB_DATA = {
       title:
         'Guido van Rossum anuncia el fallecimiento de Tim Peters: "sin Peters, Python no sería lo que es hoy"',
       text: "El creador de Python homenajea a Tim Peters (1952–2026), autor del Zen of Python (PEP 20) y de Timsort, mentor temprano en el diseño del lenguaje y figura clave de la comunidad (también conocido como «Timbot»). Peters aportó además herramientas como doctest y timeit, y formó parte de la junta de la Python Software Foundation.",
+      image:
+        "https://imagenes.computerhoy.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/11/13/6af786711a5859-26830041.png",
       url: "https://computerhoy.20minutos.es/software/guido-van-rossum-creador-python-anuncia-fallecimiento-tim-peters-creador-las-miticas-19-lineas-para-mi-era-un-mentor-sin-peters-python-no-seria-que-es-hoy_7060741_0.html",
     },
     {
@@ -267,6 +273,8 @@ window.MYWEB_DATA = {
       title:
         "Descubren una forma de espiar tu ordenador a través de las paredes usando IA y sin instalar malware",
       text: "Deep-TEMPEST reconstruye en tiempo real lo que muestra un PC captando emisiones electromagnéticas de cables HDMI con una red neuronal, sin malware ni acceso a la red, e incluso a través de paredes. El sistema no deja rastro detectable; las mitigaciones pasan por blindaje, ferritas y entornos pensados para reducir fugas electromagnéticas.",
+      image:
+        "https://imagenes.computerhoy.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/11/09/6af22458b4d225-03498354.jpeg",
       url: "https://computerhoy.20minutos.es/ciberseguridad/descubren-una-forma-espiar-tu-ordenador-traves-las-paredes-usando-ia-sin-instalar-malware_7058914_0.html",
     },
     {
@@ -274,6 +282,8 @@ window.MYWEB_DATA = {
       title:
         'Julia Silge (Stack Overflow) sobre Python: "tiene todas las opciones para ser el lenguaje principal de mayor crecimiento"',
       text: "La científica de datos Julia Silge destaca la hegemonía de Python por su curva de aprendizaje accesible, su papel central en datos e IA/ML y su ecosistema versátil (web, automatización, DevOps, analítica). Según patrones de Stack Overflow, sigue siendo el lenguaje más visitado y su expansión no muestra signos claros de desaceleración.",
+      image:
+        "https://imagenes.computerhoy.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/11/05/6aec865ba17556-74425921.jpeg",
       url: "https://computerhoy.20minutos.es/software/julia-silge-cientifica-datos-sobre-programar-python-tiene-todas-las-opciones-para-ser-considerado-lenguaje-programacion-principal-mayor-crecimiento_7044121_0.html",
     },
     {
@@ -281,6 +291,8 @@ window.MYWEB_DATA = {
       title:
         "Cómo vaciar las papeleras ocultas de Linux y recuperar espacio de almacenamiento en el disco duro",
       text: "En Linux, borrar archivos suele enviarlos a ~/.local/share/Trash en lugar de liberar espacio de inmediato. Con trash-cli (p. ej. trash-empty) se puede vaciar esa papelera desde la terminal; también conviene revisar datos residuales de Flatpak y Snap con cuidado, sin borrar rutas a ciegas con rm -rf.",
+      image:
+        "https://imagenes.computerhoy.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/10/29/6ae2be01602ca8-64356637.jpeg",
       url: "https://computerhoy.20minutos.es/software/como-vaciar-las-papeleras-ocultas-linux-recuperar-espacio-almacenamiento-disco-duro_7054438_0.html",
     },
     {
@@ -288,6 +300,8 @@ window.MYWEB_DATA = {
       title:
         "Es prácticamente imposible que un robot se rebele contra un humano, pero ya ha habido ejemplos",
       text: "La rebelión de las máquinas sigue siendo ciencia ficción, pero ya hay accidentes y usos indebidos: un humanoide en China dio una patada a un niño en una exhibición, un brazo robótico fracturó el dedo de un menor en un torneo de ajedrez en Moscú, y en Colonia se investiga el acoso sexual a una menor mediante un robot teledirigido. El riesgo real viene de fallos de sensores, mala configuración o control humano malicioso, no de una conciencia propia.",
+      image:
+        "https://imagenes.computerhoy.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/10/22/6ada27fa16cee7-97593438.jpeg",
       url: "https://computerhoy.20minutos.es/tecnologia/es-practicamente-imposible-que-un-robot-se-rebele-contra-un-humano-pero-ya-ha-habido-ejemplos_7050978_0.html",
     },
     {
@@ -295,6 +309,8 @@ window.MYWEB_DATA = {
       title:
         "Policía Nacional: WhatsApp puede instalar malware en el móvil si la descarga automática está activa",
       text: "La Policía Nacional alerta de malware que circula por WhatsApp camuflado en vídeos e imágenes virales. Con la descarga automática activada (ajuste frecuente por defecto), el archivo llega a la galería sin que el usuario lo pida; al abrirlo puede infectar el dispositivo. Recomiendan desactivarla en Ajustes → Almacenamiento y datos y desconfiar de permisos excesivos.",
+      image:
+        "https://imagenes.computerhoy.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/01/20/696f8142986873-78853212.jpeg",
       url: "https://computerhoy.20minutos.es/ciberseguridad/policia-nacional-confirma-tu-whatsapp-puede-instalar-un-peligroso-virus-tu-movil-sin-que-te-des-cuenta_6923538_0.html",
     },
     {
@@ -302,6 +318,8 @@ window.MYWEB_DATA = {
       title:
         "Descubren una vulnerabilidad en APT de Debian y Ubuntu que permite instalar malware con privilegios de administrador",
       text: "CVE-2026-109518 (CVSS 7,7) afecta al gestor de paquetes APT: un atacante en la red o un espejo malicioso puede sustituir un paquete tras su verificación y lograr ejecución como root. Impacta sobre todo a Debian 12+ y Ubuntu 22.04+ (reintentos activos por defecto). Debian y Canonical ya publicaron parches; conviene actualizar APT cuanto antes.",
+      image:
+        "https://imagenes.computerhoy.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/05/08/69fd396cc53b82-03456562.jpeg",
       url: "https://computerhoy.20minutos.es/ciberseguridad/descubren-una-vulnerabilidad-apt-debian-ubuntu-linux-que-permite-ejecutar-malware-con-privilegios-administrador_7057595_0.html",
     },
     {
