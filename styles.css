@@ -2843,8 +2843,8 @@ a.year-result-title-link:hover {
   cursor: default;
   /*
     Absolute respecto a .content-card.is-home (no fixed al viewport).
-    Izquierda alineada con búsqueda; derecha hasta el borde del lienzo
-    (right:-1rem + 1rem de ancho extra = padding horizontal de .app).
+    Izquierda alineada con búsqueda; derecha hasta el borde del lienzo.
+    El scroll vive en .home-news__recent (desde la 1.ª noticia), no en el panel entero.
   */
   position: absolute;
   z-index: 10;
@@ -2853,10 +2853,11 @@ a.year-result-title-link:hover {
   bottom: auto;
   width: calc(var(--home-news-w) + 1rem);
   max-width: calc(var(--home-news-w) + 1rem);
-  /* Misma franja útil bajo cabecera / sobre pie (no impone 780px al documento). */
   height: calc(100vh - var(--home-news-top, 0px) - var(--footer-h));
   max-height: calc(100vh - var(--home-news-top, 0px) - var(--footer-h));
-  overflow: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   isolation: isolate;
   background:
     /* Capa base oblicua (izq→der) violeta→azul */
@@ -2876,7 +2877,8 @@ a.year-result-title-link:hover {
     radial-gradient(1200px 900px at 40% 60%, rgba(255, 255, 255, 0.045) 0%, transparent 70%);
   border: 1px solid rgba(122, 162, 255, 0.22);
   box-shadow: 0 10px 26px rgba(3, 8, 20, 0.22);
-  padding: 0.95rem 0.95rem 1rem;
+  /* Sin padding derecho: la barra de scroll queda al borde de la ventana. */
+  padding: 0.95rem 0 1rem 0.95rem;
   box-sizing: border-box;
   color: #ffffff;
 }
@@ -2915,6 +2917,7 @@ a.year-result-title-link:hover {
 
 .home-news__title {
   margin: 0 0 0.75rem;
+  padding-right: 0.95rem;
   font-family: var(--display-font);
   letter-spacing: 0.08em;
   font-size: 1.28rem;
@@ -2925,6 +2928,8 @@ a.year-result-title-link:hover {
   justify-content: center;
   gap: 0.55rem;
   width: 100%;
+  flex: 0 0 auto;
+  box-sizing: border-box;
 }
 
 .home-news__subtitle {
@@ -2947,21 +2952,28 @@ a.year-result-title-link:hover {
 .home-news__split {
   display: grid;
   /* Recientes ocupan el resto; HISTÓRICO solo su alto (más espacio para noticias). */
-  grid-template-rows: 1fr auto;
+  grid-template-rows: minmax(0, 1fr) auto;
   gap: 1.15rem;
-  height: calc(100% - 3.1rem);
+  flex: 1 1 auto;
   min-height: 0;
+  height: auto;
 }
 
-.home-news__recent,
-.home-news__history {
+.home-news__recent {
   min-height: 0;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* Scroll al borde derecho del panel / ventana. */
+  scrollbar-gutter: stable;
 }
 
 .home-news__history {
+  min-height: 0;
+  overflow: visible;
   padding-top: 0.35rem;
   padding-bottom: 0.15rem;
+  padding-right: 0.95rem;
+  box-sizing: border-box;
 }
 
 .home-news__section-title {
@@ -6396,6 +6408,11 @@ body.ai-assist-page .privacy-stack {
     flex: 0 0 auto;
     overflow: hidden; /* contiene ::before (pcb) dentro del bloque */
     isolation: isolate;
+    padding: 0.95rem 0.95rem 1rem;
+  }
+
+  .home-news__recent {
+    overflow: visible;
   }
 
   .home-news::before {

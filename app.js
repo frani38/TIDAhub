@@ -518,8 +518,8 @@
       unitTitleEl.textContent = `HISTÓRICO ${year}`;
       breadcrumbsEl.textContent = "";
       progressIndicatorEl.textContent = "";
-      const newsPanelEl = tabPanelEl?.querySelector(".home-news");
-      if (newsPanelEl instanceof HTMLElement) newsPanelEl.scrollTop = 0;
+      const newsRecentEl = tabPanelEl?.querySelector(".home-news__recent");
+      if (newsRecentEl instanceof HTMLElement) newsRecentEl.scrollTop = 0;
       syncHomeNewsDock();
 
       const monthNames = [
