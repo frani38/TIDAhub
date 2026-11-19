@@ -6,12 +6,12 @@ Hub web **estático** de **Tecnología, Ingeniería y Digitalización Aplicada**
 - **Web publicada (GitHub Pages):** [frani38.github.io/TIDAhub](https://frani38.github.io/TIDAhub/)
 - Guía de puesta en marcha online: **`github_TIDAhub.md`**
 - Historial de versiones: **`versions.md`**
-- Versión actual del pie: ver `data.js` → `siteMeta.version` (hoy **1.11.56**)
+- Versión actual del pie: ver `data.js` → `siteMeta.version` (hoy **1.11.58**)
 
 ## Objetivo del proyecto
 
 - **DOCENCIA**: navegación **etapa → nivel → materia → unidad**. En cada unidad se mantienen los cuatro apartados **Teoría**, **Actividades**, **Prácticas** y **Recursos**, pero el material deja de ser el PDF clásico de apuntes/ejercicios “al uso”. El enfoque es **visual y sintético**: piezas centradas en los puntos clave de cada tema (infografías, pósters, láminas o capturas de presentación, esquemas, y también PDF cuando aporte), a menudo elaboradas con **aplicaciones de IA**, alojadas bajo `/content/<unitId>/`.
-- **INICIO**: bienvenida (revelado tipo cortina) y panel de **últimas noticias** (`data.js` → `news`), con histórico por años/meses. Lienzo de diseño **1680px** en PC; si la ventana es más estrecha se mantiene el tamaño y aparecen **scroll H+V**. El **reflow** compacto (WCAG 2.2 AA) solo en **móvil/tablet táctil**.
+- **INICIO**: bienvenida (revelado tipo cortina) y panel de **últimas noticias** (`data.js` → `news`: titular + imagen de portada), con histórico por años/meses. Lienzo de diseño **1680px** en PC; si la ventana es más estrecha se mantiene el tamaño y aparecen **scroll H+V**. El **reflow** compacto (WCAG 2.2 AA) solo en **móvil/tablet táctil**.
 - **NOVEDADES**: avisos manuales (`updates`) y altas automáticas de **LIBRO / JUEGO / MEDIA**; títulos enlazan a la ficha en CÓDEX; resalte azul por entrada no visitada.
 - **Búsqueda rápida** (cabecera): resultados globales (docencia, noticias, legislación y entradas indexadas en `data.js`), sin duplicar enlaces genéricos del menú.
 - **PROYECTOS**: evidencias y trabajos que muestran aplicación real de los contenidos.
@@ -78,7 +78,7 @@ Abrir `index.html` directamente puede funcionar; es preferible un servidor HTTP 
 - **`helpContact`**: `web3formsAccessKey`, `notifyEmail`, `fromName` (formulario AYUDA).
 - **`levels`**: etapa → niveles → materias → unidades (`id`, `label`, `code`, opcional `intro`, `pdfs` / rutas de material).
 - **`sectionTabs`**: id de pestaña, etiqueta y fichero por defecto de cada apartado.
-- **`news`**, **`updates`**, **`legislation`**.
+- **`news`** (titular + `image` de portada; `text` opcional), **`updates`**, **`legislation`**.
 - **`readings`**, **`games`**, **`media`** (CÓDEX; `addedAt` y portadas/imágenes locales en **WebP**).
 - **`softSkills`**: intro, `changelog` (NOVEDADES de sección), `items` (dominios, definición, ejemplos, `image` en `./softskills/*.webp`).
 - **`blockchainBigData`**: intro, `changelog`, `columns` (Blockchain / Big Data con secciones, ejemplos e imágenes en `./blockchain_bigdata/`, preferible **SVG** para esquemas) y `refs`.
@@ -129,7 +129,7 @@ Abrir `index.html` directamente puede funcionar; es preferible un servidor HTTP 
 
 ### Versión del sitio (`siteMeta` en `data.js`)
 
-Formato **MAJOR.MINOR.PATCH** (p. ej. `1.11.56` → pie `v1.11.56`). Fuente única: `siteMeta.version`. Historial narrativo: `versions.md`. Anti-caché de CSS/JS/iconos: `window.MYWEB_ASSET_V` en HTML alineado con esa versión; `data.js` se refresca vía `version-boot.js` sin exigir bump.
+Formato **MAJOR.MINOR.PATCH** (p. ej. `1.11.58` → pie `v1.11.58`). Fuente única: `siteMeta.version`. Historial narrativo: `versions.md`. Anti-caché de CSS/JS/iconos: `window.MYWEB_ASSET_V` en HTML alineado con esa versión; `data.js` se refresca vía `version-boot.js` sin exigir bump.
 
 | Dígito | Cuándo |
 | --- | --- |

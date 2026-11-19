@@ -66,4 +66,6 @@ Si falta un fichero, el enlace puede abrir una URL inexistente hasta que exista.
 | `blockchain_bigdata/` | Figuras BC/BD (SVG + refs WebP) |
 | `banners/`, `image/`, `logo/` | Identidad y decoración (WebP / SVG) |
 
-Visión general: `README.md`. Publicación: `github_TIDAhub.md`. Historial: `versions.md`.
+Las imágenes de **NOTICIAS** (panel INICIO) no viven aquí: van como URL en `data.js` → `news[].image` (portada del artículo).
+
+Visión general: `README.md`. Publicación: `github_TIDAhub.md`. Historial: `versions.md`. Alineación documental actual: sitio **1.11.58**.

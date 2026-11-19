@@ -1516,3 +1516,5 @@ Nota: **1.1.16** y **1.1.17** fueron bumps por contenido; **1.5.1** fue el últi
 | **1.11.56** | Assets raster del sitio a WebP (~51% menos peso) |
 | **1.11.57** | NOTICIAS: imagen opcional en recientes (en lugar del texto) |
 | **1.11.58** | NOTICIAS: imágenes en las 10 recientes; titulares +1 pt |
+
+Nota (docs, sin bump): informe LaTeX y `*.md` alineados a **1.11.58** (NOTICIAS titular+imagen, WebP, hub BC/BD).

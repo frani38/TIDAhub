@@ -144,7 +144,11 @@ Formato de **tres dígitos** (ej. `1.2.22` → se muestra `v1.2.22`):
   - **No bumpear** en altas/ediciones solo de contenido editorial (libros, juegos, media, noticias, legislación, materiales de `content/`/`books/`/`softskills/` si solo son catálogo, …) ni en documentación/reglas puras (`README`, `versions.md`, informe LaTeX, `.cursor/rules`, …)
 - Publicación automática a `main`: `.cursor/rules/auto-publish.mdc`
 
-Versión actual de referencia: ver `siteMeta.version` en `data.js` (hoy **1.11.56**) e historial en `versions.md`.
+Versión actual de referencia: ver `siteMeta.version` en `data.js` (hoy **1.11.58**) e historial en `versions.md`.
+
+### Alta de noticia (panel INICIO)
+
+En `data.js` → `news`, cada entrada reciente usa **titular + `image`** (URL de la portada del artículo; ancho del bloque, alto proporcional). Campos: `publishedAt`, `title`, `image`, `url` y, opcionalmente, `text` (búsqueda / respaldo). Sin bumpear versión (contenido editorial).
 
 ---
 
