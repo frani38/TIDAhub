@@ -232,6 +232,13 @@ window.MYWEB_DATA = {
   // { publishedAt: "YYYY-MM-DDTHH:mm", title: "Título", text: "Texto breve", url: "https://..." }
   news: [
     {
+      publishedAt: "2026-11-19T08:30",
+      title:
+        'CISA alerta de un fallo crítico en Java (Java4Shell): "prácticamente todos los sectores críticos funcionan con él"',
+      text: "La agencia estadounidense CISA urge a parchear CVE-2026-114938 (Java4Shell), un fallo en el decodificador Base64 de la JVM HotSpot (OpenJDK) que permite fugas de memoria (JavaBleed) y ejecución remota de código, con CVSS 4.0 de 9,2. Afecta a derivadas de OpenJDK desde 17.0.6 en x86-64 (Oracle, Corretto, Temurin, Azul, Red Hat, etc.); se descubrió con ayuda de IA, tras PHP2Shell, y se recomienda auditar inventarios y actualizar o filtrar entradas Base64.",
+      url: "https://computerhoy.20minutos.es/ciberseguridad/agencia-ciberseguridad-americana-alerta-un-fallo-critico-seguridad-lenguaje-programacion-java-practicamente-todos-los-sectores-criticos-funcionan-con_7062480_0.html",
+    },
+    {
       publishedAt: "2026-11-18T12:40",
       title:
         "Google afirma que hackers rusos han llevado a cabo el primer ciberataque de IA totalmente automatizado",
