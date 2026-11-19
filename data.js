@@ -11,7 +11,7 @@ window.MYWEB_DATA = {
     El pie muestra "v" + version al cargar.
   */
   siteMeta: {
-    version: "1.11.66",
+    version: "1.11.67",
     updated: "2026-11-19",
     assetBust: "",
     /* Temporal: lazo negro (marca de agua) en INICIO. Pon false para quitarlo. */
@@ -454,7 +454,7 @@ window.MYWEB_DATA = {
   // { publishedAt: "YYYY-MM-DDTHH:mm", title: "SECCIÓN", text: "subapartado - elemento (descripción)",
   //   navTarget?: "codex"|"docencia"|..., codexId?: "codex_lr", readingId?/gameId?/mediaId?, url? }
   // Regla de enlace: la sección (title) es texto fijo; el hipervínculo es `text`.
-  // Catálogo CÓDEX: lecturas/juegos/media con `addedAt` → «CÓDEX: Lecturas|Juegos|MEDIA - título (desc)».
+  // Catálogo CÓDEX: lecturas/juegos/media con `addedAt` → «CÓDEX: Lecturas|Juegos|Media - título» (sin descripción).
   // Soft Skills / Blockchain: changelog de sección → «CÓDEX: Soft Skills|Blockchain y Big Data - {text}».
   updates: [],
 

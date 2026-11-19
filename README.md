@@ -100,7 +100,7 @@ Abrir `index.html` directamente puede funcionar; es preferible un servidor HTTP 
 
 ### NOVEDADES
 
-- Formato: **`SECCIÓN: subapartado - elemento (descripción breve)`** (p. ej. `CÓDEX: MEDIA - Título (…)`). Catálogo y changelogs de sección lo generan así; en avisos manuales `title` = sección y `text` = el resto enlazable.
+- Formato: **`SECCIÓN: subapartado - elemento`** (p. ej. `CÓDEX: Media - Título`). En lecturas/juegos/media solo subtítulo + título (sin descripción entre paréntesis). Changelogs de sección pueden llevar texto breve tras el subtítulo. Manuales: `title` = sección y `text` = el resto enlazable.
 - Cada entrada no visitada lleva **resalte azul**.
 - Al abrir la ficha (o acusar recibo en avisos sin enlace) se marca vista en `localStorage` y se quita el resalte.
 - El botón **NOVEDADES** brilla mientras quede alguna pendiente; al entrar en INICIO puede hacer un nudge breve (~10 s).

@@ -774,7 +774,7 @@
                       if (u.__updateDetail) return String(u.__updateDetail).trim();
                       if (u.__kind === "reading") return `Lecturas - ${String(u.__bookTitle || "").trim()}`;
                       if (u.__kind === "game") return `Juegos - ${String(u.__gameTitle || "").trim()}`;
-                      if (u.__kind === "media") return `MEDIA - ${String(u.__mediaTitle || "").trim()}`;
+                      if (u.__kind === "media") return `Media - ${String(u.__mediaTitle || "").trim()}`;
                       if (u.__kind === "softskills") {
                         return `Soft Skills - ${String(u.__softSkillsBlurb || u.text || "").trim()}`;
                       }
@@ -1518,7 +1518,7 @@
         const title = String(r?.title || "").trim();
         const id = String(r?.id || "").trim();
         if (!publishedAt || !title) return null;
-        const detail = catalogUpdateLine("Lecturas", title, r?.description);
+        const detail = catalogUpdateLine("Lecturas", title, "");
         const n = normalizeUpdateItem({
           publishedAt,
           title: "CÓDEX",
@@ -1545,7 +1545,7 @@
         const title = String(g?.title || "").trim();
         const id = String(g?.id || "").trim();
         if (!publishedAt || !title) return null;
-        const detail = catalogUpdateLine("Juegos", title, g?.description);
+        const detail = catalogUpdateLine("Juegos", title, "");
         const n = normalizeUpdateItem({
           publishedAt,
           title: "CÓDEX",
@@ -1572,7 +1572,7 @@
         const title = String(m?.title || "").trim();
         const id = String(m?.id || "").trim();
         if (!publishedAt || !title) return null;
-        const detail = catalogUpdateLine("MEDIA", title, m?.description);
+        const detail = catalogUpdateLine("Media", title, "");
         const n = normalizeUpdateItem({
           publishedAt,
           title: "CÓDEX",
