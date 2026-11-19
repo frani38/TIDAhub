@@ -1251,9 +1251,30 @@
       if (tabPanelEl) tabPanelEl.scrollTop = 0;
       const appEl = document.querySelector(".app");
       if (appEl) appEl.scrollTop = 0;
+      // Contenedores anidados con overflow propio (CÓDEX, listas, etc.).
+      document
+        .querySelectorAll(
+          ".codex-detail__content, .readings-page, .soft-skills-list, .bc-bd-sections, .bc-bd-column, .home-news__recent"
+        )
+        .forEach((node) => {
+          if (node instanceof HTMLElement) node.scrollTop = 0;
+        });
     } catch {
       // ignore
     }
+  }
+
+  /** Tras filtrar/ordenar un catálogo: re-render + scroll al tope (doble rAF por layout). */
+  function bindFilterChangeScrollTop(el, renderFn) {
+    if (!(el instanceof HTMLElement) || typeof renderFn !== "function") return;
+    el.addEventListener("change", () => {
+      renderFn();
+      scrollToPageTop();
+      requestAnimationFrame(() => {
+        scrollToPageTop();
+        requestAnimationFrame(() => scrollToPageTop());
+      });
+    });
   }
 
   function getNearestVerticalScroller(el) {
@@ -4313,8 +4334,8 @@
             .join("");
         };
 
-        themeEl.addEventListener("change", render);
-        orderEl.addEventListener("change", render);
+        bindFilterChangeScrollTop(themeEl, render);
+        bindFilterChangeScrollTop(orderEl, render);
 
         // Visor de portada (clic/teclado en el botón).
         listEl.addEventListener("click", (event) => {
@@ -4339,8 +4360,7 @@
             (event) => {
               if (!modalEl || modalEl.hidden) return;
               if (event.key === "Tab") {
-                const bounds = getModalFocusableBounds();
-                if (!bounds) return;
+                const bounds = getModalFocusableBounds();                if (!bounds) return;
                 const { first, last } = bounds;
                 const active = document.activeElement;
                 if (!(active instanceof HTMLElement)) return;
@@ -4547,8 +4567,8 @@
             .join("");
         };
 
-        themeEl.addEventListener("change", render);
-        orderEl.addEventListener("change", render);
+        bindFilterChangeScrollTop(themeEl, render);
+        bindFilterChangeScrollTop(orderEl, render);
 
         // Visor de imágenes del juego (clic/teclado en el botón).
         listEl.addEventListener("click", (event) => {
@@ -4755,8 +4775,8 @@
             .join("");
         };
 
-        themeEl.addEventListener("change", render);
-        orderEl.addEventListener("change", render);
+        bindFilterChangeScrollTop(themeEl, render);
+        bindFilterChangeScrollTop(orderEl, render);
 
         // Visor de póster (clic/teclado en el botón).
         listEl.addEventListener("click", (event) => {
@@ -4953,7 +4973,7 @@
             .join("");
         };
 
-        domainEl?.addEventListener("change", renderSoftSkills);
+        bindFilterChangeScrollTop(domainEl, renderSoftSkills);
         renderSoftSkills();
 
         if (refsEl instanceof HTMLElement) {
@@ -5686,6 +5706,8 @@
     consumeWelcomeReveal();
     toggleContentCard(false);
     currentState = { ...currentState, section: "docencia", stageId, levelId: "", materialId: "", unitId: "" };
+    scrollToPageTop();
+    requestAnimationFrame(() => scrollToPageTop());
   }
 
   function onLevelChanged() {
@@ -5705,6 +5727,8 @@
       materialId: "",
       unitId: ""
     };
+    scrollToPageTop();
+    requestAnimationFrame(() => scrollToPageTop());
   }
 
   function onMaterialChanged() {
@@ -5719,6 +5743,8 @@
 
     if (units.length === 0) {
       showConstructionMessage(level, material);
+      scrollToPageTop();
+      requestAnimationFrame(() => scrollToPageTop());
       return;
     }
 
@@ -5731,6 +5757,8 @@
       materialId: material.id,
       unitId: ""
     };
+    scrollToPageTop();
+    requestAnimationFrame(() => scrollToPageTop());
   }
 
   function onUnitChanged() {
