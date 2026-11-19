@@ -733,8 +733,8 @@ main {
   position: relative;
   --home-news-w: var(--quick-search-track-w);
   /*
-    Reserva el panel NOTICIAS (mismo ancho y borde derecho que búsqueda+BUSCAR:
-    right:0 dentro del card, alineado al padding 1rem de header-inner / .app).
+    Reserva en el card el tramo de NOTICIAS bajo la búsqueda.
+    El panel además entra 1rem en el padding de .app (hasta el borde derecho).
   */
   padding-right: var(--home-news-w);
   box-sizing: border-box;
@@ -2843,15 +2843,16 @@ a.year-result-title-link:hover {
   cursor: default;
   /*
     Absolute respecto a .content-card.is-home (no fixed al viewport).
-    right:0 = mismo borde derecho que la búsqueda de cabecera (padding 1rem).
+    Izquierda alineada con búsqueda; derecha hasta el borde del lienzo
+    (right:-1rem + 1rem de ancho extra = padding horizontal de .app).
   */
   position: absolute;
   z-index: 10;
   top: 0;
-  right: 0;
+  right: -1rem;
   bottom: auto;
-  width: var(--home-news-w);
-  max-width: var(--home-news-w);
+  width: calc(var(--home-news-w) + 1rem);
+  max-width: calc(var(--home-news-w) + 1rem);
   /* Misma franja útil bajo cabecera / sobre pie (no impone 780px al documento). */
   height: calc(100vh - var(--home-news-top, 0px) - var(--footer-h));
   max-height: calc(100vh - var(--home-news-top, 0px) - var(--footer-h));
