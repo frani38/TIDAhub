@@ -1,6 +1,6 @@
 Historial de versiones — T·I·D·A hub
 
-Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.64**).
+Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.65**).
 
 Formato: **MAJOR.MINOR.PATCH** (desde 1.1.0). Fuente de verdad: `data.js`. Documentación alineada en `README.md`, `github_TIDAhub.md`, `content/README.md` e `#_Informe/Informe_MyWeb.tex`.
 
@@ -1298,6 +1298,10 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 
 - NOTICIAS: el borde superior de la 1.ª noticia coincide con el inicio de la barra de scroll.
 
+## 1.11.65
+
+- CSS: elimina `vertical-align` inválido en `.news-image` (`display: block`).
+
 ---
 
 ## Convención (recordatorio)
@@ -1546,5 +1550,6 @@ Nota: **1.1.16** y **1.1.17** fueron bumps por contenido; **1.5.1** fue el últi
 | **1.11.62** | NOTICIAS: scroll desde la 1.ª noticia; barra al borde derecho |
 | **1.11.63** | NOTICIAS: titulares −0,5 pt |
 | **1.11.64** | NOTICIAS: 1.ª noticia alineada con el inicio del scroll |
+| **1.11.65** | CSS: quita `vertical-align` inválido en `.news-image` |
 
 Nota (docs, sin bump): informe LaTeX y `*.md` alineados a **1.11.58** (NOTICIAS titular+imagen, WebP, hub BC/BD).

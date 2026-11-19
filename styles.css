@@ -3140,7 +3140,6 @@ a.news-title-link:hover {
   height: auto;
   margin-top: 0.35rem;
   object-fit: contain;
-  vertical-align: top;
 }
 
 .news-image-link .news-image {
