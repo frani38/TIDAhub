@@ -1711,7 +1711,7 @@ window.MYWEB_DATA = {
     changelog: [
       {
         publishedAt: "2026-11-03T19:40",
-        text: "Nuevo apartado Blockchain y Big Data en CÓDEX: teoría en dos columnas, ejemplos didácticos, figuras y referencias técnicas."
+        text: "Nuevo apartado Blockchain y Big Data en CÓDEX: introducción, teoría por temas (Blockchain / Big Data), ejemplos didácticos, figuras y referencias técnicas."
       }
     ],
     columns: [
