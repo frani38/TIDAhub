@@ -6036,11 +6036,6 @@
   }
   seedAppHistory();
 
-  // Tooltips en iconos de cabecera.
-  for (const btn of navButtons) {
-    if (!btn.title) btn.title = btn.textContent?.trim() || "";
-  }
-
   /**
    * Rueda del ratón → scroll del contenedor activo aunque el puntero esté
    * en cabecera, márgenes o zonas sin overflow propio (p. ej. body bloqueado

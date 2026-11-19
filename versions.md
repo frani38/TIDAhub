@@ -1,6 +1,6 @@
 Historial de versiones — T·I·D·A hub
 
-Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.68**).
+Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.69**).
 
 Formato: **MAJOR.MINOR.PATCH** (desde 1.1.0). Fuente de verdad: `data.js`. Documentación alineada en `README.md`, `github_TIDAhub.md`, `content/README.md` e `#_Informe/Informe_MyWeb.tex`.
 
@@ -1314,6 +1314,10 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 
 - Filtros/selectores (CÓDEX y DOCENCIA): al cambiar, el scroll vuelve siempre al tope de la página.
 
+## 1.11.69
+
+- Menú de cabecera: sin tooltip nativo al pasar el ratón (el texto del botón ya lo identifica).
+
 ---
 
 ## Convención (recordatorio)
@@ -1566,5 +1570,6 @@ Nota: **1.1.16** y **1.1.17** fueron bumps por contenido; **1.5.1** fue el últi
 | **1.11.66** | NOVEDADES: formato SECCIÓN: subapartado - elemento |
 | **1.11.67** | NOVEDADES: catálogo sin descripción; subtítulo Media |
 | **1.11.68** | Filtros: scroll al tope al cambiar selectores |
+| **1.11.69** | Menú: sin popup title al hover |
 
 Nota (docs, sin bump): informe LaTeX y `*.md` alineados a **1.11.58** (NOTICIAS titular+imagen, WebP, hub BC/BD).
