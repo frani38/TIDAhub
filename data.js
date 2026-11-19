@@ -11,8 +11,8 @@ window.MYWEB_DATA = {
     El pie muestra "v" + version al cargar.
   */
   siteMeta: {
-    version: "1.11.56",
-    updated: "2026-11-09",
+    version: "1.11.57",
+    updated: "2026-11-19",
     assetBust: "",
     /* Temporal: lazo negro (marca de agua) en INICIO. Pon false para quitarlo. */
     mourningRibbon: false,
@@ -229,13 +229,16 @@ window.MYWEB_DATA = {
   // - publishedAt: único campo de fecha/hora (la que ve el usuario).
   //   Es la fecha y hora que tú asignas al dar de alta la noticia en esta web, en formato "YYYY-MM-DDTHH:mm" (sin Z).
   //   No tiene por qué coincidir con la fecha del artículo externo.
-  // { publishedAt: "YYYY-MM-DDTHH:mm", title: "Título", text: "Texto breve", url: "https://..." }
+  // { publishedAt: "YYYY-MM-DDTHH:mm", title: "Título", text?: "Texto breve", image?: "https://...", url: "https://..." }
+  // Si hay `image`, en el panel reciente se muestra la imagen (ancho del bloque) en lugar del texto.
   news: [
     {
       publishedAt: "2026-11-19T08:30",
       title:
         'CISA alerta de un fallo crítico en Java (Java4Shell): "prácticamente todos los sectores críticos funcionan con él"',
       text: "La agencia estadounidense CISA urge a parchear CVE-2026-114938 (Java4Shell), un fallo en el decodificador Base64 de la JVM HotSpot (OpenJDK) que permite fugas de memoria (JavaBleed) y ejecución remota de código, con CVSS 4.0 de 9,2. Afecta a derivadas de OpenJDK desde 17.0.6 en x86-64 (Oracle, Corretto, Temurin, Azul, Red Hat, etc.); se descubrió con ayuda de IA, tras PHP2Shell, y se recomienda auditar inventarios y actualizar o filtrar entradas Base64.",
+      image:
+        "https://imagenes.computerhoy.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/11/18/6afd94b6064486-11143113.png",
       url: "https://computerhoy.20minutos.es/ciberseguridad/agencia-ciberseguridad-americana-alerta-un-fallo-critico-seguridad-lenguaje-programacion-java-practicamente-todos-los-sectores-criticos-funcionan-con_7062480_0.html",
     },
     {

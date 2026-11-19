@@ -1,6 +1,6 @@
 Historial de versiones — T·I·D·A hub
 
-Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.56**).
+Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.57**).
 
 Formato: **MAJOR.MINOR.PATCH** (desde 1.1.0). Fuente de verdad: `data.js`. Documentación alineada en `README.md`, `github_TIDAhub.md`, `content/README.md` e `#_Informe/Informe_MyWeb.tex`.
 
@@ -1266,6 +1266,10 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 
 - Assets raster del sitio convertidos a WebP (libros, media, soft skills, iconos, banners, etc.); eliminados JPG/PNG originales (~51% menos peso).
 
+## 1.11.57
+
+- NOTICIAS: soporte opcional de `image` en entradas; si existe, el panel reciente muestra la imagen (ancho del bloque, alto proporcional) en lugar del texto descriptivo (prueba en Java4Shell).
+
 ---
 
 ## Convención (recordatorio)
@@ -1506,5 +1510,4 @@ Nota: **1.1.16** y **1.1.17** fueron bumps por contenido; **1.5.1** fue el últi
 | **1.11.44–.55** | Hub Blockchain/Big Data: iteración visual → intro textual |
 | **1.11.51** | NOVEDADES: menos espacio fecha–texto |
 | **1.11.56** | Assets raster del sitio a WebP (~51% menos peso) |
-
-Nota (docs, sin bump): informe LaTeX y `*.md` alineados a **1.11.56** (WebP, hub BC/BD textual, URL `TIDAhub`).
+| **1.11.57** | NOTICIAS: imagen opcional en recientes (en lugar del texto) |

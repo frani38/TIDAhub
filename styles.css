@@ -3092,6 +3092,26 @@ a.news-title-link:hover {
   text-justify: inter-word;
 }
 
+.news-image-link {
+  display: block;
+  margin-top: 0.35rem;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.news-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 0.35rem;
+  object-fit: contain;
+  vertical-align: top;
+}
+
+.news-image-link .news-image {
+  margin-top: 0;
+}
+
 .year-grid {
   display: flex;
   flex-wrap: wrap;

@@ -196,13 +196,14 @@
     const publishedAt = String(item?.publishedAt || "").trim();
     const title = String(item?.title || "").trim();
     const text = String(item?.text || "").trim();
+    const image = String(item?.image || "").trim();
     const url = String(item?.url || "").trim();
     if (!publishedAt || !title) return null;
     const year = publishedAt.slice(0, 4);
     if (!/^\d{4}$/.test(year)) return null;
     // `publishedAt` es la fecha/hora que tú asignas al dar de alta la noticia en esta web (no se calcula automáticamente).
     // No tiene por qué coincidir con la fecha del medio externo.
-    return { publishedAt, year, title, text, url, __ms: parsePublishedAtToMs(publishedAt) };
+    return { publishedAt, year, title, text, image, url, __ms: parsePublishedAtToMs(publishedAt) };
   }
 
   /** Fecha/hora de publicación en la web (tal como está en `publishedAt`). Formato: YYYY-MM-DD [HH:mm] */
@@ -444,7 +445,7 @@
 
     const bindNewsSeenClicks = (rootEl) => {
       if (!rootEl) return;
-      rootEl.querySelectorAll("a.news-title-link[data-news-key], a.year-result-title-link[data-news-key]").forEach((a) => {
+      rootEl.querySelectorAll("a.news-title-link[data-news-key], a.news-image-link[data-news-key], a.year-result-title-link[data-news-key]").forEach((a) => {
         a.addEventListener("click", () => {
           const key = String(a.getAttribute("data-news-key") || "").trim();
           if (!key) return;
@@ -463,16 +464,24 @@
             const isUnseen = !seenNewsIds.has(newsKey);
             const safeTitle = escapeHtml(n.title);
             const safeText = n.text ? escapeHtml(n.text) : "";
+            const safeImage = n.image ? escapeHtml(n.image) : "";
             const titleEl = n.url
               ? `<a class="news-title news-title-link" href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer" data-news-key="${escapeHtml(newsKey)}">${safeTitle}</a>`
               : `<div class="news-title">${safeTitle}</div>`;
+            const bodyEl = safeImage
+              ? n.url
+                ? `<a class="news-image-link" href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer" data-news-key="${escapeHtml(newsKey)}"><img class="news-image" src="${safeImage}" alt="${safeTitle}" loading="lazy" decoding="async" /></a>`
+                : `<img class="news-image" src="${safeImage}" alt="${safeTitle}" loading="lazy" decoding="async" />`
+              : safeText
+                ? `<div class="news-text">${safeText}</div>`
+                : "";
             return `
-              <li class="news-item${isUnseen ? " is-unseen-news" : ""}" data-news-key="${escapeHtml(newsKey)}">
+              <li class="news-item${isUnseen ? " is-unseen-news" : ""}${safeImage ? " has-news-image" : ""}" data-news-key="${escapeHtml(newsKey)}">
                 <div class="news-meta">
                   <span class="news-date">${escapeHtml(formatPublishedAt(n.publishedAt))}</span>
                 </div>
                 ${titleEl}
-                ${safeText ? `<div class="news-text">${safeText}</div>` : ""}
+                ${bodyEl}
               </li>
             `;
           })
