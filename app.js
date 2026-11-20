@@ -157,7 +157,7 @@
               nacional y de la comunidad autónoma donde actualmente imparto docencia, Principado de Asturias.
             </p>
             <p class="welcome-intro">
-              Además, en <strong>CÓDEX</strong> encontrarás un espacio de recursos complementarios organizado por secciones: Diseño e Impresión 3D, Programación y Robótica, IoT, IA, Hacking y Ciberseguridad, Blockchain y Big Data, Soft Skills, Lecturas recomendadas, Media, Juegos y Enlaces de interés, entre otros. Es una selección personal pensada para explorar ideas, herramientas y contenidos de apoyo, ampliando materiales de divulgación, trabajo y aprendizaje en esos ámbitos.
+              Además, en <strong>CÓDEX</strong> encontrarás un espacio de recursos complementarios organizado por secciones: Diseño e Impresión 3D, Programación y Robótica, IoT &amp; Redes, IA, Hacking y Ciberseguridad, Blockchain y Big Data, Soft Skills, Lecturas recomendadas, Media, Juegos y Enlaces de interés, entre otros. Es una selección personal pensada para explorar ideas, herramientas y contenidos de apoyo, ampliando materiales de divulgación, trabajo y aprendizaje en esos ámbitos.
             </p>
             <p class="welcome-intro">
               ¡Qué tengas buena experiencia de navegación por este espacio vivo y en constante mejora y actualización!
@@ -2053,7 +2053,7 @@
     const items = [
       { id: "codex_3d", label: "DISEÑO E IMPRESIÓN 3D", keywords: "diseño impresion 3d" },
       { id: "codex_pr", label: "PROGRAMACIÓN Y ROBÓTICA", keywords: "programacion robotica" },
-      { id: "codex_iot", label: "IoT", keywords: "iot internet de las cosas sensores domotica" },
+      { id: "codex_iot", label: "IoT & Redes", keywords: "iot redes internet de las cosas sensores domotica networking" },
       { id: "codex_ia", label: "IA", keywords: "inteligencia artificial" },
       { id: "codex_sw", label: "HACKING Y CIBERSEGURIDAD", keywords: "hacking etico ético ciberseguridad seguridad pentesting" },
       { id: "codex_bc", label: "BLOCKCHAIN Y BIG DATA", keywords: "blockchain big data cadena bloques datos" },
@@ -3516,7 +3516,7 @@
     const items = [
       { id: "codex_3d", label: "DISEÑO E IMPRESIÓN 3D", labelHtml: "DISEÑO<br />E<br />IMPRESIÓN 3D", icon: "3D" },
       { id: "codex_pr", label: "PROGRAMACIÓN Y ROBÓTICA", labelHtml: "PROGRAMACIÓN<br />Y<br />ROBÓTICA", icon: "PR" },
-      { id: "codex_iot", label: "IoT", icon: "IoT" },
+      { id: "codex_iot", label: "IoT & Redes", labelHtml: "IoT<br />&amp;<br />Redes", icon: "IoT" },
       { id: "codex_ia", label: "IA", icon: "IA" },
       { id: "codex_sw", label: "HACKING Y CIBERSEGURIDAD", labelHtml: "HACKING<br />Y<br />CIBERSEGURIDAD", icon: "hacking" },
       { id: "codex_bc", label: "BLOCKCHAIN Y BIG DATA", labelHtml: "BLOCKCHAIN<br />Y<br />BIG DATA", icon: "BC" },
