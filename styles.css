@@ -3001,10 +3001,10 @@ a.year-result-title-link:hover {
 .news-list {
   margin: 0;
   /*
-    Sin padding-top: el borde superior de la 1.ª noticia coincide con el inicio
-    de la barra de scroll. Lados/abajo reservan hueco para el aura de no leídas.
+    Padding en los 4 lados: el overflow del scroll (.home-news__recent) no debe
+    recortar el aura/palpitación de la 1.ª noticia no leída (sobre todo arriba).
   */
-  padding: 0 0.45rem 0.45rem;
+  padding: 0.45rem;
   list-style: none;
   display: grid;
   gap: 0.75rem;
