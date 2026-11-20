@@ -49,11 +49,58 @@
   const UPDATES_SEEN_BOOTSTRAP_KEY = "myweb_updates_seen_bootstrapped_v1";
   const NEWS_SEEN_IDS_KEY = "myweb_news_seen_ids_v1";
   const NEWS_SEEN_BOOTSTRAP_KEY = "myweb_news_seen_bootstrapped_v1";
+  const WIP_BC_STORAGE_KEY = "myweb_wip_bc_v1";
   const UPDATES_NUDGE_DURATION_MS = 10000;
   const UPDATES_BADGE_EXPIRE_MS = 14 * 24 * 60 * 60 * 1000; // solo para seed inicial del archivo
 
   // Anti-caché de iconos solo al publicar (versión del sitio), no en cada recarga.
   const ICONS_VERSION = String(DATA?.siteMeta?.version || "1").trim().replace(/^v/i, "") || "1";
+
+  /** Blockchain & Big Data en modo borrador público (PRÓXIMAMENTE). */
+  function isBlockchainBigDataComingSoon() {
+    const pack = DATA.blockchainBigData;
+    return !!(pack && typeof pack === "object" && pack.comingSoon === true);
+  }
+
+  function isBlockchainBigDataWipUnlocked() {
+    try {
+      return localStorage.getItem(WIP_BC_STORAGE_KEY) === "1";
+    } catch {
+      return false;
+    }
+  }
+
+  /** Visitante: false si comingSoon. Editor: true tras ?wip=bc (localStorage). */
+  function canViewBlockchainBigDataContent() {
+    if (!isBlockchainBigDataComingSoon()) return true;
+    return isBlockchainBigDataWipUnlocked();
+  }
+
+  /** Activa/desactiva preview WIP: ?wip=bc | ?wip=0 y limpia la query. */
+  function syncBlockchainBigDataWipFromUrl() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const wip = String(params.get("wip") || "")
+        .trim()
+        .toLowerCase();
+      if (!wip) return;
+      if (wip === "bc") {
+        localStorage.setItem(WIP_BC_STORAGE_KEY, "1");
+      } else if (wip === "0" || wip === "off" || wip === "none") {
+        localStorage.removeItem(WIP_BC_STORAGE_KEY);
+      } else {
+        return;
+      }
+      params.delete("wip");
+      const qs = params.toString();
+      const next = `${window.location.pathname}${qs ? `?${qs}` : ""}${window.location.hash || ""}`;
+      window.history.replaceState(window.history.state, "", next);
+    } catch {
+      // ignore (storage / history)
+    }
+  }
+
+  syncBlockchainBigDataWipFromUrl();
 
   const SECTION_ICONS = {
     teoria: `<img src="./icons/teoria.webp?v=${ICONS_VERSION}" alt="" decoding="async" loading="lazy" />`,
@@ -1628,27 +1675,30 @@
     };
 
     const bcPack = DATA.blockchainBigData && typeof DATA.blockchainBigData === "object" ? DATA.blockchainBigData : null;
-    pushSectionChangelog(bcPack?.changelog, (entry, priority) => {
-      const publishedAt = String(entry?.publishedAt || "").trim();
-      const text = String(entry?.text || "").trim();
-      if (!publishedAt || !text) return null;
-      const detail = `Blockchain & Big Data - ${text}`;
-      const n = normalizeUpdateItem({
-        publishedAt,
-        title: "CÓDEX",
-        text: detail
+    // Con comingSoon no publicar el changelog en NOVEDADES (ni al editor): el público no puede abrirlo.
+    if (bcPack && bcPack.comingSoon !== true) {
+      pushSectionChangelog(bcPack.changelog, (entry, priority) => {
+        const publishedAt = String(entry?.publishedAt || "").trim();
+        const text = String(entry?.text || "").trim();
+        if (!publishedAt || !text) return null;
+        const detail = `Blockchain & Big Data - ${text}`;
+        const n = normalizeUpdateItem({
+          publishedAt,
+          title: "CÓDEX",
+          text: detail
+        });
+        if (!n) return null;
+        return {
+          ...n,
+          __priority: priority,
+          __ms: parsePublishedAtToMs(n.publishedAt),
+          __kind: "blockchain",
+          __blockchainBlurb: text,
+          __updateDetail: detail,
+          __codexId: "codex_bc"
+        };
       });
-      if (!n) return null;
-      return {
-        ...n,
-        __priority: priority,
-        __ms: parsePublishedAtToMs(n.publishedAt),
-        __kind: "blockchain",
-        __blockchainBlurb: text,
-        __updateDetail: detail,
-        __codexId: "codex_bc"
-      };
-    });
+    }
 
     const softPack = DATA.softSkills && typeof DATA.softSkills === "object" ? DATA.softSkills : null;
     pushSectionChangelog(softPack?.changelog, (entry, priority) => {
@@ -2108,7 +2158,7 @@
 
     // Blockchain & Big Data (CÓDEX → BLOCKCHAIN & BIG DATA)
     const bcPackSearch = DATA.blockchainBigData && typeof DATA.blockchainBigData === "object" ? DATA.blockchainBigData : null;
-    if (bcPackSearch) {
+    if (bcPackSearch && canViewBlockchainBigDataContent()) {
       const introHay = String(bcPackSearch.intro || "").trim();
       const cols = Array.isArray(bcPackSearch.columns) ? bcPackSearch.columns : [];
       for (const col of cols) {
@@ -3864,10 +3914,14 @@
       const isMedia = it.id === "codex_av";
       const isSoftSkills = it.id === "codex_ss";
       const isBlockchainBigData = it.id === "codex_bc";
-      const isCodexCatalog = isReadings || isGames || isMedia || isSoftSkills || isBlockchainBigData;
-      const bcTopic = isBlockchainBigData ? String(currentState.tabId || "").trim() : "";
+      const bcContentVisible = !isBlockchainBigData || canViewBlockchainBigDataContent();
+      const isCodexCatalog = isReadings || isGames || isMedia || isSoftSkills || (isBlockchainBigData && bcContentVisible);
+      const bcTopic = isBlockchainBigData && bcContentVisible ? String(currentState.tabId || "").trim() : "";
       const bcPack =
-        isBlockchainBigData && DATA.blockchainBigData && typeof DATA.blockchainBigData === "object"
+        isBlockchainBigData &&
+        bcContentVisible &&
+        DATA.blockchainBigData &&
+        typeof DATA.blockchainBigData === "object"
           ? DATA.blockchainBigData
           : null;
       const bcAsideTreeHtml = (() => {
@@ -4020,7 +4074,7 @@
                         </label>
                       </div>
                     `
-                    : isBlockchainBigData
+                    : isBlockchainBigData && bcContentVisible
                       ? `
                         <nav class="bc-bd-aside-nav${
                           bcTopic === "blockchain" || bcTopic === "bigdata" ? " bc-bd-aside-nav--tree" : ""
@@ -4072,7 +4126,7 @@
                   </div>
                 `
                 : isGames
-                  ? `
+                ? `
                     <div class="readings-page" aria-label="Juegos">
                       <div id="games-list" class="readings-grid" aria-live="polite"></div>
                       <div id="games-cover-modal" class="readings-cover-modal" role="dialog" aria-modal="true" aria-label="Imagen a tamaño real" hidden>
@@ -4086,7 +4140,7 @@
                     </div>
                   `
                   : isMedia
-                    ? `
+                  ? `
                       <div class="readings-page" aria-label="Media">
                         <div id="media-list" class="readings-grid" aria-live="polite"></div>
                         <div id="media-cover-modal" class="readings-cover-modal" role="dialog" aria-modal="true" aria-label="Imagen a tamaño real" hidden>
@@ -4106,7 +4160,7 @@
                       <footer class="soft-skills-refs" id="soft-skills-refs" hidden></footer>
                   </div>
                 `
-                : isBlockchainBigData
+                : isBlockchainBigData && bcContentVisible
                   ? `
                     <div class="readings-page bc-bd-page" aria-label="Blockchain &amp; Big Data" data-bc-view="${escapeHtml(bcTopic || "hub")}">
                       <div class="bc-bd-hub" id="bc-bd-hub"${bcTopic ? " hidden" : ""}>
@@ -5009,7 +5063,7 @@
         }
       }
 
-      if (isBlockchainBigData) {
+      if (isBlockchainBigData && bcContentVisible) {
         const pack = DATA.blockchainBigData && typeof DATA.blockchainBigData === "object" ? DATA.blockchainBigData : null;
         const intro = String(pack?.intro || "").trim();
         const allowBcHtml = (raw) =>

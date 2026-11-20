@@ -11,7 +11,7 @@ window.MYWEB_DATA = {
     El pie muestra "v" + version al cargar.
   */
   siteMeta: {
-    version: "1.11.72",
+    version: "1.11.73",
     updated: "2026-11-20",
     assetBust: "",
     /* Temporal: lazo negro (marca de agua) en INICIO. Pon false para quitarlo. */
@@ -1714,7 +1714,10 @@ window.MYWEB_DATA = {
 
   // Blockchain & Big Data (CÓDEX → BLOCKCHAIN & BIG DATA)
   // Imágenes didácticas en ./blockchain_bigdata/. changelog → NOVEDADES (una entrada de sección).
+  // comingSoon: true → el público ve «PRÓXIMAMENTE»; el editor desbloquea con ?wip=bc (localStorage).
+  // Cuando la sección esté lista: comingSoon: false (o quitar la clave) + bump de versión.
   blockchainBigData: {
+    comingSoon: true,
     intro:
       "En el ecosistema digital contemporáneo, la {{BC_LINK}} (cadena de bloques) y el {{BD_LINK}} (macrodatos) se entienden mejor juntos que por separado. La blockchain es, en términos técnicos, un <strong>libro mayor digital distribuido</strong>: un historial de registros agrupados en bloques, enlazados mediante <strong>funciones resumen criptográficas</strong> (<em>hash</em>) y mantenido por una red de nodos que solo aceptan actualizaciones según reglas de <strong>validación</strong> y <strong>consenso</strong>. Su valor no reside en «ser misterioso» ni en equivaler automáticamente a una criptomoneda, sino en ofrecer un registro <strong>compartido</strong>, <strong>auditable</strong> y difícil de alterar en silencio sin que el cambio quede expuesto; de ahí que arrastre consigo nociones de integridad de datos, firma digital, claves públicas y privadas, incentivos de red y también límites claros (escalabilidad, consumo, irreversibilidad práctica, riesgos de custodia).\n\nJunto a ese mecanismo de registro y verificación opera el big data: escenarios en los que el <strong>volumen</strong>, la <strong>velocidad</strong> y/o la <strong>variedad</strong> de los datos —junto con la <strong>veracidad</strong> y el <strong>valor</strong> que se les atribuye— desbordan los métodos convencionales de gestión y análisis. No se reduce a «muchas filas»: exige tipologías (estructurados, semiestructurados, no estructurados), ciclos de captura–procesamiento–decisión, calidad del dato, privacidad y el cuidado de no confundir correlación con causalidad ni cantidad con evidencia. Así, mientras la blockchain aporta garantías criptográficas para <strong>registrar y verificar</strong> estados o eventos, el big data aporta la capacidad de <strong>generar, almacenar y analizar</strong> masas de información heterogénea a gran escala.\n\nEn la práctica pueden converger —por ejemplo, anclar huellas de grandes conjuntos de datos, trazar procesos alimentados por sensores o analizar ledgers públicos—, pero no son intercambiables: una blockchain no «resuelve» por sí sola el análisis masivo, y el big data no garantiza por sí solo integridad distribuida ni consenso entre partes que no se confían. Estudiarlos con ese rigor es especialmente pertinente en <strong>Digitalización</strong> (4.º de ESO) y en <strong>Tecnologías Digitales Aplicadas I y II</strong> (1.º y 2.º de Bachillerato), materias orientadas a comprender sistemas digitales reales, sus fundamentos, sus aplicaciones y sus implicaciones éticas y sociales.",
     changelog: [
