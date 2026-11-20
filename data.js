@@ -233,6 +233,15 @@ window.MYWEB_DATA = {
   // Formato reciente: titular + imagen de portada del artículo (ancho del bloque). `text` opcional (búsqueda / respaldo).
   news: [
     {
+      publishedAt: "2026-11-20T09:15",
+      title:
+        "Una vulnerabilidad crítica en MySQL permite acceder a tus datos sin contraseña",
+      text: "Oracle alerta de CVE-2026-114952 (CVSS 9.1): un fallo en los programas cliente de MySQL que permite a un atacante remoto no autenticado leer, modificar o borrar datos sin credenciales. Afecta a MySQL Server (8.4.0–8.4.13, 9.7.0–9.7.4, 26.10) y MySQL Cluster (8.0.0–8.0.50 y los mismos rangos 8.4/9.7/26.10). Aún sin parche listado; conviene restringir el puerto 3306 y vigilar el aviso oficial de Oracle.",
+      image:
+        "https://www.redeszone.net/app/uploads-redeszone.net/2026/11/imagen-mysql.jpg",
+      url: "https://www.redeszone.net/noticias/seguridad/mysql-vulnerabilidad-critica-datos-sin-contrasena/",
+    },
+    {
       publishedAt: "2026-11-19T08:30",
       title:
         'CISA alerta de un fallo crítico en Java (Java4Shell): "prácticamente todos los sectores críticos funcionan con él"',
