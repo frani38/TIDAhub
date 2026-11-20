@@ -1,6 +1,6 @@
 Historial de versiones — T·I·D·A hub
 
-Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.70**).
+Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.71**).
 
 Formato: **MAJOR.MINOR.PATCH** (desde 1.1.0). Fuente de verdad: `data.js`. Documentación alineada en `README.md`, `github_TIDAhub.md`, `content/README.md` e `#_Informe/Informe_MyWeb.tex`.
 
@@ -1322,6 +1322,10 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 
 - CÓDEX: la tarjeta «IoT» pasa a «IoT & Redes» (tres líneas en la rejilla).
 
+## 1.11.71
+
+- CÓDEX: «Y» → «&» en Programación & Robótica, Hacking & Ciberseguridad y Blockchain & Big Data.
+
 ---
 
 ## Convención (recordatorio)
@@ -1576,5 +1580,6 @@ Nota: **1.1.16** y **1.1.17** fueron bumps por contenido; **1.5.1** fue el últi
 | **1.11.68** | Filtros: scroll al tope al cambiar selectores |
 | **1.11.69** | Menú: sin popup title al hover |
 | **1.11.70** | CÓDEX: IoT → IoT & Redes (3 líneas) |
+| **1.11.71** | CÓDEX: Y → & en PR, Hacking y Blockchain |
 
 Nota (docs, sin bump): informe LaTeX y `*.md` alineados a **1.11.58** (NOTICIAS titular+imagen, WebP, hub BC/BD).

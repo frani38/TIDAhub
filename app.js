@@ -157,7 +157,7 @@
               nacional y de la comunidad autónoma donde actualmente imparto docencia, Principado de Asturias.
             </p>
             <p class="welcome-intro">
-              Además, en <strong>CÓDEX</strong> encontrarás un espacio de recursos complementarios organizado por secciones: Diseño e Impresión 3D, Programación y Robótica, IoT &amp; Redes, IA, Hacking y Ciberseguridad, Blockchain y Big Data, Soft Skills, Lecturas recomendadas, Media, Juegos y Enlaces de interés, entre otros. Es una selección personal pensada para explorar ideas, herramientas y contenidos de apoyo, ampliando materiales de divulgación, trabajo y aprendizaje en esos ámbitos.
+              Además, en <strong>CÓDEX</strong> encontrarás un espacio de recursos complementarios organizado por secciones: Diseño e Impresión 3D, Programación &amp; Robótica, IoT &amp; Redes, IA, Hacking &amp; Ciberseguridad, Blockchain &amp; Big Data, Soft Skills, Lecturas recomendadas, Media, Juegos y Enlaces de interés, entre otros. Es una selección personal pensada para explorar ideas, herramientas y contenidos de apoyo, ampliando materiales de divulgación, trabajo y aprendizaje en esos ámbitos.
             </p>
             <p class="welcome-intro">
               ¡Qué tengas buena experiencia de navegación por este espacio vivo y en constante mejora y actualización!
@@ -779,7 +779,7 @@
                         return `Soft Skills - ${String(u.__softSkillsBlurb || u.text || "").trim()}`;
                       }
                       if (u.__kind === "blockchain") {
-                        return `Blockchain y Big Data - ${String(u.__blockchainBlurb || u.text || "").trim()}`;
+                        return `Blockchain & Big Data - ${String(u.__blockchainBlurb || u.text || "").trim()}`;
                       }
                       return String(u.text || u.title || "").trim();
                     })();
@@ -1632,7 +1632,7 @@
       const publishedAt = String(entry?.publishedAt || "").trim();
       const text = String(entry?.text || "").trim();
       if (!publishedAt || !text) return null;
-      const detail = `Blockchain y Big Data - ${text}`;
+      const detail = `Blockchain & Big Data - ${text}`;
       const n = normalizeUpdateItem({
         publishedAt,
         title: "CÓDEX",
@@ -2052,11 +2052,11 @@
     if (!tokens.length) return [];
     const items = [
       { id: "codex_3d", label: "DISEÑO E IMPRESIÓN 3D", keywords: "diseño impresion 3d" },
-      { id: "codex_pr", label: "PROGRAMACIÓN Y ROBÓTICA", keywords: "programacion robotica" },
+      { id: "codex_pr", label: "PROGRAMACIÓN & ROBÓTICA", keywords: "programacion robotica" },
       { id: "codex_iot", label: "IoT & Redes", keywords: "iot redes internet de las cosas sensores domotica networking" },
       { id: "codex_ia", label: "IA", keywords: "inteligencia artificial" },
-      { id: "codex_sw", label: "HACKING Y CIBERSEGURIDAD", keywords: "hacking etico ético ciberseguridad seguridad pentesting" },
-      { id: "codex_bc", label: "BLOCKCHAIN Y BIG DATA", keywords: "blockchain big data cadena bloques datos" },
+      { id: "codex_sw", label: "HACKING & CIBERSEGURIDAD", keywords: "hacking etico ético ciberseguridad seguridad pentesting" },
+      { id: "codex_bc", label: "BLOCKCHAIN & BIG DATA", keywords: "blockchain big data cadena bloques datos" },
       { id: "codex_ss", label: "SOFT SKILLS", keywords: "habilidades blandas soft skills comunicacion equipo feedback" },
       { id: "codex_lr", label: "LECTURAS RECOMENDADAS", keywords: "libros lecturas" },
       { id: "codex_av", label: "MEDIA", keywords: "media audiovisual audio video av" },
@@ -2106,7 +2106,7 @@
       });
     }
 
-    // Blockchain y Big Data (CÓDEX → BLOCKCHAIN Y BIG DATA)
+    // Blockchain & Big Data (CÓDEX → BLOCKCHAIN & BIG DATA)
     const bcPackSearch = DATA.blockchainBigData && typeof DATA.blockchainBigData === "object" ? DATA.blockchainBigData : null;
     if (bcPackSearch) {
       const introHay = String(bcPackSearch.intro || "").trim();
@@ -2126,9 +2126,9 @@
           if (!searchHaystackMatchesTokens(tokens, hay)) continue;
           hits.push({
             kind: "nav",
-            section: "CÓDEX · BLOCKCHAIN Y BIG DATA",
+            section: "CÓDEX · BLOCKCHAIN & BIG DATA",
             title: colTitle ? `${colTitle}: ${title}` : title,
-            meta: "Blockchain y Big Data",
+            meta: "Blockchain & Big Data",
             navTarget: "codex",
             codexId: "codex_bc"
           });
@@ -3515,11 +3515,11 @@
     document.documentElement.classList.remove("codex-fly-target-hidden");
     const items = [
       { id: "codex_3d", label: "DISEÑO E IMPRESIÓN 3D", labelHtml: "DISEÑO<br />E<br />IMPRESIÓN 3D", icon: "3D" },
-      { id: "codex_pr", label: "PROGRAMACIÓN Y ROBÓTICA", labelHtml: "PROGRAMACIÓN<br />Y<br />ROBÓTICA", icon: "PR" },
+      { id: "codex_pr", label: "PROGRAMACIÓN & ROBÓTICA", labelHtml: "PROGRAMACIÓN<br />&amp;<br />ROBÓTICA", icon: "PR" },
       { id: "codex_iot", label: "IoT & Redes", labelHtml: "IoT<br />&amp;<br />Redes", icon: "IoT" },
       { id: "codex_ia", label: "IA", icon: "IA" },
-      { id: "codex_sw", label: "HACKING Y CIBERSEGURIDAD", labelHtml: "HACKING<br />Y<br />CIBERSEGURIDAD", icon: "hacking" },
-      { id: "codex_bc", label: "BLOCKCHAIN Y BIG DATA", labelHtml: "BLOCKCHAIN<br />Y<br />BIG DATA", icon: "BC" },
+      { id: "codex_sw", label: "HACKING & CIBERSEGURIDAD", labelHtml: "HACKING<br />&amp;<br />CIBERSEGURIDAD", icon: "hacking" },
+      { id: "codex_bc", label: "BLOCKCHAIN & BIG DATA", labelHtml: "BLOCKCHAIN<br />&amp;<br />BIG DATA", icon: "BC" },
       { id: "codex_ss", label: "SOFT SKILLS", labelHtml: "SOFT<br />SKILLS", icon: "SS" },
       { id: "codex_lr", label: "LECTURAS RECOMENDADAS", icon: "LR" },
       { id: "codex_av", label: "MEDIA", icon: "MD" },
@@ -4024,7 +4024,7 @@
                       ? `
                         <nav class="bc-bd-aside-nav${
                           bcTopic === "blockchain" || bcTopic === "bigdata" ? " bc-bd-aside-nav--tree" : ""
-                        }" aria-label="Apartados de Blockchain y Big Data">
+                        }" aria-label="Apartados de Blockchain &amp; Big Data">
                           <div class="bc-bd-aside-nav__branch">
                             <a
                               href="#codex/codex_bc/blockchain"
@@ -4108,7 +4108,7 @@
                 `
                 : isBlockchainBigData
                   ? `
-                    <div class="readings-page bc-bd-page" aria-label="Blockchain y Big Data" data-bc-view="${escapeHtml(bcTopic || "hub")}">
+                    <div class="readings-page bc-bd-page" aria-label="Blockchain &amp; Big Data" data-bc-view="${escapeHtml(bcTopic || "hub")}">
                       <div class="bc-bd-hub" id="bc-bd-hub"${bcTopic ? " hidden" : ""}>
                         <div class="bc-bd-lede" id="bc-bd-lede"></div>
                       </div>

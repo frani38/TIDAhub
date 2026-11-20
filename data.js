@@ -11,7 +11,7 @@ window.MYWEB_DATA = {
     El pie muestra "v" + version al cargar.
   */
   siteMeta: {
-    version: "1.11.70",
+    version: "1.11.71",
     updated: "2026-11-20",
     assetBust: "",
     /* Temporal: lazo negro (marca de agua) en INICIO. Pon false para quitarlo. */
@@ -464,7 +464,7 @@ window.MYWEB_DATA = {
   //   navTarget?: "codex"|"docencia"|..., codexId?: "codex_lr", readingId?/gameId?/mediaId?, url? }
   // Regla de enlace: la sección (title) es texto fijo; el hipervínculo es `text`.
   // Catálogo CÓDEX: lecturas/juegos/media con `addedAt` → «CÓDEX: Lecturas|Juegos|Media - título» (sin descripción).
-  // Soft Skills / Blockchain: changelog de sección → «CÓDEX: Soft Skills|Blockchain y Big Data - {text}».
+  // Soft Skills / Blockchain: changelog de sección → «CÓDEX: Soft Skills|Blockchain & Big Data - {text}».
   updates: [],
 
   // Lecturas recomendadas (CÓDEX → LECTURAS RECOMENDADAS)
@@ -1712,7 +1712,7 @@ window.MYWEB_DATA = {
     }
   ],
 
-  // Blockchain y Big Data (CÓDEX → BLOCKCHAIN Y BIG DATA)
+  // Blockchain & Big Data (CÓDEX → BLOCKCHAIN & BIG DATA)
   // Imágenes didácticas en ./blockchain_bigdata/. changelog → NOVEDADES (una entrada de sección).
   blockchainBigData: {
     intro:
