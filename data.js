@@ -1,8 +1,8 @@
 // Búsqueda rápida (cabecera):
 // - siteSearchEntries: añade filas { section, title, meta, haystack, navTarget } para cualquier
 //   página o bloque nuevo (haystack = todo el texto que debe poder encontrarse).
-// - contentIndex: subapartados por zona (codex, books, about, help). Cada ítem { id, title, description?,
-//   keywords?, subSection? } se indexa solo; al crear CÓDEX → codex, PROYECTOS → books, etc.
+// - contentIndex: subapartados por zona (codex, proyectos, sobremi, ayuda). Cada ítem { id, title, description?,
+//   keywords?, subSection? } se indexa solo; al crear CÓDEX → codex, PROYECTOS → proyectos, etc.
 
 window.MYWEB_DATA = {
   /*
@@ -11,7 +11,7 @@ window.MYWEB_DATA = {
     El pie muestra "v" + version al cargar.
   */
   siteMeta: {
-    version: "1.11.74",
+    version: "1.11.75",
     updated: "2026-11-20",
     assetBust: "",
     /* Temporal: lazo negro (marca de agua) en INICIO. Pon false para quitarlo. */
@@ -465,7 +465,7 @@ window.MYWEB_DATA = {
   // Regla de enlace: la sección (title) es texto fijo; el hipervínculo es `text`.
   // Catálogo CÓDEX: lecturas/juegos/media con `addedAt` → «CÓDEX: Lecturas|Juegos|Media - título» (sin descripción).
   // Soft Skills / Blockchain: changelog de sección → «CÓDEX: Soft Skills|Blockchain & Big Data - {text}».
-  updates: [],
+  novedades: [],
 
   // Lecturas recomendadas (CÓDEX → LECTURAS RECOMENDADAS)
   // `addedAt` se usa para ordenar/mostrar primero lo más reciente.
@@ -2727,7 +2727,7 @@ window.MYWEB_DATA = {
   ],
 
   // Entradas manuales para la búsqueda rápida (cualquier sección o texto que añadas a la web).
-  // navTarget: home | docencia | legislacion | help | about | books | codex | privacy
+  // navTarget: inicio | docencia | legislacion | ayuda | sobremi | proyectos | codex | privacidad | novedades
   siteSearchEntries: [],
 
   // Subapartados indexados automáticamente (añade objetos cuando crees contenido bajo cada menú).
@@ -2736,9 +2736,9 @@ window.MYWEB_DATA = {
   // { id: "enlaces", title: "Enlaces útiles", subSection: "General", description: "...", keywords: "..." }
   contentIndex: {
     codex: [],
-    books: [],
-    about: [],
-    help: []
+    proyectos: [],
+    sobremi: [],
+    ayuda: []
   },
 
   // Si añades nuevas claves en contentIndex (p. ej. videos: []), declara aquí la etiqueta y el menú destino:

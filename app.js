@@ -34,14 +34,14 @@
   }
   const contentCardEl = document.querySelector(".content-card");
   const homeBtnEl = document.getElementById("home-btn");
-  const aboutBtnEl = document.getElementById("about-btn");
+  const sobremiBtnEl = document.getElementById("sobremi-btn");
   const docenciaBtnEl = document.getElementById("docencia-btn");
   const legislacionBtnEl = document.getElementById("legislacion-btn");
-  const booksBtnEl = document.getElementById("books-btn");
-  const helpBtnEl = document.getElementById("help-btn");
+  const proyectosBtnEl = document.getElementById("proyectos-btn");
+  const ayudaBtnEl = document.getElementById("ayuda-btn");
   const codexBtnEl = document.getElementById("codex-btn");
-  const updatesBtnEl = document.getElementById("updates-btn");
-  const navButtons = [homeBtnEl, updatesBtnEl, docenciaBtnEl, legislacionBtnEl, booksBtnEl, codexBtnEl, aboutBtnEl, helpBtnEl].filter(Boolean);
+  const novedadesBtnEl = document.getElementById("novedades-btn");
+  const navButtons = [homeBtnEl, novedadesBtnEl, docenciaBtnEl, legislacionBtnEl, proyectosBtnEl, codexBtnEl, sobremiBtnEl, ayudaBtnEl].filter(Boolean);
   const levels = Array.isArray(DATA.levels) ? DATA.levels : [];
 
   const UPDATES_LAST_SEEN_HASH_KEY = "myweb_updates_last_seen_hash_v1"; // legado (migración)
@@ -115,14 +115,14 @@
     bach: "BACHILLERATO"
   };
   let currentState = {
-    section: "home",
+    section: "inicio",
     stageId: "",
     levelId: "",
     materialId: "",
     unitId: "",
     tabId: "",
     codexId: "",
-    aboutView: "",
+    sobremiView: "",
     searchQuery: ""
   };
 
@@ -695,7 +695,7 @@
     }
   }
 
-  function showUpdatesSection() {
+  function showNovedadesSection() {
     document.documentElement.classList.add("updates-archive");
     contentCardEl?.classList.remove("is-home");
     toggleDocenciaMenu(false);
@@ -1549,7 +1549,7 @@
 
     // Prioridad de desempate (menor = más arriba): updates manuales se añaden al final del array;
     // lecturas/juegos/media se anteponen (índice 0 = más reciente).
-    const baseUpdates = (Array.isArray(DATA.updates) ? DATA.updates : [])
+    const baseUpdates = (Array.isArray(DATA.novedades) ? DATA.novedades : [])
       .map((it, idx) => {
         const n = normalizeUpdateItem(it);
         if (!n) return null;
@@ -1895,22 +1895,22 @@
   }
 
   function updateUpdatesIndicator({ nudge } = { nudge: false }) {
-    if (!updatesBtnEl) return;
+    if (!novedadesBtnEl) return;
     const hasNew = hasUnseenUpdates();
-    updatesBtnEl.classList.toggle("has-updates-new", hasNew);
+    novedadesBtnEl.classList.toggle("has-updates-new", hasNew);
 
     if (!hasNew) {
-      updatesBtnEl.classList.remove("updates-nudge");
+      novedadesBtnEl.classList.remove("updates-nudge");
       return;
     }
 
     if (!nudge) return;
     // Nudge temporal cada vez que entramos en INICIO (si hay novedades sin ver).
-    updatesBtnEl.classList.remove("updates-nudge");
+    novedadesBtnEl.classList.remove("updates-nudge");
     // eslint-disable-next-line no-unused-expressions
-    updatesBtnEl.offsetWidth;
-    updatesBtnEl.classList.add("updates-nudge");
-    setTimeout(() => updatesBtnEl.classList.remove("updates-nudge"), UPDATES_NUDGE_DURATION_MS);
+    novedadesBtnEl.offsetWidth;
+    novedadesBtnEl.classList.add("updates-nudge");
+    setTimeout(() => novedadesBtnEl.classList.remove("updates-nudge"), UPDATES_NUDGE_DURATION_MS);
   }
 
   function tokenizeSearchQuery(raw) {
@@ -2008,9 +2008,9 @@
 
   const DEFAULT_CONTENT_INDEX_ZONES = {
     codex: { label: "CÓDEX", navTarget: "codex" },
-    books: { label: "PROYECTOS", navTarget: "books" },
-    about: { label: "SOBRE MÍ", navTarget: "about" },
-    help: { label: "AYUDA", navTarget: "help" }
+    proyectos: { label: "PROYECTOS", navTarget: "proyectos" },
+    sobremi: { label: "SOBRE MÍ", navTarget: "sobremi" },
+    ayuda: { label: "AYUDA", navTarget: "ayuda" }
   };
 
   /** Solo entradas explícitas en data.js (no enlaces genéricos al menú). */
@@ -2348,7 +2348,7 @@
 
   function applySearchNavTarget(target) {
     const t = String(target || "").trim();
-    if (t === "home") {
+    if (t === "inicio") {
       homeBtnEl?.click();
       return;
     }
@@ -2360,32 +2360,33 @@
       legislacionBtnEl?.click();
       return;
     }
-    if (t === "help") {
-      helpBtnEl?.click();
+    if (t === "ayuda") {
+      ayudaBtnEl?.click();
       return;
     }
-    if (t === "about") {
-      aboutBtnEl?.click();
+    if (t === "sobremi") {
+      sobremiBtnEl?.click();
       return;
     }
-    if (t === "books") {
-      booksBtnEl?.click();
+    if (t === "proyectos") {
+      proyectosBtnEl?.click();
       return;
     }
     if (t === "codex") {
       codexBtnEl?.click();
       return;
     }
-    if (t === "privacy") {
-      setActiveMenu(helpBtnEl);
-      showPrivacyPolicyPanel(null);
-      currentState = { ...currentState, section: "privacy" };
+    if (t === "privacidad") {
+      setActiveMenu(ayudaBtnEl);
+      showPrivacidadPanel(null);
+      currentState = { ...currentState, section: "privacidad" };
       pushAppHistory();
+      return;
     }
-    if (t === "updates") {
-      setActiveMenu(updatesBtnEl);
-      showUpdatesSection();
-      currentState = { ...currentState, section: "updates" };
+    if (t === "novedades") {
+      setActiveMenu(novedadesBtnEl);
+      showNovedadesSection();
+      currentState = { ...currentState, section: "novedades" };
       pushAppHistory();
     }
   }
@@ -2415,7 +2416,7 @@
           `;
       currentState = {
         ...currentState,
-        section: "search",
+        section: "buscar",
         searchQuery: "",
         levelId: "",
         materialId: "",
@@ -2539,7 +2540,7 @@
 
     currentState = {
       ...currentState,
-      section: "search",
+      section: "buscar",
       searchQuery: rawQuery.trim(),
       levelId: "",
       materialId: "",
@@ -2557,14 +2558,14 @@
   function homeHistoryState() {
     return {
       myweb: 1,
-      section: "home",
+      section: "inicio",
       stageId: "",
       levelId: "",
       materialId: "",
       unitId: "",
       tabId: "",
       codexId: "",
-      aboutView: "",
+      sobremiView: "",
       searchQuery: ""
     };
   }
@@ -2572,14 +2573,14 @@
   function snapshotHistoryState() {
     return {
       myweb: 1,
-      section: currentState.section || "home",
+      section: currentState.section || "inicio",
       stageId: currentState.stageId || "",
       levelId: currentState.levelId || "",
       materialId: currentState.materialId || "",
       unitId: currentState.unitId || "",
       tabId: currentState.tabId || "",
       codexId: (currentState.section || "") === "codex" ? currentState.codexId || "" : "",
-      aboutView: (currentState.section || "") === "about" ? currentState.aboutView || "" : "",
+      sobremiView: (currentState.section || "") === "sobremi" ? currentState.sobremiView || "" : "",
       searchQuery: currentState.searchQuery || ""
     };
   }
@@ -2587,13 +2588,13 @@
   function historyStateKey(st) {
     if (!st) return "";
     return [
-      st.section || "home",
+      st.section || "inicio",
       st.levelId || "",
       st.materialId || "",
       st.unitId || "",
       st.tabId || "",
       st.codexId || "",
-      st.aboutView || "",
+      st.sobremiView || "",
       st.searchQuery || ""
     ].join("|");
   }
@@ -2616,15 +2617,15 @@
 
   function urlFromHistoryState(st) {
     const base = documentUrlBaseWithoutAssetV();
-    const section = st?.section || "home";
-    if (section === "home") return base;
-    if (section === "help") return `${base}#help`;
-    if (section === "privacy") return `${base}#privacy`;
-    if (section === "about") {
-      const av = String(st.aboutView || "").trim();
-      return av === "publicaciones" ? `${base}#about/publicaciones` : `${base}#about`;
+    const section = st?.section || "inicio";
+    if (section === "inicio") return `${base}#inicio`;
+    if (section === "ayuda") return `${base}#ayuda`;
+    if (section === "privacidad") return `${base}#privacidad`;
+    if (section === "sobremi") {
+      const av = String(st.sobremiView || "").trim();
+      return av === "publicaciones" ? `${base}#sobre-mi/publicaciones` : `${base}#sobre-mi`;
     }
-    if (section === "books") return `${base}#books`;
+    if (section === "proyectos") return `${base}#proyectos`;
     if (section === "legislacion") return `${base}#legislacion`;
     if (section === "codex") {
       const mid = String(st.codexId || "").trim();
@@ -2634,10 +2635,10 @@
       }
       return mid ? `${base}#codex/${encodeURIComponent(mid)}` : `${base}#codex`;
     }
-    if (section === "updates") return `${base}#updates`;
-    if (section === "search") {
+    if (section === "novedades") return `${base}#novedades`;
+    if (section === "buscar") {
       const q = encodeURIComponent(st.searchQuery || "");
-      return q ? `${base}#search/${q}` : `${base}#search`;
+      return q ? `${base}#buscar/${q}` : `${base}#buscar`;
     }
     if (section === "docencia") {
       if (st.levelId && st.materialId && st.unitId) {
@@ -2697,19 +2698,19 @@
     if (!st || typeof st !== "object") return;
     currentState = {
       ...currentState,
-      section: st.section || "home",
+      section: st.section || "inicio",
       stageId: st.stageId || "",
       levelId: st.levelId || "",
       materialId: st.materialId || "",
       unitId: st.unitId || "",
       tabId: st.tabId || "",
       codexId: st.codexId || "",
-      aboutView: st.aboutView || "",
+      sobremiView: st.sobremiView || "",
       searchQuery: st.searchQuery || ""
     };
 
     const section = currentState.section;
-    if (section === "home") {
+    if (section === "inicio") {
       setActiveMenu(homeBtnEl);
       toggleDocenciaMenu(false);
       toggleContentCard(true);
@@ -2718,24 +2719,24 @@
       resetToHome();
       return;
     }
-    if (section === "help") {
-      setActiveMenu(helpBtnEl);
-      showHelpForm();
+    if (section === "ayuda") {
+      setActiveMenu(ayudaBtnEl);
+      showAyudaForm();
       return;
     }
-    if (section === "privacy") {
-      setActiveMenu(helpBtnEl);
-      showPrivacyPolicyPanel(null);
+    if (section === "privacidad") {
+      setActiveMenu(ayudaBtnEl);
+      showPrivacidadPanel(null);
       return;
     }
-    if (section === "about") {
-      setActiveMenu(aboutBtnEl);
-      showAboutSection({ view: currentState.aboutView || "" });
+    if (section === "sobremi") {
+      setActiveMenu(sobremiBtnEl);
+      showSobremiSection({ view: currentState.sobremiView || "" });
       return;
     }
-    if (section === "books") {
-      setActiveMenu(booksBtnEl);
-      showBooksSection();
+    if (section === "proyectos") {
+      setActiveMenu(proyectosBtnEl);
+      showProyectosSection();
       return;
     }
     if (section === "legislacion") {
@@ -2748,12 +2749,12 @@
       showCodexSection({ openCodexId: currentState.codexId || "" });
       return;
     }
-    if (section === "updates") {
-      setActiveMenu(updatesBtnEl);
-      showUpdatesSection();
+    if (section === "novedades") {
+      setActiveMenu(novedadesBtnEl);
+      showNovedadesSection();
       return;
     }
-    if (section === "search") {
+    if (section === "buscar") {
       if (unitSearchEl) unitSearchEl.value = currentState.searchQuery || "";
       runGlobalSearch();
       return;
@@ -2781,8 +2782,8 @@
 
   function applyRouteFromLocationHash() {
     const raw = String(location.hash || "").replace(/^#/, "");
-    if (!raw || raw === "home") {
-      restoreHistorySnapshot({ ...snapshotHistoryState(), section: "home", levelId: "", materialId: "", unitId: "", tabId: "", searchQuery: "" });
+    if (!raw || raw === "inicio") {
+      restoreHistorySnapshot({ ...snapshotHistoryState(), section: "inicio", levelId: "", materialId: "", unitId: "", tabId: "", searchQuery: "" });
       return;
     }
     if (raw === "codex" || raw.startsWith("codex/")) {
@@ -2805,27 +2806,34 @@
         unitId: "",
         tabId,
         codexId,
-        aboutView: "",
+        sobremiView: "",
         searchQuery: ""
       });
       return;
     }
-    if (raw === "about" || raw === "about/publicaciones") {
+    if (raw === "sobre-mi" || raw === "sobre-mi/publicaciones") {
       restoreHistorySnapshot({
         myweb: 1,
-        section: "about",
+        section: "sobremi",
         stageId: "",
         levelId: "",
         materialId: "",
         unitId: "",
         tabId: "",
         codexId: "",
-        aboutView: raw === "about/publicaciones" ? "publicaciones" : "",
+        sobremiView: raw === "sobre-mi/publicaciones" ? "publicaciones" : "",
         searchQuery: ""
       });
       return;
     }
-    if (raw === "help" || raw === "privacy" || raw === "books" || raw === "legislacion" || raw === "updates" || raw === "docencia") {
+    if (
+      raw === "ayuda" ||
+      raw === "privacidad" ||
+      raw === "proyectos" ||
+      raw === "legislacion" ||
+      raw === "novedades" ||
+      raw === "docencia"
+    ) {
       restoreHistorySnapshot({
         myweb: 1,
         section: raw,
@@ -2835,14 +2843,14 @@
         unitId: "",
         tabId: "",
         codexId: "",
-        aboutView: "",
+        sobremiView: "",
         searchQuery: ""
       });
       return;
     }
-    if (raw === "search" || raw.startsWith("search/")) {
-      const q = raw === "search" ? "" : decodeURIComponent(raw.slice("search/".length));
-      restoreHistorySnapshot({ ...snapshotHistoryState(), section: "search", searchQuery: q });
+    if (raw === "buscar" || raw.startsWith("buscar/")) {
+      const q = raw === "buscar" ? "" : decodeURIComponent(raw.slice("buscar/".length));
+      restoreHistorySnapshot({ ...snapshotHistoryState(), section: "buscar", searchQuery: q });
       return;
     }
     const parsed = parseHash();
@@ -2856,10 +2864,10 @@
       });
       return;
     }
-    restoreHistorySnapshot({ ...snapshotHistoryState(), section: "home" });
+    restoreHistorySnapshot({ ...snapshotHistoryState(), section: "inicio" });
   }
 
-  function showHelpForm(draft = null) {
+  function showAyudaForm(draft = null) {
     contentCardEl?.classList.remove("is-home");
     toggleDocenciaMenu(false);
     toggleContentCard(true);
@@ -2951,8 +2959,8 @@
     if (privacyLinkEl) {
       privacyLinkEl.addEventListener("click", (e) => {
               e.preventDefault();
-        showPrivacyPolicyPanel(getDraft());
-        currentState = { ...currentState, section: "privacy" };
+        showPrivacidadPanel(getDraft());
+        currentState = { ...currentState, section: "privacidad" };
         pushAppHistory();
       });
     }
@@ -3069,7 +3077,7 @@
     animateContentSwitch();
   }
 
-  function showPrivacyPolicyPanel(draft) {
+  function showPrivacidadPanel(draft) {
     contentCardEl?.classList.remove("is-home");
     toggleDocenciaMenu(false);
     toggleContentCard(true);
@@ -3238,15 +3246,15 @@
     const titleBackBtn = unitTitleEl.querySelector(".help-title-back");
     titleBackBtn?.addEventListener("click", () => {
       try {
-        if (history.state?.myweb === 1 && history.state.section === "privacy") {
+        if (history.state?.myweb === 1 && history.state.section === "privacidad") {
           history.back();
           return;
         }
       } catch {}
         setUnitTitleCompact(false);
       unitTitleEl.textContent = "AYUDA";
-      showHelpForm(draft);
-        currentState = { ...currentState, section: "help" };
+      showAyudaForm(draft);
+        currentState = { ...currentState, section: "ayuda" };
         pushAppHistory();
     });
     // Móvil/tablet: el scroll residual de AYUDA deja la política a mitad; forzar inicio.
@@ -3255,7 +3263,7 @@
     animateContentSwitch();
   }
 
-  function showAboutPublications() {
+  function showSobremiPublications() {
     contentCardEl?.classList.remove("is-home");
     toggleDocenciaMenu(false);
     toggleContentCard(true);
@@ -3304,13 +3312,13 @@
     const backBtn = unitTitleEl.querySelector(".about-title-back");
     backBtn?.addEventListener("click", () => {
       try {
-        if (history.state?.myweb === 1 && String(history.state.aboutView || "").trim() === "publicaciones") {
+        if (history.state?.myweb === 1 && String(history.state.sobremiView || "").trim() === "publicaciones") {
           history.back();
           return;
         }
       } catch {}
-      currentState = { ...currentState, section: "about", aboutView: "" };
-      showAboutSection({ view: "" });
+      currentState = { ...currentState, section: "sobremi", sobremiView: "" };
+      showSobremiSection({ view: "" });
       pushAppHistory();
     });
     // Móvil: el scroll de documento residual deja la lista a mitad; forzar inicio.
@@ -3319,10 +3327,10 @@
     animateContentSwitch();
   }
 
-  function showAboutSection(opts = {}) {
-    const view = String(opts?.view ?? currentState.aboutView ?? "").trim();
+  function showSobremiSection(opts = {}) {
+    const view = String(opts?.view ?? currentState.sobremiView ?? "").trim();
     if (view === "publicaciones") {
-      showAboutPublications();
+      showSobremiPublications();
       return;
     }
 
@@ -3350,7 +3358,7 @@
           </div>
           <div class="about-section__body">
             <p>
-              Ingeniero de Minas (especialista en metalurgia y energía), comencé mi carrera profesional en el ámbito empresarial como ingeniero de I+D+i, jefe de taller y proyectos y dirección de producción en el sector del metal; trayectoria que fui compatibilizando con estudios de máster y doctorado, manteniendo siempre el contacto y el interés por el <a href="#about/publicaciones" class="about-academic-link">mundo académico</a>, al cual me dedico actualmente, con más de 7 años de experiencia. He sido docente de Formación Profesional en Organización y Proyectos de Fabricación Mecánica y, en la actualidad, soy profesor de Tecnología, Ingeniería y Digitalización Aplicada en Educación Secundaria y Bachillerato, además de desempeñar el cargo de Coordinador TIC.
+              Ingeniero de Minas (especialista en metalurgia y energía), comencé mi carrera profesional en el ámbito empresarial como ingeniero de I+D+i, jefe de taller y proyectos y dirección de producción en el sector del metal; trayectoria que fui compatibilizando con estudios de máster y doctorado, manteniendo siempre el contacto y el interés por el <a href="#sobre-mi/publicaciones" class="about-academic-link">mundo académico</a>, al cual me dedico actualmente, con más de 7 años de experiencia. He sido docente de Formación Profesional en Organización y Proyectos de Fabricación Mecánica y, en la actualidad, soy profesor de Tecnología, Ingeniería y Digitalización Aplicada en Educación Secundaria y Bachillerato, además de desempeñar el cargo de Coordinador TIC.
             </p>
             <p>
               Entre mis inquietudes están el entorno maker aplicado al diseño y la impresión 3D, la programación (Python) y la robótica, tecnología Blockchain y el uso de nuevas tecnologías basadas en IA, además de ser un apasionado de la ciberseguridad en entorno Linux.
@@ -3359,7 +3367,7 @@
               En esta web pretendo reunir todo aquello que considero fundamental para el desempeño de mi labor docente y para facilitar el aprendizaje y el estudio del alumnado, además de servir como espacio de divulgación personal y profesional orientado al desarrollo de las habilidades técnicas, digitales y personales para la sociedad actual y futura. Espero que los contenidos te resulten útiles.
             </p>
             <p>
-              Si necesitas resolver alguna duda o ampliar información, o si consideras que algún material de este sitio vulnera derechos de autor o no se utiliza conforme a la licencia que le corresponde, comunícamelo por el apartado <a href="#help" class="about-help-link">AYUDA</a>, así revisaré el caso y corregiré el error a la mayor brevedad posible.
+              Si necesitas resolver alguna duda o ampliar información, o si consideras que algún material de este sitio vulnera derechos de autor o no se utiliza conforme a la licencia que le corresponde, comunícamelo por el apartado <a href="#ayuda" class="about-help-link">AYUDA</a>, así revisaré el caso y corregiré el error a la mayor brevedad posible.
             </p>
             <p class="about-section__signoff">¡Un saludo!<br />Fran.</p>
           </div>
@@ -3370,17 +3378,17 @@
     const academicLink = tabPanelEl.querySelector(".about-academic-link");
     academicLink?.addEventListener("click", (e) => {
       e.preventDefault();
-      currentState = { ...currentState, section: "about", aboutView: "publicaciones" };
-      showAboutPublications();
+      currentState = { ...currentState, section: "sobremi", sobremiView: "publicaciones" };
+      showSobremiPublications();
       pushAppHistory();
     });
 
     const helpLink = tabPanelEl.querySelector(".about-help-link");
     helpLink?.addEventListener("click", (e) => {
       e.preventDefault();
-      setActiveMenu(helpBtnEl);
-      currentState = { ...currentState, section: "help", aboutView: "" };
-      showHelpForm();
+      setActiveMenu(ayudaBtnEl);
+      currentState = { ...currentState, section: "ayuda", sobremiView: "" };
+      showAyudaForm();
       pushAppHistory();
     });
     scrollToPageTop();
@@ -3388,7 +3396,7 @@
     animateContentSwitch();
   }
 
-  function showBooksSection() {
+  function showProyectosSection() {
     contentCardEl?.classList.remove("is-home");
     toggleDocenciaMenu(false);
     toggleContentCard(true);
@@ -5906,7 +5914,7 @@
       resetToHome();
       currentState = {
         ...currentState,
-        section: "home",
+        section: "inicio",
         levelId: "",
         materialId: "",
         unitId: "",
@@ -5937,20 +5945,20 @@
     });
   }
 
-  if (aboutBtnEl) {
-    aboutBtnEl.addEventListener("click", () => {
-      setActiveMenu(aboutBtnEl);
-      currentState = { ...currentState, section: "about", aboutView: "" };
-      showAboutSection({ view: "" });
+  if (sobremiBtnEl) {
+    sobremiBtnEl.addEventListener("click", () => {
+      setActiveMenu(sobremiBtnEl);
+      currentState = { ...currentState, section: "sobremi", sobremiView: "" };
+      showSobremiSection({ view: "" });
       pushAppHistory();
     });
   }
 
-  if (booksBtnEl) {
-    booksBtnEl.addEventListener("click", () => {
-      setActiveMenu(booksBtnEl);
-      showBooksSection();
-      currentState = { ...currentState, section: "books" };
+  if (proyectosBtnEl) {
+    proyectosBtnEl.addEventListener("click", () => {
+      setActiveMenu(proyectosBtnEl);
+      showProyectosSection();
+      currentState = { ...currentState, section: "proyectos" };
       pushAppHistory();
     });
   }
@@ -5973,20 +5981,20 @@
     });
   }
 
-  if (helpBtnEl) {
-    helpBtnEl.addEventListener("click", () => {
-      setActiveMenu(helpBtnEl);
-      showHelpForm();
-      currentState = { ...currentState, section: "help" };
+  if (ayudaBtnEl) {
+    ayudaBtnEl.addEventListener("click", () => {
+      setActiveMenu(ayudaBtnEl);
+      showAyudaForm();
+      currentState = { ...currentState, section: "ayuda" };
       pushAppHistory();
     });
   }
 
-  if (updatesBtnEl) {
-    updatesBtnEl.addEventListener("click", () => {
-      setActiveMenu(updatesBtnEl);
-      showUpdatesSection();
-      currentState = { ...currentState, section: "updates" };
+  if (novedadesBtnEl) {
+    novedadesBtnEl.addEventListener("click", () => {
+      setActiveMenu(novedadesBtnEl);
+      showNovedadesSection();
+      currentState = { ...currentState, section: "novedades" };
       pushAppHistory();
     });
   }
@@ -5996,7 +6004,7 @@
     try {
       if (event.state && event.state.myweb === 1) {
         restoreHistorySnapshot(event.state);
-      } else if (location.hash && location.hash !== "#" && location.hash !== "#home") {
+      } else if (location.hash && location.hash !== "#" && location.hash !== "#inicio") {
         applyRouteFromLocationHash();
       } else {
         restoreHistorySnapshot(homeHistoryState());
@@ -6057,12 +6065,12 @@
   suppressHistoryPush = true;
   try {
     const rawHash = String(location.hash || "").replace(/^#/, "");
-    const hasDeepLink = Boolean(rawHash && rawHash !== "home");
+    const hasDeepLink = Boolean(rawHash && rawHash !== "inicio");
     const hist = history.state && history.state.myweb === 1 ? history.state : null;
 
     if (hasDeepLink) {
       applyRouteFromLocationHash();
-    } else if (hist && hist.section && hist.section !== "home") {
+    } else if (hist && hist.section && hist.section !== "inicio") {
       restoreHistorySnapshot(hist);
     } else {
       // Cortina solo en entrada/recarga real de INICIO; no si venimos de privacidad.html (VOLVER).
@@ -6076,7 +6084,7 @@
       welcomeCurtainOnNextHome = !skipCurtain;
       currentState = {
         ...currentState,
-        section: "home",
+        section: "inicio",
         stageId: "",
         levelId: "",
         materialId: "",

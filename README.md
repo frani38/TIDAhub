@@ -6,13 +6,14 @@ Hub web **estático** de **Tecnología, Ingeniería y Digitalización Aplicada**
 - **Web publicada (GitHub Pages):** [frani38.github.io/TIDAhub](https://frani38.github.io/TIDAhub/)
 - Guía de puesta en marcha online: **`github_TIDAhub.md`**
 - Historial de versiones: **`versions.md`**
-- Versión actual del pie: ver `data.js` → `siteMeta.version` (hoy **1.11.58**)
+- Versión actual del pie: ver `data.js` → `siteMeta.version` (hoy **1.11.75**)
 
 ## Objetivo del proyecto
 
 - **DOCENCIA**: navegación **etapa → nivel → materia → unidad**. En cada unidad se mantienen los cuatro apartados **Teoría**, **Actividades**, **Prácticas** y **Recursos**, pero el material deja de ser el PDF clásico de apuntes/ejercicios “al uso”. El enfoque es **visual y sintético**: piezas centradas en los puntos clave de cada tema (infografías, pósters, láminas o capturas de presentación, esquemas, y también PDF cuando aporte), a menudo elaboradas con **aplicaciones de IA**, alojadas bajo `/content/<unitId>/`.
 - **INICIO**: bienvenida (revelado tipo cortina) y panel de **últimas noticias** (`data.js` → `news`: titular + imagen de portada), con histórico por años/meses. Lienzo de diseño **1680px** en PC; si la ventana es más estrecha se mantiene el tamaño y aparecen **scroll H+V**. El **reflow** compacto (WCAG 2.2 AA) solo en **móvil/tablet táctil**.
-- **NOVEDADES**: avisos manuales (`updates`) y altas automáticas de **LIBRO / JUEGO / MEDIA**; títulos enlazan a la ficha en CÓDEX; resalte azul por entrada no visitada.
+- **NOVEDADES**: avisos manuales (`novedades`) y altas automáticas de **LIBRO / JUEGO / MEDIA**; títulos enlazan a la ficha en CÓDEX; resalte azul por entrada no visitada.
+- **Hashes de sección** (coinciden con el nombre del menú): `#inicio`, `#novedades`, `#docencia`, `#proyectos`, `#legislacion`, `#codex`, `#sobre-mi`, `#ayuda`, `#privacidad`, `#buscar`.
 - **Búsqueda rápida** (cabecera): resultados globales (docencia, noticias, legislación y entradas indexadas en `data.js`), sin duplicar enlaces genéricos del menú.
 - **PROYECTOS**: evidencias y trabajos que muestran aplicación real de los contenidos.
 - **LEGISLACIÓN**: normativa de referencia para el marco curricular (`data.js` → `legislation`); en móvil, columnas **Nacional** → **Asturias**.
