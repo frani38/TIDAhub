@@ -11,7 +11,7 @@ window.MYWEB_DATA = {
     El pie muestra "v" + version al cargar.
   */
   siteMeta: {
-    version: "1.11.73",
+    version: "1.11.74",
     updated: "2026-11-20",
     assetBust: "",
     /* Temporal: lazo negro (marca de agua) en INICIO. Pon false para quitarlo. */

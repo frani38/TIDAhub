@@ -83,6 +83,23 @@
     }
   }
 
+  /**
+   * El ?v= del documento solo sirve para forzar HTML fresco en un reload.
+   * Tras bootear, se quita de la barra de dirección (los assets siguen con ?v=).
+   */
+  function stripDocumentVersionQuery() {
+    try {
+      var u = new URL(global.location.href);
+      if (!u.searchParams.has("v")) return;
+      u.searchParams.delete("v");
+      var qs = u.searchParams.toString();
+      var next = u.pathname + (qs ? "?" + qs : "") + u.hash;
+      global.history.replaceState(global.history.state, "", next);
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
   /** Inyecta data.js ya descargado (sin segunda petición cacheable). */
   function injectDataJs(jsText) {
     if (!jsText || !global.document) return false;
@@ -119,6 +136,7 @@
       /* ignore */
     }
     clearBustAttempt(v);
+    stripDocumentVersionQuery();
     wireVersionedLinks(v);
     try {
       global.dispatchEvent(

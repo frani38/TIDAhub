@@ -1,6 +1,6 @@
 Historial de versiones — T·I·D·A hub
 
-Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.73**).
+Registro de modificaciones y mejoras desde la publicación inicial (**1.0**) hasta la versión actual del pie (`data.js` → `siteMeta.version`, hoy **1.11.74**).
 
 Formato: **MAJOR.MINOR.PATCH** (desde 1.1.0). Fuente de verdad: `data.js`. Documentación alineada en `README.md`, `github_TIDAhub.md`, `content/README.md` e `#_Informe/Informe_MyWeb.tex`.
 
@@ -1334,6 +1334,10 @@ Cambios publicados en `main` tras 1.0 y consolidados conceptualmente en la líne
 
 - Blockchain & Big Data: modo `comingSoon` (público → PRÓXIMAMENTE; editor → `?wip=bc`).
 
+## 1.11.74
+
+- URL: el `?v=` de anti-caché del documento ya no se deja visible en la barra de dirección.
+
 ---
 
 ## Convención (recordatorio)
@@ -1591,5 +1595,6 @@ Nota: **1.1.16** y **1.1.17** fueron bumps por contenido; **1.5.1** fue el últi
 | **1.11.71** | CÓDEX: Y → & en PR, Hacking y Blockchain |
 | **1.11.72** | NOTICIAS: aura superior de no leídas |
 | **1.11.73** | BC/BD: comingSoon + preview ?wip=bc |
+| **1.11.74** | URL: ocultar ?v= tras el boot |
 
 Nota (docs, sin bump): informe LaTeX y `*.md` alineados a **1.11.58** (NOTICIAS titular+imagen, WebP, hub BC/BD).

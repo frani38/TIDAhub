@@ -92,6 +92,7 @@
         return;
       }
       params.delete("wip");
+      params.delete("v"); // no reintroducir anti-caché en la barra
       const qs = params.toString();
       const next = `${window.location.pathname}${qs ? `?${qs}` : ""}${window.location.hash || ""}`;
       window.history.replaceState(window.history.state, "", next);
@@ -2601,8 +2602,20 @@
     return historyStateKey(a) === historyStateKey(b);
   }
 
+  /** Base de URL de la SPA sin el ?v= de anti-caché del documento. */
+  function documentUrlBaseWithoutAssetV() {
+    try {
+      const u = new URL(location.href);
+      u.searchParams.delete("v");
+      const qs = u.searchParams.toString();
+      return `${u.pathname}${qs ? `?${qs}` : ""}`;
+    } catch {
+      return `${location.pathname}${location.search}`;
+    }
+  }
+
   function urlFromHistoryState(st) {
-    const base = `${location.pathname}${location.search}`;
+    const base = documentUrlBaseWithoutAssetV();
     const section = st?.section || "home";
     if (section === "home") return base;
     if (section === "help") return `${base}#help`;
