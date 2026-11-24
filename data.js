@@ -233,6 +233,15 @@ window.MYWEB_DATA = {
   // Formato reciente: titular + imagen de portada del artículo (ancho del bloque). `text` opcional (búsqueda / respaldo).
   news: [
     {
+      publishedAt: "2026-11-24T08:20",
+      title:
+        "Cloudflare lanza una web con las últimas vulnerabilidades CVE detectadas",
+      text: "Cloudflare Radar incorpora Zero Wire, un panel que reúne los últimos CVE detectados para administradores de red y profesionales de ciberseguridad. Un CVE es el identificador público del fallo (CVE-AÑO-NÚMERO); no equivale a la gravedad (CVSS) ni a la existencia de un exploit. El listado es una herramienta de seguimiento, no de remediación: conviene cruzarlo con avisos del fabricante y priorizar según exposición real.",
+      image:
+        "https://www.redeszone.net/app/uploads-redeszone.net/2026/11/imagen-representa-vulnerabilidad.jpg",
+      url: "https://www.redeszone.net/noticias/seguridad/cloudflare-radar-zero-wire-cve/",
+    },
+    {
       publishedAt: "2026-11-20T09:15",
       title:
         "Una vulnerabilidad crítica en MySQL permite acceder a tus datos sin contraseña",
