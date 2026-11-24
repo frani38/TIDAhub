@@ -233,6 +233,14 @@ window.MYWEB_DATA = {
   // Formato reciente: titular + imagen de portada del artículo (ancho del bloque). `text` opcional (búsqueda / respaldo).
   news: [
     {
+      publishedAt: "2026-11-24T12:10",
+      title:
+        "Estados Unidos acelera los permisos de tres tecnologías SMR y prepara la carrera por abastecer a la industria y los centros de datos",
+      text: "La NRC estadounidense ha autorizado la construcción del Natrium (TerraPower) y del BWRX-300 (TVA/GE Hitachi) y tramita en fase final el Xe-100 (X-energy) para el proyecto industrial Long Mott (Dow). Son tres enfoques distintos —reactor rápido con sales fundidas, agua ligera modular y alta temperatura por gas— orientados a red, industria y centros de datos. El cuello de botella siguiente podría ser la falta de personal nuclear especializado, no solo la regulación.",
+      image: "https://cdn.elperiodicodelaenergia.com/2024/02/317399.jpg",
+      url: "https://elperiodicodelaenergia.com/estados-unidos-acelera-los-permisos-de-tres-tecnologias-smr-y-prepara-la-carrera-por-abastecer-a-la-industria-y-los-centros-de-datos/",
+    },
+    {
       publishedAt: "2026-11-24T08:20",
       title:
         "Cloudflare lanza una web con las últimas vulnerabilidades CVE detectadas",
