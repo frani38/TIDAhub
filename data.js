@@ -233,6 +233,15 @@ window.MYWEB_DATA = {
   // Formato reciente: titular + imagen de portada del artículo (ancho del bloque). `text` opcional (búsqueda / respaldo).
   news: [
     {
+      publishedAt: "2026-11-25T08:50",
+      title:
+        "La IA ya no necesita que un programador revise su trabajo: Claude empieza a aprobar su propio código",
+      text: "Anthropic presenta Claude Ship para GitHub (planes Team y Enterprise): Code Review ya disponible; en beta, PR Steward (corrige fallos de CI, conflictos y comentarios) y Claude Approvals, que puede aprobar pull requests según normas del equipo en lenguaje natural. Anthropic recomienda empezar en modo observación, con límites de gasto y supervisión humana antes de dar más autonomía.",
+      image:
+        "https://imagenes.computerhoy.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/11/24/6b054edcdfd488-40620763.png",
+      url: "https://computerhoy.20minutos.es/software/ia-ya-no-necesita-que-un-programador-revise-su-trabajo-claude-empieza-aprobar-su-propio-codigo_7064904_0.html",
+    },
+    {
       publishedAt: "2026-11-24T12:10",
       title:
         "Estados Unidos acelera los permisos de tres tecnologías SMR y prepara la carrera por abastecer a la industria y los centros de datos",
